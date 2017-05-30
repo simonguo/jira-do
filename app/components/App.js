@@ -50,6 +50,9 @@ class App extends Component {
       return callback(server);
     }
     AsyncStorage.getItem('session').then((data) => {
+      if (!data) {
+        return callback(null);
+      }
       const server = JSON.parse(data).server;
       this.setState({ server });
       callback(server);
@@ -80,6 +83,7 @@ class App extends Component {
         AlertIOS.alert('Message', 'Incorrect username or password.');
         return;
       }
+      this.setState({ server: data.server });
       AsyncStorage.setItem('session', JSON.stringify(data));
     }));
   }
