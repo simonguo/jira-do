@@ -4,7 +4,6 @@ import fetchData from '../utils/fetchData';
 
 
 let allDateAction = (data) => {
-  console.log('data-----', data)
   return {
     type: Types.FETCH_BOARD_WORK_ALLDATA,
     allData: data
@@ -13,8 +12,8 @@ let allDateAction = (data) => {
 
 export function fetchAllData(server, rapidViewId, callback) {
   const url = `${server}${APIs.API_XBOARD_WORK_ALLDATA}?rapidViewId=${rapidViewId}`;
-  console.log('url', url);
   return dispatch => {
+     dispatch(allDateAction({}));
     fetchData(url, {
       method: 'get',
     }, (response) => {
