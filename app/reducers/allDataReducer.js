@@ -1,7 +1,8 @@
 import * as Types from '../constants/ActionTypes';
 
 const initialState = {
-  data: {}
+  data: {},
+  config: {}
 };
 
 let allDataReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ let allDataReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.allData
+      };
+    case Types.FETCH_RAPID_VIEWS_CONFIG:
+      return {
+        ...state,
+        config: action.config
       };
     default:
       return state

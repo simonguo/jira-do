@@ -17,7 +17,7 @@ import {
 import { connect } from 'react-redux';
 import { login } from '../actions/login';
 import { fetchRapidViews } from '../actions/rapidviews';
-import { fetchAllData } from '../actions/allData';
+import { fetchAllData, fetchRapidViewsConfig } from '../actions/allData';
 
 import SideMenu from 'react-native-side-menu'
 import Menu from './Menu';
@@ -90,7 +90,8 @@ class App extends Component {
 
   loadAllData(server, rapidViewId) {
     const { dispatch } = this.props;
-    dispatch(fetchAllData(server, rapidViewId))
+    dispatch(fetchAllData(server, rapidViewId));
+    dispatch(fetchRapidViewsConfig(server, rapidViewId))
   }
 
   handleFetchRapidViews() {
@@ -101,6 +102,7 @@ class App extends Component {
         this.setState({ selectedItem: firstItem });
         this.loadAllData(server, firstItem.id)
       }));
+
     });
   }
   renderLoginView() {
@@ -143,7 +145,9 @@ class App extends Component {
           />
           <Text style={styles.titleText}>{tilte}</Text>
         </View>
-        <BoardView allData={allData} />
+        <BoardView
+          allData={allData}
+        />
       </View>
 
     )

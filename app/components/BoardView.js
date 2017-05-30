@@ -12,42 +12,29 @@ import Swiper from 'react-native-swiper';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
 
-import styles from '../styles/LoginView.style';
-
-function wp(percentage) {
-  const value = (percentage * viewportWidth) / 100;
-  return Math.round(value);
-}
-const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
-const slideHeight = viewportHeight * 0.4;
-const slideWidth = wp(75);
-const itemHorizontalMargin = wp(2);
-
-const sliderWidth = viewportWidth;
-const itemWidth = slideWidth + itemHorizontalMargin * 2;
-
-
-
+import styles, { sliderWidth, itemWidth } from '../styles/BoardView.style';
 
 class BoardView extends Component {
+
   getSlidesData() {
     const { allData } = this.props;
-    const nextData = [{
-      title: 'Backlog',
-      list: []
-    }, {
-      title: 'In progress',
-      list: []
-    }, {
-      title: 'Done',
-      list: []
-    }];
     const issues = _.get(allData, ['data', 'issuesData', 'issues']) || [];
+    const mappedColumns = _.get(allData, ['config', 'rapidListConfig', 'mappedColumns']) || []
 
-    nextData[0].list = issues.filter(item => item.statusId === '10000') || [];
-    nextData[1].list = issues.filter(item => item.statusId === '3') || [];
-    nextData[2].list = issues.filter(item => item.statusId === '10002') || [];
-    return nextData;
+    return mappedColumns.map(item => {
+      let statuses = item.mappedStatuses.map(s => s.id);
+      let list = issues.filter(i => _.includes(statuses, i.statusId));
+      return {
+        title: `${item.name} (${list.length})`,
+        list
+      }
+    }) || [];
+
+    // 1 开始, 4 重新打开, 10100 To Do ,10000  Backlog,
+    // 10001: Selected for Development
+    // 3 进行中
+    // 5 已解决 6 关闭 10002 Done
+
   }
   getSlides(entries) {
     if (!entries) {
@@ -66,20 +53,25 @@ class BoardView extends Component {
   }
   render() {
 
-    const { allData } = this.props;
-    const issues = _.get(allData, ['data', 'issuesData', 'issues']);
+    const data = this.getSlidesData();
 
     return (
       <View style={styles.container}>
-        <Carousel
-          style={styles.wrapper}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          firstItem={1}
-        >
 
-          {this.getSlides(this.getSlidesData())}
-        </Carousel>
+        {
+          data.length ? (
+            <Carousel
+              style={styles.wrapper}
+              sliderWidth={sliderWidth}
+              itemWidth={itemWidth}
+              firstItem={1}
+            >
+
+              {this.getSlides(data)}
+            </Carousel>
+          ) : <Text style={styles.loading}>Loading...</Text>
+        }
+
       </View>
     );
   }
