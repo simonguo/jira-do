@@ -7,15 +7,53 @@ import {
   Text,
 } from 'react-native';
 import _ from 'lodash';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { PullView } from 'react-native-pull';
 import styles from '../styles/Menu.style';
 
 class Menu extends Component {
-
+  constructor(props) {
+    super(props);
+    this.topIndicatorRender = this.topIndicatorRender.bind(this);
+    this.onPullRelease = this.onPullRelease.bind(this);
+    this.state = {
+      pullReloadText: 'pull reload'
+    }
+  }
   componentWillMount() {
     this.props.onFetchRapidViews();
   }
+  onPullRelease(resolve) {
+    this.props.onFetchRapidViews(() => {
+      resolve();
+    });
+  }
+  topIndicatorRender(pulling, pullok, pullrelease) {
+    const hide = { position: 'absolute', left: 10000 };
+    const show = { position: 'relative', left: 0 };
+    setTimeout(() => {
+      if (pulling) {
+        this.txtPulling && this.txtPulling.setNativeProps({ style: show });
+        this.txtPullok && this.txtPullok.setNativeProps({ style: hide });
+        this.txtPullrelease && this.txtPullrelease.setNativeProps({ style: hide });
+      } else if (pullok) {
+        this.txtPulling && this.txtPulling.setNativeProps({ style: hide });
+        this.txtPullok && this.txtPullok.setNativeProps({ style: show });
+        this.txtPullrelease && this.txtPullrelease.setNativeProps({ style: hide });
+      } else if (pullrelease) {
+        this.txtPulling && this.txtPulling.setNativeProps({ style: hide });
+        this.txtPullok && this.txtPullok.setNativeProps({ style: hide });
+        this.txtPullrelease && this.txtPullrelease.setNativeProps({ style: show });
+      }
+    }, 1);
 
+    return (
+      <View style={styles.reloadContainer}>
+        <Text ref={(c) => { this.txtPulling = c; }}>Pulling...</Text>
+        <Text ref={(c) => { this.txtPullok = c; }}>Loading...</Text>
+        <Text ref={(c) => { this.txtPullrelease = c; }}>Loading...</Text>
+      </View>
+    );
+  }
   render() {
 
     const { rapidViews, onItemSelected } = this.props;
@@ -32,7 +70,10 @@ class Menu extends Component {
           <Text style={styles.displayName}>{displayName}</Text>
           <Text style={styles.name}>{name}</Text>
         </View>
-        <ScrollView
+        <PullView
+          onPullRelease={this.onPullRelease}
+          topIndicatorRender={this.topIndicatorRender}
+          topIndicatorHeight={60}
           style={styles.scrollView}
         >
           {views.map((item, index) => {
@@ -50,7 +91,7 @@ class Menu extends Component {
             )
           })}
 
-        </ScrollView>
+        </PullView>
 
       </View>
     );

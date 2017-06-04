@@ -44,5 +44,12 @@ export default StyleSheet.create({
     fontSize: 14,
     color: '#3b73af',
     margin: 5
+  },
+  reloadContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 50,
+    marginLeft:-20,
+    paddingLeft:100
   }
 });

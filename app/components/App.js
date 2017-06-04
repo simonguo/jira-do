@@ -107,13 +107,14 @@ class App extends Component {
     dispatch(fetchRapidViewsConfig(server, rapidViewId))
   }
 
-  handleFetchRapidViews() {
+  handleFetchRapidViews(callback) {
     const { dispatch } = this.props;
     this.getServer((server) => {
       server && dispatch(fetchRapidViews(server, (resp) => {
         const firstItem = _.get(resp, ['views', 0]);
         this.setState({ selectedItem: firstItem });
         this.loadAllData(server, firstItem.id)
+        callback && callback(resp);
       }));
     });
   }
