@@ -5,12 +5,9 @@
  */
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
   View,
   Image,
-  NavigatorIOS,
   AsyncStorage,
   StatusBar,
   AlertIOS
@@ -75,7 +72,6 @@ class App extends Component {
   }
   componentWillMount() {
     AsyncStorage.getItem('session').then(data => {
-      console.log('data', data);
       if (data) {
         this.handleLoginSubmit(JSON.parse(data));
       }
@@ -91,7 +87,6 @@ class App extends Component {
         return;
       }
       this.setState({ server: data.server });
-      console.log('handleLoginSubmit', data);
       AsyncStorage.setItem('session', JSON.stringify(data));
       this.handleFetchRapidViews();
     }));

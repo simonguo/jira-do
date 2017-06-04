@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react';
 import {
-  Dimensions,
-  StyleSheet,
   View,
   Image,
   Text,
@@ -25,7 +23,6 @@ class BoardView extends Component {
 
       let statuses = item.mappedStatuses.map(s => s.id);
       let list = issues.filter(i => _.includes(statuses, i.statusId));
-      console.log(list);
       return {
         title: `${item.name} (${list.length})`,
         list

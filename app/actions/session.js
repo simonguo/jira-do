@@ -46,7 +46,6 @@ export function login(data, callback) {
 }
 
 export function logout() {
-  console.log('logout');
   return dispatch => {
     dispatch(logoutAction());
   }

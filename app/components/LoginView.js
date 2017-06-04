@@ -1,15 +1,12 @@
 
 import React, { Component } from 'react';
 import {
-  Dimensions,
-  StyleSheet,
   View,
   Image,
   Text,
   TextInput,
   TouchableWithoutFeedback,
-  AlertIOS,
-  AsyncStorage
+  AlertIOS
 } from 'react-native';
 import _ from 'lodash';
 

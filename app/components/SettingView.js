@@ -1,17 +1,11 @@
 
 import React, { Component } from 'react';
 import {
-  Dimensions,
-  StyleSheet,
   View,
   Image,
   Text,
-  TextInput,
   TouchableWithoutFeedback,
-  AlertIOS,
-  ScrollView,
-  Linking,
-  AsyncStorage
+  ScrollView
 } from 'react-native';
 import _ from 'lodash';
 
@@ -48,7 +42,6 @@ class SettingView extends Component {
 
           <TouchableWithoutFeedback
             onPress={() => {
-              console.log('TouchableWithoutFeedback')
               this.props.onLogoutSubmit()
             }}
           >

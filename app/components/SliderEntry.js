@@ -18,10 +18,6 @@ export default class SliderEntry extends Component {
       '重要': 'priority3',
       '轻微': 'priority4'
     }
-
-
-
-
     return (
       <View
         style={styles.slideInnerContainer}
