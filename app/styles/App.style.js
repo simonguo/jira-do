@@ -28,6 +28,13 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 24
   },
+  cofIcon:{
+    position: 'absolute',
+    right: 14,
+    top: 30,
+    color: '#fff',
+    fontSize: 24
+  },
   titleText: {
     color: '#ffffff',
     fontSize: 18

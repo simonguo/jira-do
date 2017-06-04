@@ -15,6 +15,10 @@ let sessionReducer = (state = initialState, action) => {
         data: action.data,
         status: action.status
       };
+    case Types.LOGOUT:
+      return {
+        ...initialState
+      }
     case Types.INIT_SERVER:
       return {
         ...state,

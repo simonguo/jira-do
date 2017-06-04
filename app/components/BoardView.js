@@ -22,8 +22,10 @@ class BoardView extends Component {
     const mappedColumns = _.get(allData, ['config', 'rapidListConfig', 'mappedColumns']) || []
 
     return mappedColumns.map(item => {
+
       let statuses = item.mappedStatuses.map(s => s.id);
       let list = issues.filter(i => _.includes(statuses, i.statusId));
+      console.log(list);
       return {
         title: `${item.name} (${list.length})`,
         list

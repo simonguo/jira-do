@@ -36,7 +36,7 @@ class Menu extends Component {
         </View>
         <ScrollView
           style={styles.scrollView}
-          >
+        >
           {views.map((item, index) => {
             return (
               <View

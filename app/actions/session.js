@@ -10,6 +10,12 @@ let loginAction = (data, status) => {
   }
 };
 
+let logoutAction = () => {
+  return {
+    type: Types.LOGOUT
+  }
+};
+
 let initServerAction = (server) => {
   return {
     type: Types.INIT_SERVER,
@@ -34,8 +40,14 @@ export function login(data, callback) {
       dispatch(initServerAction(server));
       callback && callback(response);
     }, (error) => {
-      console.log(error, 'login');
       dispatch(loginAction({}, 'ERROR'))
     })
+  }
+}
+
+export function logout() {
+  console.log('logout');
+  return dispatch => {
+    dispatch(logoutAction());
   }
 }

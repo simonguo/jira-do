@@ -12,6 +12,16 @@ export default class SliderEntry extends Component {
 
   render() {
     const { title, list = [] } = this.props;
+    const priorityStyle = {
+      '危险': 'priority1',
+      '严重': 'priority2',
+      '重要': 'priority3',
+      '轻微': 'priority4'
+    }
+
+
+
+
     return (
       <View
         style={styles.slideInnerContainer}
@@ -24,8 +34,9 @@ export default class SliderEntry extends Component {
             return (
               <View
                 key={index}
-                style={styles.item}
+                style={[styles.item, styles[priorityStyle[item.priorityName]]]}
               >
+
                 <Text style={styles.itemText}>{item.summary}</Text>
                 <Image
                   style={styles.itemAvatar}

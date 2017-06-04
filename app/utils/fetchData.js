@@ -1,3 +1,7 @@
+import {
+  AlertIOS,
+  AsyncStorage
+} from 'react-native';
 export default function fetchData(url, options, successCallback, failCallback) {
 
   let nextOptions = {
@@ -9,13 +13,13 @@ export default function fetchData(url, options, successCallback, failCallback) {
     },
     ...options
   };
-
   fetch(url, nextOptions)
     .then((response) => response.json())
     .then((responseJSON) => {
       successCallback(responseJSON);
     })
     .catch((err) => {
+      AlertIOS.alert('Error', err.toString());
       failCallback(err);
     });
 };

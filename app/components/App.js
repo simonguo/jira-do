@@ -12,10 +12,11 @@ import {
   Image,
   NavigatorIOS,
   AsyncStorage,
-  StatusBar
+  StatusBar,
+  AlertIOS
 } from 'react-native';
 import { connect } from 'react-redux';
-import { login } from '../actions/login';
+import { login, logout } from '../actions/session';
 import { fetchRapidViews } from '../actions/rapidviews';
 import { fetchAllData, fetchRapidViewsConfig } from '../actions/allData';
 
@@ -23,6 +24,7 @@ import SideMenu from 'react-native-side-menu'
 import Menu from './Menu';
 import BoardView from './BoardView';
 import LoginView from './LoginView';
+import SettingView from './SettingView';
 import Icon from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 
@@ -32,17 +34,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
+      menuExpand: false,
+      settingExpand: false,
       selectedItem: null,
       session: null
     }
     this.handleMenuItemSelected = this.handleMenuItemSelected.bind(this);
     this.updateMenuState = this.updateMenuState.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.handleFetchRapidViews = this.handleFetchRapidViews.bind(this);
   }
-  updateMenuState(isOpen) {
-    this.setState({ isOpen });
+  updateMenuState(menuExpand) {
+    this.setState({ menuExpand });
   }
   getServer(callback) {
     const { server } = this.state;
@@ -61,7 +65,7 @@ class App extends Component {
 
   handleMenuItemSelected(item) {
     this.setState({
-      isOpen: false,
+      menuExpand: false,
       selectedItem: item
     });
 
@@ -71,7 +75,10 @@ class App extends Component {
   }
   componentWillMount() {
     AsyncStorage.getItem('session').then(data => {
-      data && this.handleLoginSubmit(JSON.parse(data));
+      console.log('data', data);
+      if (data) {
+        this.handleLoginSubmit(JSON.parse(data));
+      }
     });
   }
 
@@ -84,8 +91,19 @@ class App extends Component {
         return;
       }
       this.setState({ server: data.server });
+      console.log('handleLoginSubmit', data);
       AsyncStorage.setItem('session', JSON.stringify(data));
+      this.handleFetchRapidViews();
     }));
+  }
+
+  handleLogout() {
+    const { dispatch } = this.props;
+    AsyncStorage.removeItem('session');
+    dispatch(logout());
+    this.setState({
+      settingExpand: false
+    })
   }
 
   loadAllData(server, rapidViewId) {
@@ -97,12 +115,11 @@ class App extends Component {
   handleFetchRapidViews() {
     const { dispatch } = this.props;
     this.getServer((server) => {
-      dispatch(fetchRapidViews(server, (resp) => {
+      server && dispatch(fetchRapidViews(server, (resp) => {
         const firstItem = _.get(resp, ['views', 0]);
         this.setState({ selectedItem: firstItem });
         this.loadAllData(server, firstItem.id)
       }));
-
     });
   }
   renderLoginView() {
@@ -131,6 +148,7 @@ class App extends Component {
     const tilte = _.get(selectedItem, ['name']) || 'JIRA';
 
     return (
+
       <View
         style={styles.boardView}>
         <View style={styles.titleBar}>
@@ -139,40 +157,67 @@ class App extends Component {
             style={styles.menuIcon}
             onPress={() => {
               this.setState({
-                isOpen: true
+                menuExpand: true
               })
             }}
           />
           <Text style={styles.titleText}>{tilte}</Text>
+          <Icon
+            name='ios-cog'
+            style={styles.cofIcon}
+            onPress={() => {
+              this.setState({
+                settingExpand: true
+              })
+            }}
+          />
         </View>
         <BoardView
           allData={allData}
         />
       </View>
-
+    );
+  }
+  renderSettingView() {
+    const { rapidViews } = this.props;
+    return (
+      <SettingView
+        userConfig={rapidViews ? _.get(rapidViews, ['data', 'globalConfig', 'userConfig']) : {}}
+        onLogoutSubmit={this.handleLogout}
+        goBack={() => {
+          this.setState({
+            settingExpand: false
+          })
+        }}
+      />
     )
   }
   render() {
 
     const { session } = this.props;
+    const { settingExpand } = this.state;
     const auth = _.get(session, ['data', 'session', 'value']);
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
           barStyle="light-content"
         />
-        {auth ?
-          (
-            <SideMenu
-              menu={this.renderMenu()}
-              isOpen={this.state.isOpen}
-              openMenuOffset={250}
-              onChange={(isOpen) => this.updateMenuState(isOpen)}
-            >
-              {this.renderBoardView()}
-            </SideMenu>
-          ) : this.renderLoginView()
-        }
+        <SideMenu
+          menu={this.renderMenu()}
+          isOpen={this.state.menuExpand}
+          openMenuOffset={250}
+          onChange={(menuExpand) => this.updateMenuState(menuExpand)}
+        >
+          {
+            auth ?
+              (
+                settingExpand ?
+                  this.renderSettingView() :
+                  this.renderBoardView()
+              ) :
+              this.renderLoginView()
+          }
+        </SideMenu>
       </View>
     );
   }
