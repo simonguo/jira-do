@@ -10,6 +10,7 @@
     "lodash": "^4.17.4",
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.1",
+    "react-native-dropdownalert": "^2.9.0",
     "react-native-pull": "^2.0.2",
     "react-native-side-menu": "^0.20.1",
     "react-native-snap-carousel": "^2.1.4",

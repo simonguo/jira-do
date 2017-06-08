@@ -9,8 +9,7 @@ import {
   View,
   Image,
   AsyncStorage,
-  StatusBar,
-  AlertIOS
+  StatusBar
 } from 'react-native';
 import { connect } from 'react-redux';
 import { login, logout } from '../actions/session';
@@ -18,6 +17,7 @@ import { fetchRapidViews } from '../actions/rapidviews';
 import { fetchAllData, fetchRapidViewsConfig } from '../actions/allData';
 
 import SideMenu from 'react-native-side-menu'
+import DropdownAlert from 'react-native-dropdownalert'
 import Menu from './Menu';
 import BoardView from './BoardView';
 import LoginView from './LoginView';
@@ -41,6 +41,7 @@ class App extends Component {
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleFetchRapidViews = this.handleFetchRapidViews.bind(this);
+    this.handleAlert = this.handleAlert.bind(this);
   }
   updateMenuState(menuExpand) {
     this.setState({ menuExpand });
@@ -59,7 +60,9 @@ class App extends Component {
       callback(server);
     })
   }
-
+  handleAlert(type, title, message) {
+    this.dropdown.alertWithType(type, title, message);
+  }
   handleMenuItemSelected(item) {
     this.setState({
       menuExpand: false,
@@ -87,7 +90,7 @@ class App extends Component {
     dispatch(login(data, (resp) => {
       const auth = _.get(resp, ['session', 'value']);
       if (!auth) {
-        AlertIOS.alert('Message', 'Incorrect username or password.');
+        this.handleAlert('warn', 'Message', 'Incorrect username or password.')
         return;
       }
       this.setState({ server: data.server });
@@ -102,7 +105,7 @@ class App extends Component {
     dispatch(logout());
     this.setState({
       settingExpand: false
-    })
+    });
   }
 
   loadAllData(server, rapidViewId) {
@@ -129,6 +132,7 @@ class App extends Component {
     return (
       <LoginView
         session={session}
+        alert={this.handleAlert}
         onLoginSubmit={this.handleLoginSubmit}
       />
     );
@@ -194,6 +198,10 @@ class App extends Component {
       />
     )
   }
+  onClose(data) {
+    // data = {type, title, message, action}
+    // action means how the alert was dismissed. returns: automatic, programmatic, tap, pan or cancel
+  }
   render() {
 
     const { session } = this.props;
@@ -201,6 +209,7 @@ class App extends Component {
     const auth = _.get(session, ['data', 'session', 'value']);
     return (
       <View style={{ flex: 1 }}>
+
         <StatusBar
           barStyle="light-content"
         />
@@ -220,6 +229,9 @@ class App extends Component {
               this.renderLoginView()
           }
         </SideMenu>
+        <DropdownAlert
+          ref={(ref) => this.dropdown = ref}
+          onClose={(data) => this.onClose(data)} />
       </View>
     );
   }

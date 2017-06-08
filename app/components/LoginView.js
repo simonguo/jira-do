@@ -32,13 +32,13 @@ class LoginView extends Component {
     this.setState({ data: nextData });
   }
   handleLogin() {
-    const { onLoginSubmit } = this.props;
+    const { onLoginSubmit, alert } = this.props;
     const { data } = this.state;
     if (!data.server) {
-      AlertIOS.alert('Message', 'You must enter the base domain for your JIRA server');
+      alert('warn', 'Message', 'You must enter the base domain for your JIRA server.')
       return;
     } else if (!data.username || !data.password) {
-      AlertIOS.alert('Message', 'Incorrect username or password.');
+      alert('warn', 'Message', 'Incorrect username or password.');
       return;
     }
 
@@ -127,7 +127,8 @@ class LoginView extends Component {
 
 LoginView.propTypes = {
   session: React.PropTypes.object,
-  onLoginSubmit: React.PropTypes.func
+  onLoginSubmit: React.PropTypes.func,
+  alert: React.PropTypes.func
 }
 
 export default LoginView
