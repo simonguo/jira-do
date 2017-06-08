@@ -2,7 +2,10 @@ import * as Types from '../constants/ActionTypes';
 
 const initialState = {
   data: {},
-  config: {}
+  dataStatus: null,
+  config: {},
+  configStatus: null
+
 };
 
 let allDataReducer = (state = initialState, action) => {
@@ -10,11 +13,13 @@ let allDataReducer = (state = initialState, action) => {
     case Types.FETCH_BOARD_WORK_ALLDATA:
       return {
         ...state,
+        dataStatus: action.status,
         data: action.allData
       };
     case Types.FETCH_RAPID_VIEWS_CONFIG:
       return {
         ...state,
+        configStatus: action.status,
         config: action.config
       };
     default:

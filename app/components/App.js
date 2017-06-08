@@ -66,11 +66,15 @@ class App extends Component {
       selectedItem: item
     });
 
+    AsyncStorage.setItem('selectedItem', JSON.stringify(item));
     this.getServer((server) => {
       this.loadAllData(server, item.id);
     })
   }
   componentWillMount() {
+    AsyncStorage.getItem('selectedItem').then(item => {
+      item && this.setState({ selectedItem: JSON.parse(item) });
+    });
     AsyncStorage.getItem('session').then(data => {
       if (data) {
         this.handleLoginSubmit(JSON.parse(data));
@@ -111,10 +115,12 @@ class App extends Component {
     const { dispatch } = this.props;
     this.getServer((server) => {
       server && dispatch(fetchRapidViews(server, (resp) => {
-        const firstItem = _.get(resp, ['views', 0]);
-        this.setState({ selectedItem: firstItem });
-        this.loadAllData(server, firstItem.id)
-        callback && callback(resp);
+        const selectedItem = this.state.selectedItem || _.get(resp, ['views', 0]);
+        if (selectedItem) {
+          this.setState({ selectedItem });
+          this.loadAllData(server, selectedItem.id)
+          callback && callback(resp);
+        }
       }));
     });
   }

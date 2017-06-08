@@ -17,7 +17,7 @@ class SettingView extends Component {
     super(props);
   }
   render() {
-    const { userConfig } = this.props;
+    const { userConfig = {} } = this.props;
     let { displayName, avatarUrl, name } = userConfig;
     return (
       <View style={{ flex: 1 }}>
@@ -39,7 +39,6 @@ class SettingView extends Component {
         <ScrollView
           style={styles.scrollView}
         >
-
           <TouchableWithoutFeedback
             onPress={() => {
               this.props.onLogoutSubmit()

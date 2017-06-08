@@ -35,12 +35,12 @@ class BoardView extends Component {
     // 5 已解决 6 关闭 10002 Done
 
   }
-  getSlides(entries) {
-    if (!entries) {
+  getSlides(data) {
+    if (!data) {
       return false;
     }
 
-    return entries.map((entry, index) => {
+    return data.map((entry, index) => {
       return (
         <SliderEntry
           key={`carousel-entry-${index}`}
@@ -51,8 +51,16 @@ class BoardView extends Component {
     });
   }
   render() {
-
+    const { allData } = this.props;
     const data = this.getSlidesData();
+
+    if (!allData.dataStatus) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.loading}>No data found</Text>
+        </View>
+      );
+    }
 
     return (
       <View style={styles.container}>

@@ -26,13 +26,12 @@ export default class SliderEntry extends Component {
           {title}
         </Text>
         <ScrollView style={styles.itemsView}>
-          {list.map((item, index) => {
+          {list.length ? list.filter((a, index) => index < 100).map((item, index) => {
             return (
               <View
                 key={index}
                 style={[styles.item, styles[priorityStyle[item.priorityName]]]}
               >
-
                 <Text style={styles.itemText}>{item.summary}</Text>
                 <Image
                   style={styles.itemAvatar}
@@ -40,7 +39,11 @@ export default class SliderEntry extends Component {
                 />
               </View>
             );
-          })}
+          }) : (
+              <View >
+                <Text style={styles.nullData}>No data found</Text>
+              </View>
+            )}
         </ScrollView>
       </View>
     );

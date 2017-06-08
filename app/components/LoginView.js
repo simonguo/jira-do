@@ -29,31 +29,37 @@ class LoginView extends Component {
     let nextData = Object.assign({}, this.state.data, {
       [key]: value
     });
-    this.setState({
-      data: nextData
-    });
+    this.setState({ data: nextData });
   }
   handleLogin() {
     const { onLoginSubmit } = this.props;
     const { data } = this.state;
     if (!data.server) {
       AlertIOS.alert('Message', 'You must enter the base domain for your JIRA server');
+      return;
     } else if (!data.username || !data.password) {
       AlertIOS.alert('Message', 'Incorrect username or password.');
+      return;
     }
-    onLoginSubmit && onLoginSubmit(data);
+
+    onLoginSubmit && onLoginSubmit({
+      ...data,
+      server: data.server.toLocaleLowerCase().indexOf('http') === -1 ? `http://${data.server}` : data.server
+    });
   }
   renderForm() {
     const { session } = this.props;
+    const { server, username, password } = this.state.data;
     return (
       <View style={styles.container}>
         <Text style={styles.logoText} >JIRA</Text>
         <Image source={require('../resources/logo.png')} style={styles.logo} />
         <TextInput
           style={styles.input}
-          placeholder='https://jira.company.com'
+          placeholder='http(s)://jira.company.com'
           numberOfLines={1}
           autoFocus={true}
+          value={server}
           onChangeText={(server) => this.handleFormChange('server', server)}
           underlineColorAndroid={'transparent'}
           textAlign='center'
@@ -64,6 +70,7 @@ class LoginView extends Component {
           placeholder='Username'
           numberOfLines={1}
           autoFocus={true}
+          value={username}
           onChangeText={(username) => this.handleFormChange('username', username)}
           underlineColorAndroid={'transparent'}
           textAlign='center'
@@ -74,6 +81,7 @@ class LoginView extends Component {
           placeholder='Password'
           numberOfLines={1}
           autoFocus={true}
+          value={password}
           onChangeText={(password) => this.handleFormChange('password', password)}
           underlineColorAndroid={'transparent'}
           secureTextEntry={true}

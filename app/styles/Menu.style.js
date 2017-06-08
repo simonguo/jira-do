@@ -51,5 +51,8 @@ export default StyleSheet.create({
     height: 50,
     marginLeft:-20,
     paddingLeft:100
+  },
+  nullData:{
+    marginTop:10
   }
 });

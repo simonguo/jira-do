@@ -52,36 +52,36 @@ export default StyleSheet.create({
     padding: 10,
     shadowColor: 'black',
     borderRadius: 2,
-    borderLeftColor:'#e9eef2',
-    borderLeftWidth:5
+    borderLeftColor: '#e9eef2',
+    borderLeftWidth: 5
   },
-  priority1:{
-    borderLeftColor:'#c40707',
+  priority1: {
+    borderLeftColor: '#c40707',
   },
-  priority2:{
-    borderLeftColor:'#faa121',
+  priority2: {
+    borderLeftColor: '#faa121',
   },
-  priority3:{
-    borderLeftColor:'#2c96da',
+  priority3: {
+    borderLeftColor: '#2c96da',
   },
-  priority4:{
-    borderLeftColor:'#1b9451',
+  priority4: {
+    borderLeftColor: '#1b9451',
   },
   itemText: {
     marginRight: 30
   },
-  priorityIcon:{
+  priorityIcon: {
     position: 'absolute',
-    left:-9,
-    top:10,
+    left: -9,
+    top: 10,
     width: 8,
     height: 8,
   },
 
-  typeIcon:{
+  typeIcon: {
     position: 'absolute',
-    left:-9,
-    top:18,
+    left: -9,
+    top: 18,
     width: 8,
     height: 8,
   },
@@ -92,5 +92,9 @@ export default StyleSheet.create({
     width: 22,
     height: 22,
     borderRadius: 11
+  },
+  nullData: {
+    textAlign: 'center',
+    marginTop: 100
   }
 });

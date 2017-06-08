@@ -61,6 +61,7 @@ class Menu extends Component {
     const userConfig = _.get(rapidViews, ['globalConfig', 'userConfig']) || {};
     let { displayName, avatarUrl, name } = userConfig;
 
+
     return (
       <View style={styles.menu}>
         <View style={styles.avatarContainer}>
@@ -76,7 +77,7 @@ class Menu extends Component {
           topIndicatorHeight={60}
           style={styles.scrollView}
         >
-          {views.map((item, index) => {
+          {views.length ? views.map((item, index) => {
             return (
               <View
                 key={index}
@@ -89,7 +90,7 @@ class Menu extends Component {
 
               </View>
             )
-          })}
+          }) : <View><Text style={styles.nullData}>No data found</Text></View>}
 
         </PullView>
 
