@@ -1,6 +1,6 @@
 import * as Types from '../constants/ActionTypes';
 import * as APIs from '../constants/APIs';
-import fetchData from '../utils/fetchData';
+import { createFetchAction } from './actionHelper';
 
 
 let allDateAction = (data, status) => {
@@ -11,19 +11,13 @@ let allDateAction = (data, status) => {
   }
 };
 
-export function fetchAllData(server, rapidViewId, callback) {
-  const url = `${server}${APIs.API_XBOARD_WORK_ALLDATA}?rapidViewId=${rapidViewId}`;
-  return dispatch => {
-    dispatch(allDateAction({}, 'REQUEST'));
-    fetchData(url, {
-      method: 'get',
-    }, (response) => {
-      dispatch(allDateAction(response, 'SUCCESS'));
-      callback && callback(response);
-    }, (error) => {
-      dispatch(allDateAction({}, 'ERROR'));
-    });
-  }
+export function fetchAllData(server, rapidViewId, successCallback, failCallback) {
+  return createFetchAction({
+    url: `${server}${APIs.API_XBOARD_WORK_ALLDATA}?rapidViewId=${rapidViewId}`,
+    actionModel: allDateAction,
+    onSuccess: successCallback,
+    onError: failCallback
+  });
 }
 
 
@@ -35,17 +29,11 @@ let rapidviewsConfigAction = (data, status) => {
   }
 };
 
-export function fetchRapidViewsConfig(server, rapidViewId, callback) {
-  const url = `${server}${APIs.API_RAPIDVIEWS_CONFIG_EDITMODEL}?rapidViewId=${rapidViewId}`;
-  return dispatch => {
-    dispatch(rapidviewsConfigAction({}, 'REQUEST'));
-    fetchData(url, {
-      method: 'get',
-    }, (response) => {
-      dispatch(rapidviewsConfigAction(response, 'SUCCESS'));
-      callback && callback(response);
-    }, (error) => {
-      dispatch(rapidviewsConfigAction({}, 'ERROR'))
-    });
-  }
+export function fetchRapidViewsConfig(server, rapidViewId, successCallback, failCallback) {
+  return createFetchAction({
+    url: `${server}${APIs.API_RAPIDVIEWS_CONFIG_EDITMODEL}?rapidViewId=${rapidViewId}`,
+    actionModel: rapidviewsConfigAction,
+    onSuccess: successCallback,
+    onError: failCallback
+  });
 }

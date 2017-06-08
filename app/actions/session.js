@@ -1,6 +1,6 @@
 import * as Types from '../constants/ActionTypes';
 import * as APIs from '../constants/APIs';
-import fetchData from '../utils/fetchData';
+import { createFetchAction } from './actionHelper';
 
 let loginAction = (data, status) => {
   return {
@@ -23,26 +23,25 @@ let initServerAction = (server) => {
   }
 }
 
-export function login(data, callback) {
+export function login(data, successCallback, failCallback) {
   const { username, password, server } = data;
   const body = JSON.stringify({
     username,
     password
   });
 
-  return dispatch => {
-    dispatch(loginAction({}, 'REQUEST'));
-    fetchData(`${server}${APIs.API_AUTH_SESSION}`, {
+  return createFetchAction({
+    url: `${server}${APIs.API_AUTH_SESSION}`,
+    actionModel: loginAction,
+    options: {
       method: 'post',
       body
-    }, (response) => {
-      dispatch(loginAction(response, 'SUCCESS'));
+    },
+    onSuccess: (response, dispatch) => {
       dispatch(initServerAction(server));
-      callback && callback(response);
-    }, (error) => {
-      dispatch(loginAction({}, 'ERROR'))
-    })
-  }
+      successCallback && successCallback(response);
+    }
+  });
 }
 
 export function logout() {

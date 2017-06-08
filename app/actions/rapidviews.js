@@ -1,6 +1,6 @@
 import * as Types from '../constants/ActionTypes';
 import * as APIs from '../constants/APIs';
-import fetchData from '../utils/fetchData';
+import { createFetchAction } from './actionHelper';
 
 
 let rapidviewsAction = (data, status) => {
@@ -11,16 +11,11 @@ let rapidviewsAction = (data, status) => {
   }
 };
 
-export function fetchRapidViews(server, callback) {
-  const url = `${server}${APIs.API_RAPIDVIEWS_VIEWSDATA}`;
-  return dispatch => {
-    fetchData(url, {
-      method: 'get',
-    }, (response) => {
-      dispatch(rapidviewsAction(response));
-      callback && callback(response);
-    }, (error) => {
-      dispatch(rapidviewsAction({}, 'ERROR'))
-    });
-  }
+export function fetchRapidViews(server, successCallback, failCallback) {
+  return createFetchAction({
+    url: `${server}${APIs.API_RAPIDVIEWS_VIEWSDATA}`,
+    actionModel: rapidviewsAction,
+    onSuccess: successCallback,
+    onError: failCallback
+  });
 }
