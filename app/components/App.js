@@ -110,8 +110,12 @@ class App extends Component {
 
   loadAllData(server, rapidViewId) {
     const { dispatch } = this.props;
-    dispatch(fetchAllData(server, rapidViewId));
-    dispatch(fetchRapidViewsConfig(server, rapidViewId))
+    const showError = (error) => {
+      this.handleAlert('error', 'Error', error.toString());
+    }
+
+    dispatch(fetchAllData(server, rapidViewId, null, showError));
+    dispatch(fetchRapidViewsConfig(server, rapidViewId, null, showError))
   }
 
   handleFetchRapidViews(callback) {
@@ -141,6 +145,7 @@ class App extends Component {
     const { rapidViews } = this.props;
     return (
       <Menu
+        activeItem={this.state.selectedItem}
         rapidViews={rapidViews ? rapidViews.data : null}
         onFetchRapidViews={this.handleFetchRapidViews}
         onItemSelected={this.handleMenuItemSelected}

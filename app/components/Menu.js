@@ -56,11 +56,12 @@ class Menu extends Component {
   }
   render() {
 
-    const { rapidViews, onItemSelected } = this.props;
+    const { rapidViews, onItemSelected, activeItem } = this.props;
     const views = _.get(rapidViews, 'views') || [];
     const userConfig = _.get(rapidViews, ['globalConfig', 'userConfig']) || {};
     let { displayName, avatarUrl, name } = userConfig;
 
+    console.log(activeItem);
 
     return (
       <View style={styles.menu}>
@@ -84,10 +85,10 @@ class Menu extends Component {
               >
                 <Text
                   onPress={() => onItemSelected(item)}
-                  style={styles.item}>
+                  style={[styles.item, activeItem.id === item.id ? styles.itemActive : null]}
+                >
                   {item.name}
                 </Text>
-
               </View>
             )
           }) : <View><Text style={styles.nullData}>No data found</Text></View>}
@@ -100,6 +101,7 @@ class Menu extends Component {
 };
 
 Menu.propTypes = {
+  activeItem: React.PropTypes.object,
   rapidViews: React.PropTypes.object,
   onFetchRapidViews: React.PropTypes.func,
   onItemSelected: React.PropTypes.func.isRequired,

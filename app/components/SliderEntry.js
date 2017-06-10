@@ -16,7 +16,13 @@ export default class SliderEntry extends Component {
       '危险': 'priority1',
       '严重': 'priority2',
       '重要': 'priority3',
-      '轻微': 'priority4'
+      '轻微': 'priority4',
+      '微小': 'priority5',
+      'Highest': 'priority1',
+      'High': 'priority2',
+      'Medium': 'priority3',
+      'Low': 'priority4',
+      'Lowest': 'priority5'
     }
     return (
       <View

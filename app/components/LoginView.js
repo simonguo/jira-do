@@ -9,6 +9,7 @@ import {
   AlertIOS
 } from 'react-native';
 import _ from 'lodash';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import styles from '../styles/LoginView.style';
 
@@ -112,7 +113,7 @@ class LoginView extends Component {
       <View style={styles.container}>
         <Text style={styles.logoText} >JIRA</Text>
         <Image source={require('../resources/logo.png')} style={styles.logo} />
-        <Text style={styles.loading}>Loading...</Text>
+        <Spinner visible={true} textStyle={{ color: '#FFF' }} />
       </View>
     );
   }

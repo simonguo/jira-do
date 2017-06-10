@@ -9,7 +9,7 @@ import _ from 'lodash';
 import Swiper from 'react-native-swiper';
 import Carousel from 'react-native-snap-carousel';
 import SliderEntry from './SliderEntry';
-
+import Spinner from 'react-native-loading-spinner-overlay';
 import styles, { sliderWidth, itemWidth } from '../styles/BoardView.style';
 
 class BoardView extends Component {
@@ -54,7 +54,8 @@ class BoardView extends Component {
     const { allData } = this.props;
     const data = this.getSlidesData();
 
-    if (!allData.dataStatus) {
+
+    if (allData.dataStatus==='SUCCESS' && !allData.data.issuesData) {
       return (
         <View style={styles.container}>
           <Text style={styles.loading}>No data found</Text>
@@ -65,19 +66,16 @@ class BoardView extends Component {
     return (
       <View style={styles.container}>
 
-        {
-          data.length ? (
-            <Carousel
-              style={styles.wrapper}
-              sliderWidth={sliderWidth}
-              itemWidth={itemWidth}
-              firstItem={1}
-            >
+        <Carousel
+          style={styles.wrapper}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+          firstItem={1}
+        >
 
-              {this.getSlides(data)}
-            </Carousel>
-          ) : <Text style={styles.loading}>Loading...</Text>
-        }
+          {this.getSlides(data)}
+        </Carousel>
+        <Spinner visible={allData.dataStatus === 'REQUEST'} textStyle={{ color: '#FFF' }} />
 
       </View>
     );

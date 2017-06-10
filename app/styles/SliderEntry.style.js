@@ -56,16 +56,19 @@ export default StyleSheet.create({
     borderLeftWidth: 5
   },
   priority1: {
-    borderLeftColor: '#c40707',
+    borderLeftColor: '#ce0000',
   },
   priority2: {
-    borderLeftColor: '#faa121',
+    borderLeftColor: '#ed6161',
   },
   priority3: {
-    borderLeftColor: '#2c96da',
+    borderLeftColor: '#ea7d24',
   },
   priority4: {
-    borderLeftColor: '#1b9451',
+    borderLeftColor: '#2a8735',
+  },
+  priority5: {
+    borderLeftColor: '#55a557',
   },
   itemText: {
     marginRight: 30

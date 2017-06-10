@@ -4,7 +4,7 @@ const window = Dimensions.get('window');
 export default StyleSheet.create({
   menu: {
     flex: 1,
-    width: window.width,
+    width: '100%',
     height: window.height,
     padding: 0,
     position: 'relative',
@@ -41,18 +41,22 @@ export default StyleSheet.create({
   },
   item: {
     padding: 5,
+    marginRight: 20,
     fontSize: 14,
-    color: '#3b73af',
-    margin: 5
+    marginVertical: 5,
+    color: '#3b73af'
+  },
+  itemActive: {
+    backgroundColor:'#f5f5f5'
   },
   reloadContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     height: 50,
-    marginLeft:-20,
-    paddingLeft:100
+    marginLeft: -20,
+    paddingLeft: 100
   },
-  nullData:{
-    marginTop:10
+  nullData: {
+    marginTop: 10
   }
 });
