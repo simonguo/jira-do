@@ -7,4 +7,4 @@
 
 ## Preview
 
-![Preview](./preview,gif)
+![Preview](./preview.gif)
