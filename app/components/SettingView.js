@@ -39,6 +39,9 @@ class SettingView extends Component {
         <ScrollView
           style={styles.scrollView}
         >
+          <View style={styles.item}>
+              <Text style={[styles.itemText]}>Version 1.3</Text>
+          </View>
           <TouchableWithoutFeedback
             onPress={() => {
               this.props.onLogoutSubmit()
