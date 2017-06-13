@@ -15,6 +15,7 @@ export function fetchRapidViews(server, successCallback, failCallback) {
   return createFetchAction({
     url: `${server}${APIs.API_RAPIDVIEWS_VIEWSDATA}`,
     actionModel: rapidviewsAction,
+    loading: false,
     onSuccess: successCallback,
     onError: failCallback
   });
