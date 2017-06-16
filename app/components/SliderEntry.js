@@ -38,6 +38,13 @@ export default class SliderEntry extends Component {
                 key={index}
                 style={[styles.item, styles[priorityStyle[item.priorityName]]]}
               >
+                <Text style={styles.itemTextKey}>
+                  <Image
+                    style={styles.itemTypeIcon}
+                    source={{ uri: item.typeUrl }}
+                  />{' '}
+                  {item.key}
+                </Text>
                 <Text style={styles.itemText}>{item.summary}</Text>
                 <Image
                   style={styles.itemAvatar}

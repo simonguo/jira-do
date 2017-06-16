@@ -61,8 +61,6 @@ class Menu extends Component {
     const userConfig = _.get(rapidViews, ['globalConfig', 'userConfig']) || {};
     let { displayName, avatarUrl, name } = userConfig;
 
-    console.log(activeItem);
-
     return (
       <View style={styles.menu}>
         <View style={styles.avatarContainer}>

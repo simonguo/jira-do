@@ -51,7 +51,6 @@ export default StyleSheet.create({
     marginTop: 10,
     padding: 10,
     shadowColor: 'black',
-    borderRadius: 2,
     borderLeftColor: '#e9eef2',
     borderLeftWidth: 5
   },
@@ -70,8 +69,18 @@ export default StyleSheet.create({
   priority5: {
     borderLeftColor: '#55a557',
   },
+  itemTypeIcon:{
+    marginTop:2,
+    width: 12,
+    height: 12,
+  },
   itemText: {
     marginRight: 30
+  },
+  itemTextKey:{
+    fontSize:12,
+    height:22,
+    color:'#3b73af'
   },
   priorityIcon: {
     position: 'absolute',
