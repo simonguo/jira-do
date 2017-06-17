@@ -14,12 +14,13 @@ class LoadingView extends Component {
     const { loading } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.logoText} >JIRA</Text>
-        <Image source={require('../resources/logo.png')} style={styles.logo} />
-        <Spinner visible={loading} textStyle={{ color: '#FFF' }} />
         <StatusBar
           barStyle="light-content"
         />
+        <Text style={styles.logoText} >JIRA</Text>
+        <Image source={require('../resources/logo.png')} style={styles.logo} />
+        <Spinner visible={loading} />
+
       </View>
     );
   }

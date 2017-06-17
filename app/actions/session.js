@@ -32,7 +32,8 @@ export function login(data, successCallback, failCallback) {
   });
 
   return createFetchAction({
-    url: `${server}${APIs.API_AUTH_SESSION}`,
+    server,
+    url: APIs.API_AUTH_SESSION,
     actionModel: loginAction,
     options: {
       method: 'post',

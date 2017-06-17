@@ -42,6 +42,7 @@ class HomeView extends Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.handleFetchRapidViews = this.handleFetchRapidViews.bind(this);
     this.handleAlert = this.handleAlert.bind(this);
+    this.handleItemSelect = this.handleItemSelect.bind(this);
   }
   componentWillMount() {
     AsyncStorage.getItem('selectedItem').then(item => {
@@ -53,20 +54,6 @@ class HomeView extends Component {
   updateMenuState(menuExpand) {
     this.setState({ menuExpand });
   }
-  getServer(callback) {
-    const { server } = this.state;
-    if (server) {
-      return callback(server);
-    }
-    AsyncStorage.getItem('session').then((data) => {
-      if (!data) {
-        return callback(null);
-      }
-      const server = JSON.parse(data).server;
-      this.setState({ server });
-      callback(server);
-    })
-  }
   handleAlert(type, title, message) {
     this.alert.alertWithType(type, title, message);
   }
@@ -77,9 +64,7 @@ class HomeView extends Component {
     });
 
     AsyncStorage.setItem('selectedItem', JSON.stringify(item));
-    this.getServer((server) => {
-      this.loadAllData(server, item.id);
-    })
+    this.loadAllData(item.id);
   }
 
   handleLogout() {
@@ -88,32 +73,37 @@ class HomeView extends Component {
     Actions.login();
   }
 
-  loadAllData(server, rapidViewId) {
+  loadAllData(rapidViewId) {
     const { onFetchAllData, onFetchRapidViewsConfig } = this.props;
     const showError = (error) => {
       this.handleAlert('error', 'Error', error.toString());
     }
-    onFetchAllData(server, rapidViewId, null, showError);
-    onFetchRapidViewsConfig(server, rapidViewId, null, showError);
+    onFetchAllData(rapidViewId, null, showError);
+    onFetchRapidViewsConfig(rapidViewId, null, showError);
   }
 
 
   handleFetchRapidViews(callback) {
     const { onFetchRapidViews } = this.props;
-    this.getServer((server) => {
-      server && onFetchRapidViews(server, (resp) => {
-        console.log('server', server);
-        const selectedItem = this.state.selectedItem || _.get(resp, ['views', 0]);
-        if (selectedItem) {
-          this.setState({ selectedItem });
-          this.loadAllData(server, selectedItem.id)
-          callback && callback(resp);
-        }
-      }, (e) => {
-        console.log(e);
-      });
+    onFetchRapidViews((resp) => {
+      const selectedItem = this.state.selectedItem || _.get(resp, ['views', 0]);
+      if (selectedItem) {
+        this.setState({ selectedItem });
+        this.loadAllData(selectedItem.id)
+        callback && callback(resp);
+      }
+    }, (e) => {
+      this.handleAlert('error', 'Error', e.toString());
     });
   }
+
+  handleItemSelect(item) {
+    const { selectedItem } = this.state;
+    const { onFetchDetail } = this.props;
+    onFetchDetail(selectedItem.id, item.key);
+    Actions.detail();
+  }
+
   renderLoginView() {
     const { session } = this.props;
     return (
@@ -137,7 +127,7 @@ class HomeView extends Component {
   }
   renderBoardView() {
 
-    const { allData, rapidViews } = this.props;
+    const { allData, rapidViews, onFetchDetail } = this.props;
     const { selectedItem } = this.state;
     const tilte = _.get(selectedItem, ['name']) || 'JIRA';
 
@@ -162,6 +152,7 @@ class HomeView extends Component {
           }}
         />
         <BoardView
+          onItemSelect={this.handleItemSelect}
           allData={allData}
         />
       </View>
@@ -215,6 +206,7 @@ function mapDispatch2Props(dispatch) {
     onFetchAllData: actions.fetchAllData,
     onFetchRapidViewsConfig: actions.fetchRapidViewsConfig,
     onFetchRapidViews: actions.fetchRapidViews,
+    onFetchDetail: actions.fetchDetail,
     onLogout: actions.logout
   };
 }

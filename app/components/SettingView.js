@@ -62,7 +62,7 @@ SettingView.propTypes = {
   onLogoutSubmit: React.PropTypes.func
 }
 
-LoginView.contextTypes = {
+SettingView.contextTypes = {
   intl: React.PropTypes.object.isRequired
 }
 

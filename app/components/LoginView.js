@@ -143,7 +143,7 @@ class LoginView extends Component {
     )
   }
   renderLoading() {
-    return <LoadingView />;
+    return <LoadingView loading={true} />;
   }
   render() {
     const { session } = this.props;

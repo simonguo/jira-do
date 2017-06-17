@@ -13,7 +13,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import styles, { sliderWidth, itemWidth } from '../styles/BoardView.style';
 
 class BoardView extends Component {
-
+  constructor(props) {
+    super(props);
+    this.handleSelect = this.handleSelect.bind(this);
+  }
   getSlidesData() {
     const { allData } = this.props;
     const issues = _.get(allData, ['data', 'issuesData', 'issues']) || [];
@@ -36,8 +39,8 @@ class BoardView extends Component {
 
   }
 
-  handleSelect(item){
-    console.log(item);
+  handleSelect(item) {
+    this.props.onItemSelect(item);
   }
 
   getSlides(data) {
@@ -61,7 +64,7 @@ class BoardView extends Component {
     const data = this.getSlidesData();
 
 
-    if (allData.dataStatus==='SUCCESS' && !allData.data.issuesData) {
+    if (allData.dataStatus === 'SUCCESS' && !allData.data.issuesData) {
       return (
         <View style={styles.container}>
           <Text style={styles.loading}>No data found</Text>
@@ -89,7 +92,8 @@ class BoardView extends Component {
 };
 
 BoardView.propTypes = {
-  allData: React.PropTypes.object
+  allData: React.PropTypes.object,
+  onItemSelect: React.PropTypes.func
 }
 
 export default BoardView;

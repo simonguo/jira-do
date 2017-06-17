@@ -9,6 +9,7 @@ import LoginView from './components/LoginView';
 import HomeView from './components/HomeView';
 import Launch from './components/Launch';
 import SettingView from './components/SettingView';
+import DetailView from './components/DetailView';
 
 //locale
 import { IntlProvider } from 'react-intl';
@@ -38,6 +39,7 @@ class AppView extends Component {
               <Scene key="login" component={LoginView} hideNavBar title="Login" />
               <Scene key="home" component={HomeView} hideNavBar />
               <Scene key="setting" component={SettingView} hideNavBar direction="vertical" />
+              <Scene key="detail" component={DetailView} hideNavBar direction="vertical" />
             </Scene>
           </RouterWithRedux>
         </IntlProvider>

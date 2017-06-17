@@ -4,8 +4,9 @@ const initialState = {
   data: {},
   dataStatus: null,
   config: {},
-  configStatus: null
-
+  configStatus: null,
+  detail: {},
+  detailStatus: null
 };
 
 let allDataReducer = (state = initialState, action) => {
@@ -21,6 +22,12 @@ let allDataReducer = (state = initialState, action) => {
         ...state,
         configStatus: action.status,
         config: action.config
+      };
+    case Types.FETCH_BOARD_ISSUE_DETAILS:
+      return {
+        ...state,
+        detailStatus: action.status,
+        detail: action.detail
       };
     default:
       return state
