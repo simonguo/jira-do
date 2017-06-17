@@ -83,7 +83,7 @@ class Menu extends Component {
               >
                 <Text
                   onPress={() => onItemSelected(item)}
-                  style={[styles.item, activeItem.id === item.id ? styles.itemActive : null]}
+                  style={[styles.item, (activeItem && activeItem.id === item.id) ? styles.itemActive : null]}
                 >
                   {item.name}
                 </Text>

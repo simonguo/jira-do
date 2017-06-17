@@ -35,6 +35,11 @@ class BoardView extends Component {
     // 5 已解决 6 关闭 10002 Done
 
   }
+
+  handleSelect(item){
+    console.log(item);
+  }
+
   getSlides(data) {
     if (!data) {
       return false;
@@ -43,6 +48,7 @@ class BoardView extends Component {
     return data.map((entry, index) => {
       return (
         <SliderEntry
+          onSelect={this.handleSelect}
           key={`carousel-entry-${index}`}
           even={(index + 1) % 2 === 0}
           {...entry}

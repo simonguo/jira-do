@@ -7,24 +7,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  titleBar: {
-    paddingTop: 30,
-    backgroundColor: '#205081',
-    alignItems: 'center',
-    height: 60
-  },
-  backIcon: {
-    position: 'absolute',
-    left: 14,
-    top: 30,
-    color: '#fff',
-    fontSize: 24,
-    width:50
-  },
-  titleText: {
-    color: '#ffffff',
-    fontSize: 18
-  },
   avatarContainer: {
     paddingTop: 20,
     paddingLeft: 20,

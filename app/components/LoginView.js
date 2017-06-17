@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   View,
@@ -6,18 +5,28 @@ import {
   Text,
   TextInput,
   TouchableWithoutFeedback,
-  AlertIOS
+  StatusBar,
+  AsyncStorage
 } from 'react-native';
+import { FormattedMessage } from 'react-intl';
 import _ from 'lodash';
 import Spinner from 'react-native-loading-spinner-overlay';
-
+import DropdownAlert from 'react-native-dropdownalert';
+import { Actions } from 'react-native-router-flux';
 import styles from '../styles/LoginView.style';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../actions/session';
+import LoadingView from './LoadingView';
 
 class LoginView extends Component {
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLoginCheck = this.handleLoginCheck.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleAlert = this.handleAlert.bind(this);
+
     this.state = {
       data: {
         server: null,
@@ -26,30 +35,52 @@ class LoginView extends Component {
       }
     }
   }
+  handleLoginCheck() {
+    const { data } = this.state;
+    const { message, loginCheckServer, loginCheckID } = this.context.intl.messages;
+
+    if (!data.server) {
+      this.handleAlert('warn', message, loginCheckServer)
+      return;
+    } else if (!data.username || !data.password) {
+      this.handleAlert('warn', message, loginCheckID);
+      return;
+    }
+    this.handleLoginSubmit({
+      ...data,
+      server: data.server.toLocaleLowerCase().indexOf('http') === -1 ? `http://${data.server}` : data.server
+    });
+  }
+
+  handleLoginSubmit(data) {
+    const { message, error, loginCheckID } = this.context.intl.messages;
+    this.props.onLogin(data, (resp) => {
+      const auth = _.get(resp, ['session', 'value']);
+      if (!auth) {
+        this.handleAlert('warn', message, loginCheckID);
+        return;
+      }
+      AsyncStorage.setItem('session', JSON.stringify(data));
+      Actions.home();
+    }, (e) => {
+      this.handleAlert('error', error, e.toString())
+    });
+  }
+
+  handleAlert(type, title, message) {
+    this.alert.alertWithType(type, title, message);
+  }
+
   handleFormChange(key, value) {
     let nextData = Object.assign({}, this.state.data, {
       [key]: value
     });
     this.setState({ data: nextData });
   }
-  handleLogin() {
-    const { onLoginSubmit, alert } = this.props;
-    const { data } = this.state;
-    if (!data.server) {
-      alert('warn', 'Message', 'You must enter the base domain for your JIRA server.')
-      return;
-    } else if (!data.username || !data.password) {
-      alert('warn', 'Message', 'Incorrect username or password.');
-      return;
-    }
 
-    onLoginSubmit && onLoginSubmit({
-      ...data,
-      server: data.server.toLocaleLowerCase().indexOf('http') === -1 ? `http://${data.server}` : data.server
-    });
-  }
   renderForm() {
     const { session } = this.props;
+    const { intl } = this.context;
     const { server, username, password } = this.state.data;
     return (
       <View style={styles.container}>
@@ -68,7 +99,7 @@ class LoginView extends Component {
 
         <TextInput
           style={styles.input}
-          placeholder='Username'
+          placeholder={intl.messages.username}
           numberOfLines={1}
           autoFocus={true}
           value={username}
@@ -79,7 +110,7 @@ class LoginView extends Component {
 
         <TextInput
           style={styles.input}
-          placeholder='Password'
+          placeholder={intl.messages.password}
           numberOfLines={1}
           autoFocus={true}
           value={password}
@@ -94,28 +125,25 @@ class LoginView extends Component {
             if (session.status === 'REQUEST') {
               return;
             }
-            this.handleLogin()
+            this.handleLoginCheck()
           }}
         >
           <View
             style={styles.button}
           >
-            <Text style={styles.buttonText}>
-              {session.status === 'REQUEST' ? 'Loading...' : 'Sign in'}
-            </Text>
+            <FormattedMessage id='signIn'>
+              {(message) => (
+                <Text style={styles.buttonText}>{message}</Text>
+              )}
+            </FormattedMessage>
           </View>
         </TouchableWithoutFeedback>
+        <DropdownAlert ref={(ref) => this.alert = ref} />
       </View>
     )
   }
   renderLoading() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.logoText} >JIRA</Text>
-        <Image source={require('../resources/logo.png')} style={styles.logo} />
-        <Spinner visible={true} textStyle={{ color: '#FFF' }} />
-      </View>
-    );
+    return <LoadingView />;
   }
   render() {
     const { session } = this.props;
@@ -128,9 +156,26 @@ class LoginView extends Component {
 
 LoginView.propTypes = {
   session: React.PropTypes.object,
-  onLoginSubmit: React.PropTypes.func,
-  alert: React.PropTypes.func
+  onLogin: React.PropTypes.func
 }
 
-export default LoginView
+LoginView.contextTypes = {
+  intl: React.PropTypes.object.isRequired
+}
 
+function mapState2Props(state) {
+  const { session, routes } = state;
+  return {
+    session,
+    routes
+  }
+}
+
+function mapDispatch2Props(dispatch) {
+  const actions = bindActionCreators(actionCreators, dispatch);
+  return {
+    onLogin: actions.login
+  };
+}
+
+export default connect(mapState2Props, mapDispatch2Props)(LoginView);

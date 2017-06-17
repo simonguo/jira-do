@@ -25,6 +25,7 @@ let initServerAction = (server) => {
 
 export function login(data, successCallback, failCallback) {
   const { username, password, server } = data;
+
   const body = JSON.stringify({
     username,
     password
@@ -37,6 +38,7 @@ export function login(data, successCallback, failCallback) {
       method: 'post',
       body
     },
+    onError: failCallback,
     onSuccess: (response, dispatch) => {
       dispatch(initServerAction(server));
       successCallback && successCallback(response);

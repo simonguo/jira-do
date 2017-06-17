@@ -8,27 +8,26 @@ import {
   ScrollView
 } from 'react-native';
 import _ from 'lodash';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/SettingView.style';
+import { Actions } from 'react-native-router-flux';
+import NavBar from './NavBar';
 
 class SettingView extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     const { userConfig = {} } = this.props;
     let { displayName, avatarUrl, name } = userConfig;
+    const { settings, signOut } = this.context.intl.messages;
     return (
       <View style={{ flex: 1 }}>
-        <View style={styles.titleBar}>
-          <Icon
-            name='ios-arrow-back'
-            style={styles.backIcon}
-            onPress={this.props.goBack}
-          />
-          <Text style={styles.titleText}>Settings</Text>
-        </View>
+
+        <NavBar
+          title={settings}
+          leftIcon='ios-close-outline'
+          onLeftIconPress={() => Actions.pop()}
+        />
+
         <View style={styles.avatarContainer}>
           <Image
             style={styles.avatar}
@@ -40,15 +39,15 @@ class SettingView extends Component {
           style={styles.scrollView}
         >
           <View style={styles.item}>
-              <Text style={[styles.itemText]}>Version 1.3</Text>
+            <Text style={[styles.itemText]}>Version 1.3</Text>
           </View>
           <TouchableWithoutFeedback
             onPress={() => {
-              this.props.onLogoutSubmit()
+              this.props.onLogoutSubmit();
             }}
           >
             <View style={styles.item}>
-              <Text style={[styles.itemText, { color: 'red' }]}>Sign out</Text>
+              <Text style={[styles.itemText, { color: 'red' }]}>{signOut}</Text>
             </View>
           </TouchableWithoutFeedback>
 
@@ -59,9 +58,12 @@ class SettingView extends Component {
 };
 
 SettingView.propTypes = {
-  goBack: React.PropTypes.func,
+  userConfig: React.PropTypes.object,
   onLogoutSubmit: React.PropTypes.func
 }
 
-export default SettingView
+LoginView.contextTypes = {
+  intl: React.PropTypes.object.isRequired
+}
 
+export default SettingView

@@ -1,5 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableWithoutFeedback
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/SliderEntry.style';
 
@@ -34,23 +40,30 @@ export default class SliderEntry extends Component {
         <ScrollView style={styles.itemsView}>
           {list.length ? list.filter((a, index) => index < 100).map((item, index) => {
             return (
-              <View
+              <TouchableWithoutFeedback
                 key={index}
-                style={[styles.item, styles[priorityStyle[item.priorityName]]]}
+                onPress={() => {
+                  this.props.onSelect(item);
+                }}
               >
-                <Text style={styles.itemTextKey}>
+                <View
+
+                  style={[styles.item, styles[priorityStyle[item.priorityName]]]}
+                >
+                  <Text style={styles.itemTextKey}>
+                    <Image
+                      style={styles.itemTypeIcon}
+                      source={{ uri: item.typeUrl }}
+                    />{' '}
+                    {item.key}
+                  </Text>
+                  <Text style={styles.itemText}>{item.summary}</Text>
                   <Image
-                    style={styles.itemTypeIcon}
-                    source={{ uri: item.typeUrl }}
-                  />{' '}
-                  {item.key}
-                </Text>
-                <Text style={styles.itemText}>{item.summary}</Text>
-                <Image
-                  style={styles.itemAvatar}
-                  source={{ uri: item.avatarUrl }}
-                />
-              </View>
+                    style={styles.itemAvatar}
+                    source={{ uri: item.avatarUrl }}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
             );
           }) : (
               <View >
