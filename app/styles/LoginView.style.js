@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
+import Platform from '../utils/Platform';
 
 export default StyleSheet.create({
   container: {
@@ -21,7 +22,8 @@ export default StyleSheet.create({
     marginTop: 10,
     height: 35,
     padding: 10,
-    borderRadius: 4
+    borderRadius: 4,
+    width: Platform.isAndroid ? '100%' : false
   },
   button: {
     width: '100%',

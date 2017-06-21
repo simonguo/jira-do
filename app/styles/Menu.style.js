@@ -1,9 +1,8 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
 const window = Dimensions.get('window');
 export default StyleSheet.create({
   menu: {
-    flex: 1,
     width: '100%',
     height: window.height,
     padding: 0,
@@ -47,7 +46,7 @@ export default StyleSheet.create({
     color: '#3b73af'
   },
   itemActive: {
-    backgroundColor:'#f5f5f5'
+    backgroundColor: '#f5f5f5'
   },
   reloadContainer: {
     flexDirection: 'row',
