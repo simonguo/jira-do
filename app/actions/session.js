@@ -25,18 +25,21 @@ let initServerAction = (server) => {
 
 export function login(data, successCallback, failCallback) {
   const { username, password, server } = data;
+
   const body = JSON.stringify({
     username,
     password
   });
 
   return createFetchAction({
-    url: `${server}${APIs.API_AUTH_SESSION}`,
+    server,
+    url: APIs.API_AUTH_SESSION,
     actionModel: loginAction,
     options: {
       method: 'post',
       body
     },
+    onError: failCallback,
     onSuccess: (response, dispatch) => {
       dispatch(initServerAction(server));
       successCallback && successCallback(response);

@@ -11,9 +11,9 @@ let rapidviewsAction = (data, status) => {
   }
 };
 
-export function fetchRapidViews(server, successCallback, failCallback) {
+export function fetchRapidViews(successCallback, failCallback) {
   return createFetchAction({
-    url: `${server}${APIs.API_RAPIDVIEWS_VIEWSDATA}`,
+    url: APIs.API_RAPIDVIEWS_VIEWSDATA,
     actionModel: rapidviewsAction,
     loading: false,
     onSuccess: successCallback,

@@ -61,8 +61,6 @@ class Menu extends Component {
     const userConfig = _.get(rapidViews, ['globalConfig', 'userConfig']) || {};
     let { displayName, avatarUrl, name } = userConfig;
 
-    console.log(activeItem);
-
     return (
       <View style={styles.menu}>
         <View style={styles.avatarContainer}>
@@ -85,7 +83,7 @@ class Menu extends Component {
               >
                 <Text
                   onPress={() => onItemSelected(item)}
-                  style={[styles.item, activeItem.id === item.id ? styles.itemActive : null]}
+                  style={[styles.item, (activeItem && activeItem.id === item.id) ? styles.itemActive : null]}
                 >
                   {item.name}
                 </Text>
