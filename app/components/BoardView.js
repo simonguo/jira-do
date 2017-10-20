@@ -5,6 +5,7 @@ import {
   View,
   Image,
   Text,
+  Platform
 } from 'react-native';
 import _ from 'lodash';
 import Swiper from 'react-native-swiper';
@@ -23,61 +24,68 @@ class BoardView extends PureComponent {
     this.props.onItemSelect(item);
   }
 
-  getSlides() {
-    const { statusConfig, onFetchIssueList, project } = this.props;
-    if (!statusConfig || statusConfig.length === 0) {
-      return false;
-    }
+  // getSlides() {
+  //   const { statusConfig, onFetchIssueList, project } = this.props;
+  //   if (!statusConfig || statusConfig.length === 0) {
+  //     return false;
+  //   }
 
-    return statusConfig.map((entry, index) => {
-      return (
-        <SliderEntry
-          onSelect={this.handleSelect}
-          key={`carousel-entry-${index}`}
-          even={(index + 1) % 2 === 0}
-          onFetchIssueList={onFetchIssueList}
-          project={project}
-          status={entry}
-        />
-      );
-    });
+  //   return statusConfig.map((entry, index) => {
+  //     return (
+  //       <SliderEntry
+  //         onSelect={this.handleSelect}
+  //         key={`carousel-entry-${index}`}
+  //         even={(index + 1) % 2 === 0}
+  //         onFetchIssueList={onFetchIssueList}
+  //         project={project}
+  //         status={entry}
+  //       />
+  //     );
+  //   });
+  // }
+
+  handelCarouselDidMount = (c) => {
+    // console.log(c);
+    // c && setTimeout(() => c._flatlist.scrollToOffset({animated: true, offset: 150}), 100);
+    c && setTimeout(() => c.snapToItem(1), 50);
   }
 
-  // _renderSlide = ({item, index}) => {
-  //   return (
-  //     <SliderEntry
-  //       onSelect={this.handleSelect}
-  //       onFetchIssueList={this.props.onFetchIssueList}
-  //       project={this.props.project}
-  //       status={item}
-  //     />
-  //   );
-  // }
+  _renderSlide = ({item, index}) => {
+    return (
+      <SliderEntry
+        onSelect={this.handleSelect}
+        onFetchIssueList={this.props.onFetchIssueList}
+        project={this.props.project}
+        status={item}
+      />
+    );
+  }
 
   render() {
     const { statusConfig } = this.props;
 
     return (
       <View style={styles.container} >
-        { // statusConfig ? 
-          // <Carousel
-          //   data={statusConfig}
-          //   renderItem={this._renderSlide}
-          //   style={styles.wrapper}
-          //   sliderWidth={sliderWidth}
-          //   itemWidth={itemWidth}
-          //   firstItem={1}
-          // />
-          // : null 
+        { statusConfig ? 
+          <Carousel
+            data={statusConfig}
+            renderItem={this._renderSlide}
+            style={styles.wrapper}
+            sliderWidth={sliderWidth}
+            itemWidth={itemWidth}
+            firstItem={1}
+            ref={(c) => this.handelCarouselDidMount(c)}
+          />
+          : null 
         }
-        <Carousel
+        {/* <Carousel
           style={styles.wrapper}
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           firstItem={1}
         >
           {this.getSlides()}
-        </Carousel>
+        </Carousel> */}
 
         <Spinner visible={!statusConfig} textStyle={{ color: '#FFF' }} />
 
