@@ -24,29 +24,7 @@ class BoardView extends PureComponent {
     this.props.onItemSelect(item);
   }
 
-  // getSlides() {
-  //   const { statusConfig, onFetchIssueList, project } = this.props;
-  //   if (!statusConfig || statusConfig.length === 0) {
-  //     return false;
-  //   }
-
-  //   return statusConfig.map((entry, index) => {
-  //     return (
-  //       <SliderEntry
-  //         onSelect={this.handleSelect}
-  //         key={`carousel-entry-${index}`}
-  //         even={(index + 1) % 2 === 0}
-  //         onFetchIssueList={onFetchIssueList}
-  //         project={project}
-  //         status={entry}
-  //       />
-  //     );
-  //   });
-  // }
-
   handelCarouselDidMount = (c) => {
-    // console.log(c);
-    // c && setTimeout(() => c._flatlist.scrollToOffset({animated: true, offset: 150}), 100);
     c && setTimeout(() => c.snapToItem(1), 50);
   }
 
@@ -78,14 +56,6 @@ class BoardView extends PureComponent {
           />
           : null 
         }
-        {/* <Carousel
-          style={styles.wrapper}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-          firstItem={1}
-        >
-          {this.getSlides()}
-        </Carousel> */}
 
         <Spinner visible={!statusConfig} textStyle={{ color: '#FFF' }} />
 

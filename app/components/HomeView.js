@@ -32,7 +32,7 @@ import styles from '../styles/App.style';
 class HomeView extends Component {
   constructor(props) {
     super(props);
-    console.log(props.session)
+    // console.log(props.session)
     this.state = {
       menuExpand: false,
       selectedItem: null,
@@ -67,7 +67,7 @@ class HomeView extends Component {
     this.alert.alertWithType(type, title, message);
   }
   handleMenuItemSelected(item) {
-    console.log(item);
+    // console.log(item);
     this.setState({
       menuExpand: false,
       selectedItem: item
@@ -122,7 +122,7 @@ class HomeView extends Component {
   handleFetchUserConfig() {
     const { onFetchUserConfig } = this.props;
     onFetchUserConfig(this.state.username, (resp) => {
-      console.log(resp);
+      // console.log(resp);
       this.setState({
         userConfig: resp
       });
@@ -130,11 +130,11 @@ class HomeView extends Component {
   }
 
   handleItemSelect(item) {
-    console.log(item);
+    // console.log(item);
     const { selectedItem } = this.state;
     const { onFetchDetail } = this.props;
     onFetchDetail(selectedItem.id, item.key,(rsep)=>{
-      console.log(rsep);
+      // console.log(rsep);
     });
     Actions.detail();
   }

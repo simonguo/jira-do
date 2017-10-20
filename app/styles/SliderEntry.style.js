@@ -51,7 +51,8 @@ export default StyleSheet.create({
         padding: 10
       }
     }),
-    position: 'relative'
+    position: 'relative',
+    backgroundColor: '#fff'
   },
   item: {
     position: 'relative',
@@ -93,6 +94,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 25,
     left: 10,
+    // color: '#000'
   },
   itemTextKey:{
     fontSize:12,

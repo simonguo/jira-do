@@ -150,7 +150,7 @@ export default class SliderEntry extends PureComponent {
   )
 
   render() {
-    console.log('render Slider');
+    // console.log('render Slider');
     const { status } = this.props;
     let { total, list, request } = this.state;
     
