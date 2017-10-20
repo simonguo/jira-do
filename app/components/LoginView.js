@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Image,
@@ -46,14 +47,19 @@ class LoginView extends Component {
       this.handleAlert('warn', message, loginCheckID);
       return;
     }
+    let server = data.server;
+    if (/\/$/.test(server)) {
+      server = server.substr(0, server.length - 1);
+    }
     this.handleLoginSubmit({
       ...data,
-      server: data.server.toLocaleLowerCase().indexOf('http') === -1 ? `http://${data.server}` : data.server
+      server: data.server.toLocaleLowerCase().indexOf('http') === -1 ? `https://${server}` : server
     });
   }
 
   handleLoginSubmit(data) {
     const { message, error, loginCheckID } = this.context.intl.messages;
+    let { username } = this.state.data;
     this.props.onLogin(data, (resp) => {
       const auth = _.get(resp, ['session', 'value']);
       if (!auth) {
@@ -61,9 +67,10 @@ class LoginView extends Component {
         return;
       }
       AsyncStorage.setItem('session', JSON.stringify(data));
+      AsyncStorage.setItem('username', username);
       Actions.home();
     }, (e) => {
-      this.handleAlert('error', error, e.toString())
+      this.handleAlert('error', error, e.toString());
     });
   }
 
@@ -155,12 +162,12 @@ class LoginView extends Component {
 };
 
 LoginView.propTypes = {
-  session: React.PropTypes.object,
-  onLogin: React.PropTypes.func
+  session: PropTypes.object,
+  onLogin: PropTypes.func
 }
 
 LoginView.contextTypes = {
-  intl: React.PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired
 }
 
 function mapState2Props(state) {

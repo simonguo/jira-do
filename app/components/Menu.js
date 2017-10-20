@@ -1,108 +1,70 @@
 
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import {
-  ScrollView,
+  FlatList,
   View,
   Image,
   Text,
 } from 'react-native';
 import _ from 'lodash';
-import { PullView } from 'react-native-pull';
+// import { PullView } from 'react-native-pull';
 import styles from '../styles/Menu.style';
+import Avatar from './Avatar';
 
-class Menu extends Component {
+class Menu extends PureComponent {
   constructor(props) {
     super(props);
-    this.topIndicatorRender = this.topIndicatorRender.bind(this);
-    this.onPullRelease = this.onPullRelease.bind(this);
-    this.state = {
-      pullReloadText: 'pull reload'
-    }
   }
-  componentWillMount() {
-    this.props.onFetchRapidViews();
-  }
-  onPullRelease(resolve) {
-    this.props.onFetchRapidViews(() => {
-      resolve();
-    });
-  }
-  topIndicatorRender(pulling, pullok, pullrelease) {
-    const hide = { position: 'absolute', left: 10000 };
-    const show = { position: 'relative', left: 0 };
-    setTimeout(() => {
-      if (pulling) {
-        this.txtPulling && this.txtPulling.setNativeProps({ style: show });
-        this.txtPullok && this.txtPullok.setNativeProps({ style: hide });
-        this.txtPullrelease && this.txtPullrelease.setNativeProps({ style: hide });
-      } else if (pullok) {
-        this.txtPulling && this.txtPulling.setNativeProps({ style: hide });
-        this.txtPullok && this.txtPullok.setNativeProps({ style: show });
-        this.txtPullrelease && this.txtPullrelease.setNativeProps({ style: hide });
-      } else if (pullrelease) {
-        this.txtPulling && this.txtPulling.setNativeProps({ style: hide });
-        this.txtPullok && this.txtPullok.setNativeProps({ style: hide });
-        this.txtPullrelease && this.txtPullrelease.setNativeProps({ style: show });
-      }
-    }, 1);
 
+  _renderItem = ({item, index}) => {
+    const { onItemSelected, activeItem } = this.props;
     return (
-      <View style={styles.reloadContainer}>
-        <Text ref={(c) => { this.txtPulling = c; }}>Pulling...</Text>
-        <Text ref={(c) => { this.txtPullok = c; }}>Loading...</Text>
-        <Text ref={(c) => { this.txtPullrelease = c; }}>Loading...</Text>
+      <View>
+        <Text
+          onPress={() => onItemSelected(item)}
+          style={[styles.item, (activeItem && activeItem.key === item.key) ? styles.itemActive : null]}
+        >
+          {item.name}
+        </Text>
       </View>
     );
   }
+
   render() {
 
-    const { rapidViews, onItemSelected, activeItem } = this.props;
-    const views = _.get(rapidViews, 'views') || [];
-    const userConfig = _.get(rapidViews, ['globalConfig', 'userConfig']) || {};
-    let { displayName, avatarUrl, name } = userConfig;
+    const { activeItem, projectList, userConfig } = this.props;
+    let { displayName, avatarUrls, name } = userConfig || {};
 
     return (
       <View style={styles.menu}>
         <View style={styles.avatarContainer}>
-          <Image
+          <Avatar
             style={styles.avatar}
-            source={{ uri: avatarUrl ? avatarUrl.replace('xsmall', 'xlarge') : undefined }} />
+            uri={avatarUrls && avatarUrls['48x48']}
+            width={48}
+            height={48}
+          />
           <Text style={styles.displayName}>{displayName}</Text>
           <Text style={styles.name}>{name}</Text>
         </View>
-        <PullView
-          onPullRelease={this.onPullRelease}
-          topIndicatorRender={this.topIndicatorRender}
-          topIndicatorHeight={60}
+        <FlatList
           style={styles.scrollView}
-        >
-          {views.length ? views.map((item, index) => {
-            return (
-              <View
-                key={index}
-              >
-                <Text
-                  onPress={() => onItemSelected(item)}
-                  style={[styles.item, (activeItem && activeItem.id === item.id) ? styles.itemActive : null]}
-                >
-                  {item.name}
-                </Text>
-              </View>
-            )
-          }) : <View><Text style={styles.nullData}>No data found</Text></View>}
-
-        </PullView>
-
+          renderItem={this._renderItem}
+          data={projectList}
+          extraData={activeItem}
+          onRefresh={this.props.onFetchProject}
+          refreshing={false}
+        />
       </View>
     );
   }
 };
 
 Menu.propTypes = {
-  activeItem: React.PropTypes.object,
-  rapidViews: React.PropTypes.object,
-  onFetchRapidViews: React.PropTypes.func,
-  onItemSelected: React.PropTypes.func.isRequired,
+  activeItem: PropTypes.object,
+  onItemSelected: PropTypes.func.isRequired,
+  onFetchProject: PropTypes.func
 };
 export default Menu;
 

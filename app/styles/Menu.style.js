@@ -7,7 +7,7 @@ export default StyleSheet.create({
     height: window.height,
     padding: 0,
     position: 'relative',
-    zIndex: 300
+    // zIndex: 300,
   },
   avatarContainer: {
     paddingTop: 40,
@@ -33,7 +33,8 @@ export default StyleSheet.create({
     color: '#fff'
   },
   scrollView: {
-    padding: 10
+    padding: 10,
+    backgroundColor: '#e9e9e9'
   },
   itemView: {
     position: 'relative',

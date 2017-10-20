@@ -42,5 +42,16 @@ export default StyleSheet.create({
   },
   colValue: {
     flex: 2
+  },
+  statusLabel: {
+    width: 60,
+    backgroundColor: '#CCCCCC',
+    borderRadius: 10,
+    borderStyle: 'solid',
+    borderColor: '#CCCCCC',
+    borderWidth: 5,
+  }, 
+  statusText: {
+    textAlign: 'center'
   }
 });

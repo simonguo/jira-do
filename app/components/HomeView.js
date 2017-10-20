@@ -9,14 +9,14 @@ import {
   View,
   Image,
   AsyncStorage,
-  StatusBar
+  StatusBar,
+  Platform
 } from 'react-native';
 import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import * as sessionActionCreators from '../actions/session';
-import * as rapidviewsActionCreators from '../actions/rapidviews';
 import * as allDataActionCreators from '../actions/allData';
 
 import SideMenu from 'react-native-side-menu';
@@ -32,23 +32,32 @@ import styles from '../styles/App.style';
 class HomeView extends Component {
   constructor(props) {
     super(props);
+    console.log(props.session)
     this.state = {
       menuExpand: false,
       selectedItem: null,
-      session: null
-    }
+      session: null,
+      projectList: [],
+      statusConfig: [],
+      userConfig: null,
+      username: null
+    };
     this.handleMenuItemSelected = this.handleMenuItemSelected.bind(this);
     this.updateMenuState = this.updateMenuState.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-    this.handleFetchRapidViews = this.handleFetchRapidViews.bind(this);
     this.handleAlert = this.handleAlert.bind(this);
     this.handleItemSelect = this.handleItemSelect.bind(this);
+    this.handleFetchProjectList = this.handleFetchProjectList.bind(this);
   }
   componentWillMount() {
     AsyncStorage.getItem('selectedItem').then(item => {
       item && this.setState({ selectedItem: JSON.parse(item) });
     });
-    this.handleFetchRapidViews();
+    AsyncStorage.getItem('username').then(username => 
+      this.setState({ username }, this.handleFetchUserConfig)
+    );
+    this.handleFetchProjectList();
+    this.handleFetchStatusConfig();
   }
 
   updateMenuState(menuExpand) {
@@ -58,13 +67,13 @@ class HomeView extends Component {
     this.alert.alertWithType(type, title, message);
   }
   handleMenuItemSelected(item) {
+    console.log(item);
     this.setState({
       menuExpand: false,
       selectedItem: item
     });
 
     AsyncStorage.setItem('selectedItem', JSON.stringify(item));
-    this.loadAllData(item.id);
   }
 
   handleLogout() {
@@ -73,34 +82,60 @@ class HomeView extends Component {
     Actions.login();
   }
 
-  loadAllData(rapidViewId) {
-    const { onFetchAllData, onFetchRapidViewsConfig } = this.props;
-    const showError = (error) => {
-      this.handleAlert('error', 'Error', error.toString());
-    }
-    onFetchAllData(rapidViewId, null, showError);
-    onFetchRapidViewsConfig(rapidViewId, null, showError);
+  handleFetchProjectList() {
+    const { onFetchProject } = this.props;
+    onFetchProject((resp) => {
+      let projectList = resp.map(project => {
+        return {
+          name: `${project.name}(${project.key})`,
+          key: project.key
+        };
+      });
+      this.setState({
+        projectList
+      });
+    });
   }
 
+  handleFetchStatusConfig() {
+    const { onFetchStatusConfig } = this.props;
+    onFetchStatusConfig((resp) => {
+      let statusList = [];
+      resp.forEach(status => {
+        let obj = statusList.find(item => item.name === status.statusCategory.name);
+        if (!obj) {
+          obj = {
+            name: status.statusCategory.name,
+            id: [],
+            color: status.statusCategory.colorName
+          };
+          statusList.push(obj);
+        }
+        obj.id.push(status.id);
+      });
+      this.setState({
+        statusConfig: statusList
+      });
+    });
+  }
 
-  handleFetchRapidViews(callback) {
-    const { onFetchRapidViews } = this.props;
-    onFetchRapidViews((resp) => {
-      const selectedItem = this.state.selectedItem || _.get(resp, ['views', 0]);
-      if (selectedItem) {
-        this.setState({ selectedItem });
-        this.loadAllData(selectedItem.id)
-        callback && callback(resp);
-      }
-    }, (e) => {
-      this.handleAlert('error', 'Error', e.toString());
+  handleFetchUserConfig() {
+    const { onFetchUserConfig } = this.props;
+    onFetchUserConfig(this.state.username, (resp) => {
+      console.log(resp);
+      this.setState({
+        userConfig: resp
+      });
     });
   }
 
   handleItemSelect(item) {
+    console.log(item);
     const { selectedItem } = this.state;
     const { onFetchDetail } = this.props;
-    onFetchDetail(selectedItem.id, item.key);
+    onFetchDetail(selectedItem.id, item.key,(rsep)=>{
+      console.log(rsep);
+    });
     Actions.detail();
   }
 
@@ -115,20 +150,21 @@ class HomeView extends Component {
     );
   }
   renderMenu() {
-    const { rapidViews } = this.props;
+    const { userConfig } = this.state;
     return (
       <Menu
         activeItem={this.state.selectedItem}
-        rapidViews={rapidViews ? rapidViews.data : null}
-        onFetchRapidViews={this.handleFetchRapidViews}
         onItemSelected={this.handleMenuItemSelected}
+        projectList={this.state.projectList}
+        onFetchProject={this.handleFetchProjectList}
+        userConfig={userConfig}
       />
     );
   }
   renderBoardView() {
 
-    const { allData, rapidViews, onFetchDetail } = this.props;
-    const { selectedItem } = this.state;
+    const { allData, rapidViews, onFetchDetail, onFetchIssueList } = this.props;
+    const { selectedItem, statusConfig, userConfig } = this.state;
     const tilte = _.get(selectedItem, ['name']) || 'JIRA';
 
     return (
@@ -141,19 +177,21 @@ class HomeView extends Component {
           onLeftIconPress={() => {
             this.setState({
               menuExpand: true
-            })
+            });
           }}
           rightIcon='ios-cog'
           onRightIconPress={() => {
             Actions.setting({
               onLogoutSubmit: this.handleLogout,
-              userConfig: _.get(rapidViews, ['data', 'globalConfig', 'userConfig'])
+              userConfig
             });
           }}
         />
         <BoardView
           onItemSelect={this.handleItemSelect}
-          allData={allData}
+          project={selectedItem ? selectedItem.key : ''}
+          statusConfig={statusConfig}
+          onFetchIssueList={onFetchIssueList}
         />
       </View>
     );
@@ -163,13 +201,22 @@ class HomeView extends Component {
     const { session } = this.props;
     const auth = _.get(session, ['data', 'session', 'value']);
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{
+        flex: 1,
+        backgroundColor: '#205081',
+        ...Platform.select({
+          android: {
+            marginTop: -20
+          }
+        })
+      }}>
         <StatusBar
           barStyle="light-content"
         />
         <SideMenu
           menu={this.renderMenu()}
           isOpen={this.state.menuExpand}
+          /* isOpen={false} */
           openMenuOffset={250}
           onChange={(menuExpand) => this.updateMenuState(menuExpand)}
         >
@@ -191,23 +238,22 @@ function mapState2Props(state) {
     session,
     rapidViews,
     allData
-  }
+  };
 }
 
 function mapDispatch2Props(dispatch) {
-  allDataActionCreators
-
   const actions = bindActionCreators({
     ...sessionActionCreators,
-    ...rapidviewsActionCreators,
     ...allDataActionCreators
   }, dispatch);
+
   return {
-    onFetchAllData: actions.fetchAllData,
-    onFetchRapidViewsConfig: actions.fetchRapidViewsConfig,
-    onFetchRapidViews: actions.fetchRapidViews,
     onFetchDetail: actions.fetchDetail,
-    onLogout: actions.logout
+    onLogout: actions.logout,
+    onFetchProject: actions.fetchProjectList,
+    onFetchStatusConfig: actions.fetchStatusConfig,
+    onFetchIssueList: actions.fetchIssueList,
+    onFetchUserConfig: actions.fetchUserConfig
   };
 }
 

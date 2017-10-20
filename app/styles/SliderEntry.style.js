@@ -42,14 +42,28 @@ export default StyleSheet.create({
     padding: 10
   },
   itemsView: {
-    padding: 10,
+    // paddingHorizontal: 10,
+    ...Platform.select({
+      android: {
+        paddingRight: 10
+      },
+      ios: {
+        padding: 10
+      }
+    }),
     position: 'relative'
   },
   item: {
     position: 'relative',
     backgroundColor: '#f5f5f5',
-    marginTop: 10,
+    // marginTop: 10,
     padding: 10,
+    ...Platform.select({
+      android: {
+        left: 10
+      }
+    }),
+    height: 60,
     shadowColor: 'black',
     borderLeftColor: '#e9eef2',
     borderLeftWidth: 5
@@ -75,12 +89,19 @@ export default StyleSheet.create({
     height: 12,
   },
   itemText: {
-    marginRight: 30
+    marginRight: 30,
+    position: 'absolute',
+    top: 25,
+    left: 10,
   },
   itemTextKey:{
     fontSize:12,
     height:22,
-    color:'#3b73af'
+    color:'#3b73af',
+    // marginLeft: 5,
+    position: 'absolute',
+    left: 17,
+    width: '80%'
   },
   priorityIcon: {
     position: 'absolute',

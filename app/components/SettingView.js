@@ -1,26 +1,38 @@
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Image,
   Text,
   TouchableWithoutFeedback,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/SettingView.style';
 import { Actions } from 'react-native-router-flux';
 import NavBar from './NavBar';
+import Avatar from './Avatar';
 
 class SettingView extends Component {
 
   render() {
+    console.log('render Setting');
     const { userConfig = {} } = this.props;
-    let { displayName, avatarUrl, name } = userConfig;
+    let { displayName, avatarUrls, name } = userConfig || {};
     const { settings, signOut } = this.context.intl.messages;
+
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{
+        flex: 1,
+        ...Platform.select({
+          android: {
+            marginTop: -20
+          }
+        })
+      }}>
 
         <NavBar
           title={settings}
@@ -29,9 +41,12 @@ class SettingView extends Component {
         />
 
         <View style={styles.avatarContainer}>
-          <Image
+          <Avatar
             style={styles.avatar}
-            source={{ uri: avatarUrl ? avatarUrl.replace('xsmall', 'xlarge') : undefined }} />
+            uri={avatarUrls && avatarUrls['48x48']}
+            width={48}
+            height={48}
+          />
           <Text style={styles.displayName}>{displayName}</Text>
           <Text style={styles.name}>{name}</Text>
         </View>
@@ -58,12 +73,12 @@ class SettingView extends Component {
 };
 
 SettingView.propTypes = {
-  userConfig: React.PropTypes.object,
-  onLogoutSubmit: React.PropTypes.func
+  userConfig: PropTypes.object,
+  onLogoutSubmit: PropTypes.func
 }
 
 SettingView.contextTypes = {
-  intl: React.PropTypes.object.isRequired
+  intl: PropTypes.object.isRequired
 }
 
 export default SettingView

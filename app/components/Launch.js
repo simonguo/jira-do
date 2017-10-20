@@ -20,7 +20,7 @@ class Launch extends Component {
       if (data) {
         this.props.onLogin(JSON.parse(data), () => {
           this.setState({ loading: false })
-          Actions.home();
+          Actions.home({ type: 'replace' });
         }, (e) => {
           this.setState({ loading: false })
           Actions.login();

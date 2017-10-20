@@ -13,6 +13,7 @@ let sessionReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.data,
+        username: action.username,
         status: action.status
       };
     case Types.LOGOUT:
@@ -25,7 +26,7 @@ let sessionReducer = (state = initialState, action) => {
         server: action.server
       }
     default:
-      return state
+      return state;
   }
 }
 
