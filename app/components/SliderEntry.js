@@ -108,7 +108,7 @@ export default class SliderEntry extends PureComponent {
         }}
       >
         <View
-          style={[styles.item, styles[priorityStyle[item.priorityName]]]}
+          style={[styles.item, styles[priorityStyle[field.priority.name]]]}
         >
           <View style={{flex: 1, flexDirection: 'row',alignItems: 'flex-start',}}>
             <SvgUri
