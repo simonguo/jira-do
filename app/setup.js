@@ -10,6 +10,8 @@ import HomeView from './components/HomeView';
 import Launch from './components/Launch';
 import SettingView from './components/SettingView';
 import DetailView from './components/DetailView';
+import WorklogForm from './components/WorklogForm';
+import Worklog from './components/Worklog';
 //locale
 import {IntlProvider} from 'react-intl';
 import locales from './locales';
@@ -22,7 +24,7 @@ const store = compose(
 
 class AppView extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     return (
@@ -38,6 +40,8 @@ class AppView extends Component {
               <Scene key="home" component={HomeView} hideNavBar/>
               <Scene key="setting" component={SettingView} hideNavBar direction="vertical"/>
               <Scene key="detail" component={DetailView} hideNavBar direction="vertical"/>
+              <Scene key="worklogForm" component={WorklogForm} hideNavBar direction="vertical"/>
+              <Scene key="worklog" component={Worklog} hideNavBar direction="vertical"/>
             </Scene>
           </RouterWithRedux>
         </IntlProvider>

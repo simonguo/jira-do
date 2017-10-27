@@ -11,7 +11,7 @@ const detailAction = (data, status) => {
   }
 };
 
-export function fetchDetail(rapidViewId, issueIdOrKey, successCallback, failCallback) {
+export function fetchDetail(issueIdOrKey, successCallback, failCallback) {
   return createFetchAction({
     url: `${APIs.API_XBOARD_ISSUE_DETAILS}/${issueIdOrKey}`,
     actionModel: detailAction,
@@ -90,5 +90,27 @@ export function fetchUserConfig(username, successCallback, failCallback) {
     actionModel: userConfig,
     onSuccess: successCallback,
     onError: failCallback
+  });
+}
+
+// 登记工作日志
+const worklog = (data, status) => {
+  return {
+    type: Types.ADD_WORKLOG,
+    status
+  };
+};
+
+export function addWorklog(issueId, params, successCallback, failCallback) {
+  let url = APIs.API_WORKLOG.replace('{issueId}', issueId);
+  return createFetchAction({
+    url,
+    actionModel: worklog,
+    onSuccess: successCallback,
+    onError: failCallback,
+    options: {
+      method: 'post',
+      body: JSON.stringify(params)
+    }
   });
 }

@@ -3,7 +3,7 @@ import {
   AsyncStorage
 } from 'react-native';
 
-function getServer(callback) {
+export function getServer(callback) {
   AsyncStorage.getItem('session').then((data) => {
     if (!data) {
       return callback(null);

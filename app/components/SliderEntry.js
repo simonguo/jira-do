@@ -33,20 +33,23 @@ export default class SliderEntry extends PureComponent {
       nextAt: 0,
       maxResults: 25,
       list: [],
-      request: false
+      request: true
     };
   }
 
   componentWillReceiveProps(nextProps) {
+    const { status, onSelect, onFetchIssueList, project } = this.props;
     if (nextProps.project !== this.props.project) {
+      // this.setState({
+      //   request: true
+      // });
       this.handleFetch(0, nextProps.project);
     }
   }
 
   handleSelectItem(item) {
-    Actions.detail({
-      data: item
-    });
+    const { onSelect } = this.props;
+    onSelect(item);
   }
 
   componentWillMount() {
@@ -64,27 +67,18 @@ export default class SliderEntry extends PureComponent {
   handleFetch(startAt, projectKey) {
     const { onFetchIssueList, project, status } = this.props;
     let { maxResults, request } = this.state;
-    // console.log('fetch ' + startAt + ' ' + project);
-    if (request) {
-      return false;
-    }
-    this.setState({
-      request: true
-    }, () => {
-      onFetchIssueList({
-        project: projectKey || project,
-        status: status.id,
-        startAt,
-        maxResults
-      }, (resp) => {
-        this.setState({
-          total: resp.total,
-          nextAt: startAt + resp.issues.length,
-          list: startAt === 0 ? resp.issues : [...this.state.list, ...resp.issues],
-          request: false
-        });
-        
-      }, err => console.log(err));
+    onFetchIssueList({
+      project: projectKey || project,
+      status: status.id,
+      startAt,
+      maxResults
+    }, (resp) => {
+      this.setState({
+        total: resp.total,
+        nextAt: startAt + resp.issues.length,
+        list: startAt === 0 ? resp.issues : [...this.state.list, ...resp.issues],
+        request: false
+      });
     });
     
   }
@@ -150,8 +144,7 @@ export default class SliderEntry extends PureComponent {
   )
 
   render() {
-    // console.log('render Slider');
-    const { status } = this.props;
+    const { status, onSelect, onFetchIssueList, project } = this.props;
     let { total, list, request } = this.state;
     
     return (

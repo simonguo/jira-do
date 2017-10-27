@@ -1,27 +1,31 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 
 export default StyleSheet.create({
   titleBar: {
-    paddingTop: 30,
+    paddingTop: 20,
     backgroundColor: '#205081',
     alignItems: 'center',
-    height: 60
+    height: 60,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    ...Platform.select({
+      android: {
+        marginTop: -20
+      }
+    })
   },
   titleText: {
     color: '#fff',
     fontSize: 18
   },
   icon: {
-    position: 'absolute',
     color: '#fff',
     fontSize: 24,
-    top: 30
+    width: 44,
+    height: 40,
+    textAlign: 'center',
+    paddingTop: 8
   },
-  leftIcon: {
-    left: 14
-  },
-  rightIcon: {
-    right: 14
-  },
+
 });

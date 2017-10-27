@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   ScrollView,
+  Button,
   Platform
 } from 'react-native';
 import _ from 'lodash';
@@ -19,6 +20,12 @@ import LoadingView from './LoadingView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import SvgUri from './SvgUri';
 
+// import Detail from './Detail';
+import Worklog from './Worklog';
+
+import { Row, RowWithArrow, Header, SectionHeader, Line } from './common/List';
+import { FabAddButton } from './common/Button';
+import { FlexView } from './common/Layout';
 
 const statusLabelColors = {
   '处理中': '#FFD065',
@@ -48,16 +55,33 @@ const statusTextColors = {
 
 
 class DetailView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tab: 'detail'
+    };
+  }
 
-  renderLoading() {
-    return <LoadingView loading={true} />;
+  showWorkLog = () => {
+    const { data } = this.props;
+    Actions.worklog({
+      data
+    });
+  }
+
+  showWorkLogForm = () => {
+    const { data } = this.props;
+    Actions.worklogForm({
+      title: `${data.fields.summary} / ${data.key}`,
+      issueId: data.id
+    });
   }
 
   renderIconAndText(uri, text) {
     return (
-      <View style={{flex: 1, flexDirection: 'row',alignItems: 'flex-start',}}>
+      <View style={styles.row}>
         <SvgUri source={{ uri }} style={styles.fieldIcon} width={12} height={12} />
-        <Text style={{marginLeft: 5}}>
+        <Text style={styles.text}>
           {text}
         </Text>
       </View>
@@ -66,58 +90,30 @@ class DetailView extends Component {
 
   render() {
     const { data, status } = this.props;
-    const { fields = {} } = data;
+    const { fields = {} } = data || {};
     console.log(data);
-
     return (
-      <View style={{
-        flex: 1,
-        ...Platform.select({
-          android: {
-            marginTop: -20
-          }
-        })
-      }}>
-
+      <FlexView>
         <NavBar
-          title={data.key}
+          title="详情"
           leftIcon='ios-close-outline'
           onLeftIconPress={() => Actions.pop()}
         />
-
         <ScrollView
           style={styles.scrollView}
         >
-          <View style={styles.navRow}>
-            <View style={{}}>
-              <Image source={{ uri: data.projectAvatarUrl }} style={styles.proIcon} />
-              <Text>{fields.summary} / {data.key}</Text>
-            </View>
-          </View>
-
-          <View style={styles.row}>
-            <View style={styles.colLabel}>
-              <Text style={styles.itemLabelText}>类型 : </Text>
-            </View>
-            <View style={styles.colValue}>
+          <FlexView style={styles.scrollContent}>
+            <Header text={`${fields.summary} / ${data.key}`} />
+            <SectionHeader text='详情' />
+            <Row label="类型">
               { data.fields ?  this.renderIconAndText(fields.issuetype.iconUrl, data.fields.issuetype.name) : null }
-            </View>
-          </View>
-
-          <View style={styles.row}>
-            <View style={styles.colLabel}>
-              <Text style={styles.itemLabelText}>优先级 : </Text>
-            </View>
-            <View style={styles.colValue}>
+            </Row>
+            <Line />
+            <Row label="优先级">
               { data.fields ?  this.renderIconAndText(fields.priority.iconUrl, data.fields.priority.name) : null }
-            </View>
-          </View>
-
-          <View style={styles.row}>
-            <View style={styles.colLabel}>
-              <Text style={styles.itemLabelText}>状态 : </Text>
-            </View>
-            <View style={styles.colValue}>
+            </Row>
+            <Line />
+            <Row label="状态">
               {data.fields ? (
                 <View style={[{}, styles.statusLabel, {
                   backgroundColor: statusLabelColors[fields.status.name],
@@ -130,55 +126,42 @@ class DetailView extends Component {
                   </Text>
                 </View>
               ) : null }
-              
-            </View>
-          </View>
+            </Row>
+            { fields.versions && fields.versions[0] ? ([
+              <Line />,
+              <Row label="影响版本">
+                <Text style={styles.text}>{data.fields ? fields.versions[0].name : ''}</Text>
+              </Row>
+            ]) : null }
 
-          { fields.versions && fields.versions[0] ? (
-            <View style={styles.row}>
-              <View style={styles.colLabel}>
-                <Text style={styles.itemLabelText}>影响版本 : </Text>
-              </View>
-              <View style={styles.colValue}>
-                <View style={{}}>
-                  <Text>{data.fields ? fields.versions[0].name : ''}</Text>
-                </View>
-              </View>
-            </View>
-          ) : null }
+            { fields.fixVersions && fields.fixVersions[0] ? ([
+              <Line />,
+              <Row label="修复的版本">
+                <Text style={styles.text}>{data.fields ? fields.fixVersions[0].name : ''}</Text>
+              </Row>
+            ]) : null }
 
-
-          { fields.fixVersions && fields.fixVersions[0] ? (
-            <View style={styles.row}>
-              <View style={styles.colLabel}>
-                <Text style={styles.itemLabelText}>修复的版本 : </Text>
-              </View>
-              <View style={styles.colValue}>
-                <View style={{}}>
-                  <Text>{data.fields ? fields.fixVersions[0].name : ''}</Text>
-                </View>
-              </View>
-            </View>
-          ) : null }
-          
-
-          { fields.description ? (
-            <View style={styles.row}>
-              <View style={styles.colLabel}>
-                <Text style={styles.itemLabelText}>描述 : </Text>
-              </View>
-              <View style={styles.colValue}>
-                <View style={{}}>
-                  <Text>{data.fields ? fields.description : ''}</Text>
-                </View>
-              </View>
-            </View>
-          ) : null }
-          
-
+            <SectionHeader text='人员' />
+            <Row label='报告人'>
+              <Text style={styles.text}>{fields.creator.displayName}</Text>
+            </Row>
+            <Line />
+            <Row label='经办人'>
+              <Text style={styles.text}>{fields.assignee.displayName}</Text>
+            </Row>
+            <SectionHeader text='描述' />
+            <SectionHeader text='活动日志' />
+            <RowWithArrow label='注释' color='#999'>
+              <Text style={styles.text}>{`${fields.comment.total} 条`}</Text>
+            </RowWithArrow>
+            <Line />
+            <RowWithArrow label='工作日志' color='#999' onPress={this.showWorkLog}>
+              <Text style={styles.text}>{`${fields.worklog.total} 条`}</Text>
+            </RowWithArrow>
+          </FlexView>
         </ScrollView>
-        <Spinner visible={status === 'REQUEST'} />
-      </View>
+        <FabAddButton onPress={this.showWorkLogForm} />
+      </FlexView>
     );
   }
 };

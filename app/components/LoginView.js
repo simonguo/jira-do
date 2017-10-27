@@ -102,6 +102,8 @@ class LoginView extends Component {
           onChangeText={(server) => this.handleFormChange('server', server)}
           underlineColorAndroid={'transparent'}
           textAlign='center'
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
         <TextInput
@@ -113,6 +115,8 @@ class LoginView extends Component {
           onChangeText={(username) => this.handleFormChange('username', username)}
           underlineColorAndroid={'transparent'}
           textAlign='center'
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
         <TextInput

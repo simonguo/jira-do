@@ -25,7 +25,7 @@ class BoardView extends PureComponent {
   }
 
   handelCarouselDidMount = (c) => {
-    c && setTimeout(() => c.snapToItem(1), 50);
+    c && setTimeout(() => c.snapToItem(1), 100);
   }
 
   _renderSlide = ({item, index}) => {
@@ -40,8 +40,7 @@ class BoardView extends PureComponent {
   }
 
   render() {
-    const { statusConfig } = this.props;
-
+    const { statusConfig, project } = this.props;
     return (
       <View style={styles.container} >
         { statusConfig ? 
@@ -53,6 +52,7 @@ class BoardView extends PureComponent {
             itemWidth={itemWidth}
             firstItem={1}
             ref={(c) => this.handelCarouselDidMount(c)}
+            extraData={project}
           />
           : null 
         }

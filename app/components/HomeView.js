@@ -67,7 +67,7 @@ class HomeView extends Component {
     this.alert.alertWithType(type, title, message);
   }
   handleMenuItemSelected(item) {
-    // console.log(item);
+    console.log(item);
     this.setState({
       menuExpand: false,
       selectedItem: item
@@ -130,13 +130,12 @@ class HomeView extends Component {
   }
 
   handleItemSelect(item) {
-    // console.log(item);
-    const { selectedItem } = this.state;
     const { onFetchDetail } = this.props;
-    onFetchDetail(selectedItem.id, item.key,(rsep)=>{
-      // console.log(rsep);
+    onFetchDetail(item.key, (resp)=>{
+      Actions.detail({
+        data: resp
+      });
     });
-    Actions.detail();
   }
 
   renderLoginView() {
@@ -203,12 +202,7 @@ class HomeView extends Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: '#205081',
-        ...Platform.select({
-          android: {
-            marginTop: -20
-          }
-        })
+        backgroundColor: '#205081'
       }}>
         <StatusBar
           barStyle="light-content"

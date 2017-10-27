@@ -1,8 +1,10 @@
 import {
   AsyncStorage
 } from 'react-native';
+
 export default function fetchData(url, options, successCallback, failCallback) {
-  // console.log(url);
+  console.log(url);
+  console.log(options);
   let nextOptions = {
     method: 'get',
     credentials: 'include',

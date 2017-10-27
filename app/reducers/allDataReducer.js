@@ -41,6 +41,11 @@ let allDataReducer = (state = initialState, action) => {
         dataStatus: action.status,
         userConfig: action.userConfig
       };
+    case Types.ADD_WORKLOG:
+      return {
+        ...state,
+        worklogStatus: action.status
+      };
     default:
       return state;
   }

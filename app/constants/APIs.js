@@ -9,3 +9,4 @@ export const API_PROJECT = '/rest/api/2/project';
 export const API_STATUS = '/rest/api/2/status';
 export const API_SEARCH = '/rest/api/2/search';
 export const API_USER = '/rest/api/2/user';
+export const API_WORKLOG = '/rest/api/2/issue/{issueId}/worklog';
