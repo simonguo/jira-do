@@ -32,7 +32,7 @@ export const FabAddButton = ({onPress}) => {
 
 const underlayColor = {
   primary: '#0084d2',
-  default: '#ccc'
+  default: '#eee'
 };
 
 export const ButtonBlock = ({onPress, title, type}) => {
