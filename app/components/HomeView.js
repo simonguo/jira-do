@@ -53,7 +53,7 @@ class HomeView extends PureComponent {
     AsyncStorage.getItem('selectedItem').then(item => {
       item && this.setState({ selectedItem: JSON.parse(item) });
     });
-    AsyncStorage.getItem('username').then(username => 
+    AsyncStorage.getItem('username').then(username =>
       this.setState({ username }, this.handleFetchUserConfig)
     );
     this.handleFetchProjectList();
@@ -211,7 +211,7 @@ class HomeView extends PureComponent {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: '#205081'
+        backgroundColor: '#0054C9'
       }}>
         <StatusBar
           barStyle="light-content"

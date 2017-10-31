@@ -13,7 +13,7 @@ export default StyleSheet.create({
     paddingTop: 40,
     paddingLeft: 20,
     height: 110,
-    backgroundColor: '#205081'
+    backgroundColor: '#0054C9'
   },
   avatar: {
     width: 48,
