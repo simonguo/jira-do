@@ -60,7 +60,6 @@ class WorklogForm extends PureComponent {
       comment
     };
     onAddWorklog(issueId, requestBody, (res) => {
-      console.log(res);
       if (res.errors) {
         this.handleAlert('error', '错误', '提交失败');
       } else {
@@ -97,7 +96,7 @@ class WorklogForm extends PureComponent {
       timeSpend: text,
       timeSpentSeconds: Math.round(spentSeconds)
     });
-    
+
   }
 
   handelCommentChange = (text) => {
@@ -130,7 +129,7 @@ class WorklogForm extends PureComponent {
           leftIcon='ios-close-outline'
           onLeftIconPress={() => Actions.pop()}
         />
-        
+
         <ScrollView>
           <Header text={title} />
           <SectionHeader text='时间' />

@@ -32,7 +32,6 @@ import styles from '../styles/App.style';
 class HomeView extends PureComponent {
   constructor(props) {
     super(props);
-    // console.log(props.session)
     this.state = {
       menuExpand: false,
       selectedItem: null,
@@ -72,7 +71,6 @@ class HomeView extends PureComponent {
     });
   }
   handleMenuItemSelected(item) {
-    console.log(item);
     this.setState({
       menuExpand: false,
       selectedItem: item
@@ -135,7 +133,6 @@ class HomeView extends PureComponent {
   handleFetchUserConfig() {
     const { onFetchUserConfig } = this.props;
     onFetchUserConfig(this.state.username, (resp) => {
-      // console.log(resp);
       this.setState({
         userConfig: resp
       });

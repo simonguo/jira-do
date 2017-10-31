@@ -66,7 +66,6 @@ class AppView extends PureComponent {
   }
   render() {
     const { intl } = this.state;
-    // console.log(intl)
     return (
       <Provider store={store}>
         <IntlProvider

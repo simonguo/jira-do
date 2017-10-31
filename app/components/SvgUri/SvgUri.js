@@ -82,7 +82,6 @@ class SvgUri extends PureComponent {
 
   constructor(props) {
     super(props);
-    // console.log(props.source.uri)
 
     this.state = { fill: props.fill, svgXmlData: props.svgXmlData };
 
@@ -147,7 +146,6 @@ class SvgUri extends PureComponent {
   createSVGElement(node, childs) {
     let componentAtts = {};
     const i = ind++;
-    // console.log(node);
     switch (node.nodeName) {
       case 'svg':
         componentAtts = this.obtainComponentAtts(node, SVG_ATTS);
@@ -231,8 +229,7 @@ class SvgUri extends PureComponent {
       }, {});
 
     Object.assign(componentAtts, styleAtts);
-    // console.log(attributes);
-    // console.log(componentAtts);
+
     return componentAtts;
   }
 
@@ -251,7 +248,6 @@ class SvgUri extends PureComponent {
       for (let i = 0; i < node.childNodes.length; i++) {
         const isTextValue = node.childNodes[i].nodeValue;
         if (isTextValue && isTextValue.trim() && node.childNodes[i].nodeName !== '#comment') {
-          // console.log(node.childNodes[i]);
           arrayElements.push(node.childNodes[i].nodeValue);
         } else {
           const nodo = this.inspectNode(node.childNodes[i]);

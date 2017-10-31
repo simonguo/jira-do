@@ -93,7 +93,6 @@ class DetailView extends PureComponent {
     const { fields = {} } = data || {};
 
     const { messages: intlDict } = this.context.intl;
-    console.log(data);
     return (
       <FlexView>
         <NavBar
@@ -108,57 +107,62 @@ class DetailView extends PureComponent {
             <Header text={`${fields.summary} / ${data.key}`} />
             <SectionHeader text={intlDict.detail} />
             <Row label={intlDict.type}>
-              {data.fields ? this.renderIconAndText(fields.issuetype.iconUrl, data.fields.issuetype.name) : null}
+              {data.fields ? this.renderIconAndText(_.get(fields, 'issuetype.iconUrl'), _.get(data, 'fields.issuetype.name')) : null}
             </Row>
             <Line />
             <Row label={intlDict.priority}>
-              {data.fields ? this.renderIconAndText(fields.priority.iconUrl, data.fields.priority.name) : null}
+              {data.fields ? this.renderIconAndText(_.get(fields, 'priority.iconUrl'), _.get(data, 'fields.priority.name')) : null}
             </Row>
             <Line />
             <Row label={intlDict.status}>
               {data.fields ? (
                 <View style={[{}, styles.statusLabel, {
-                  backgroundColor: statusLabelColors[fields.status.name],
-                  borderColor: statusLabelColors[fields.status.name],
+                  backgroundColor: statusLabelColors[_.get(fields, 'status.name')],
+                  borderColor: statusLabelColors[_.get(fields, 'status.name')],
                 }]}>
                   <Text style={[styles.statusText, {
-                    color: statusTextColors[fields.status.name]
+                    color: statusTextColors[_.get(fields, 'status.name')]
                   }]}>
-                    {data.fields ? fields.status.name : ''}
+                    {_.get(fields, 'status.name')}
                   </Text>
                 </View>
               ) : null}
             </Row>
-            {fields.versions && fields.versions[0] ? ([
+            {_.get(fields, 'versions.0') ? ([
               <Line key="line-1" />,
               <Row key="row-1" label="影响版本">
-                <Text style={styles.text}>{data.fields ? fields.versions[0].name : ''}</Text>
+                <Text style={styles.text}>
+                  {_.get(fields, 'versions.0.name')}
+                </Text>
               </Row>
             ]) : null}
 
-            {fields.fixVersions && fields.fixVersions[0] ? ([
+            {_.get(fields, 'fixVersions.0') ? ([
               <Line key="line-2" />,
               <Row key="row-2" label="修复的版本">
-                <Text style={styles.text}>{data.fields ? fields.fixVersions[0].name : ''}</Text>
+                <Text style={styles.text}>
+                  {_.get(fields, 'fixVersions.0.name')}
+                </Text>
               </Row>
             ]) : null}
 
             <SectionHeader text={intlDict.personnel} />
             <Row label={intlDict.creator}>
-              <Text style={styles.text}>{fields.creator.displayName}</Text>
+              <Text style={styles.text}>{_.get(fields, 'creator.displayName')}</Text>
             </Row>
             <Line />
             <Row label={intlDict.assignee}>
-              <Text style={styles.text}>{fields.assignee.displayName}</Text>
+              <Text style={styles.text}>{_.get(fields, 'assignee.displayName')}</Text>
             </Row>
             <SectionHeader text={intlDict.description} />
             <SectionHeader text='活动日志' />
             <Row label={intlDict.comment}>
-              <Text style={styles.text}>{`${fields.comment.total} 条`}</Text>
+              <Text style={styles.text}>{`${_.get(fields, 'comment.total')} 条`}</Text>
             </Row>
             <Line />
             <RowWithArrow label={intlDict.worklog} onPress={this.showWorkLog}>
-              <Text style={styles.text}>{`${fields.worklog.total} 条`}</Text>
+              <Text style={styles.text}>{`${_.get(fields, 'worklog.total')} 条`}</Text>
+
             </RowWithArrow>
           </FlexView>
         </ScrollView>

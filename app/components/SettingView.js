@@ -31,7 +31,6 @@ class SettingView extends PureComponent {
   }
 
   handelIntlChange = (bool) => {
-    console.log(bool);
     this.setState({
       isEnglish: bool
     });
@@ -44,9 +43,8 @@ class SettingView extends PureComponent {
     const { userConfig = {}, onLogoutSubmit } = this.props;
     let { displayName, avatarUrls, name } = userConfig || {};
     const { messages: intlDict } = this.context.intl;
-    
+
     let { isEnglish } = this.state;
-    console.log('render ' + isEnglish);
 
     return (
       <FlexView>

@@ -117,7 +117,6 @@ export function addWorklog(issueId, params, successCallback, failCallback) {
 
 // 登记工作日志
 const worklog = (data, status) => {
-  console.log(data);
   return {
     type: Types.ADD_WORKLOG,
     status,
