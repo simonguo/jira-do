@@ -1,5 +1,10 @@
-// {
-//   comment: 'test api 3',
-//   started: '2017-10-25T15:30:00.000+0800',
-//   timeSpentSeconds: 360
-// }
+const filter = [
+  {
+    name: '我未完成的问题',
+    jql: 'assignee = currentUser() AND resolution = Unresolved order by updated DESC'
+  },
+  {
+    name: '我的报告',
+    jql: 'reporter = currentUser() order by created DESC'
+  }
+];

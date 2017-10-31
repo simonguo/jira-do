@@ -130,43 +130,45 @@ class WorklogForm extends PureComponent {
           leftIcon='ios-close-outline'
           onLeftIconPress={() => Actions.pop()}
         />
-        <Header text={title} />
-        <SectionHeader text='时间' />
-        <Row label="耗费时间" style={styles.formGroup}>
+        
+        <ScrollView>
+          <Header text={title} />
+          <SectionHeader text='时间' />
+          <Row label="耗费时间" style={styles.formGroup}>
+            <TextInput
+              value={timeSpend}
+              onChangeText={this.handelTimeSpendChange}
+              autoCapitalize="none"
+              autoCorrect={false}
+              style={styles.input}
+              underlineColorAndroid="transparent"
+            />
+          </Row>
+          <Line />
+          <Row label="开始时间" style={styles.formGroup}>
+            <TouchableHighlight onPress={this.handelEditDate}>
+              <Text style={styles.input}>
+                {startTime.format('ddd YYYY-MM-DD HH:mm')}
+              </Text>
+            </TouchableHighlight>
+          </Row>
+
+          <SectionHeader text='工作说明' />
           <TextInput
-            value={timeSpend}
-            onChangeText={this.handelTimeSpendChange}
+            style={[styles.input, styles.textArea]}
+            multiline={true}
+            onChangeText={this.handelCommentChange}
             autoCapitalize="none"
             autoCorrect={false}
-            style={styles.input}
             underlineColorAndroid="transparent"
           />
-        </Row>
-        <Line />
-        <Row label="开始时间" style={styles.formGroup}>
-          <TouchableHighlight onPress={this.handelEditDate}>
-            <Text style={styles.input}>
-              {startTime.format('ddd YYYY-MM-DD HH:mm')}
-            </Text>
-          </TouchableHighlight>
-        </Row>
 
-        <SectionHeader text='工作说明' />
-        <TextInput
-          style={[styles.input, styles.textArea]}
-          multiline={true}
-          onChangeText={this.handelCommentChange}
-          autoCapitalize="none"
-          autoCorrect={false}
-          underlineColorAndroid="transparent"
-        />
-
-        <ButtonBlock
-          onPress={this.handelSubmitForm}
-          title='提交'
-          type='primary'
-        />
-
+          <ButtonBlock
+            onPress={this.handelSubmitForm}
+            title='提交'
+            type='primary'
+          />
+        </ScrollView>
 
         <DatePicker
           ref={ref => this._datePicker = ref}

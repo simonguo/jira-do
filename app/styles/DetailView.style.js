@@ -20,7 +20,7 @@ export default StyleSheet.create({
     paddingBottom: 100
   },
   statusLabel: {
-    width: 60,
+    // width: 60,
     backgroundColor: '#CCCCCC',
     borderRadius: 10,
     borderStyle: 'solid',
