@@ -9,5 +9,18 @@ export default {
   'signOut':'退出',
   'loginCheckServer': '您必须输入 JIRA 服务器的域名。',
   'loginCheckID': '用户名或密码错误。',
-  'settings':'设置'
+  'settings':'设置',
+  version: '版本',
+  intl: '国际化',
+  detail: '详情',
+  worklog: '工作日志',
+  type: '类型',
+  priority: '优先级',
+  status: '状态',
+  personnel: '人员',
+  creator: '报告人',
+  assignee: '经办人',
+  description: '描述',
+  comment: '注释',
+  
 };

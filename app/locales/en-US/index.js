@@ -9,5 +9,17 @@ export default {
   'signOut':'Sign out',
   'loginCheckServer': 'You must enter the base domain for your JIRA server.',
   'loginCheckID': 'Incorrect username or password.',
-  'settings':'Settings'
+  'settings':'Settings',
+  version: 'Version',
+  intl: 'Internationalization',
+  detail: 'Detail',
+  worklog: 'Worklog',
+  type: 'Type',
+  priority: 'Priority',
+  status: 'Status',
+  personnel: 'Personnel',
+  creator: 'Creator',
+  assignee: 'Assignee',
+  description: 'Description',
+  comment: 'Comment',
 };

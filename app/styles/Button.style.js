@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
   addButton: {
@@ -20,23 +20,63 @@ export default StyleSheet.create({
     // backgroundColor: '#587BF4',
     // backgroundColor: 'red',
     textAlign: 'center',
-    lineHeight: 48
+    ...Platform.select({
+      ios: {
+        lineHeight: 48
+      },
+      android: {
+        textAlignVertical: 'center'
+      }
+    })
   },
   button: {
     marginTop: 10,
     width: 345,
     height: 42,
-    backgroundColor: '#008ee5',
     borderRadius: 5,
     overflow: 'hidden',
+    flex: 1
   },
+
+  primary: {
+    backgroundColor: '#008ee5',
+  },
+  primaryTitle: {
+    color: '#fff'
+  },
+
+  default: {
+    borderColor: '#008ee5',
+    borderWidth: 1
+  },
+  defaultTitle: {
+    color: '#008ee5'
+  },
+
   buttonTitle: {
     fontSize: 18,
     color: '#fff',
-    lineHeight: 42,
-    textAlign: 'center'
+    textAlign: 'center',
+    ...Platform.select({
+      ios: {
+        lineHeight: 36
+      },
+      android: {
+        // textAlignVertical: 'center',
+        paddingTop: 8,
+        // backgroundColor: 'red'
+      }
+    })
   },
   buttonWrap: {
-    paddingHorizontal: 15
+    flexDirection: 'row'
+  },
+  paddingHorizontal15: {
+    width: 15,
+  },
+  modal: {
+    flex: 1
+  },
+  modalMenu: {
   }
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -20,7 +20,7 @@ import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/session';
 import LoadingView from './LoadingView';
 
-class LoginView extends Component {
+class LoginView extends PureComponent {
   constructor(props) {
     super(props);
     this.handleLoginCheck = this.handleLoginCheck.bind(this);

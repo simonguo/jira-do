@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
 import Spinner from 'react-native-loading-spinner-overlay';
 import styles from '../styles/LoadingView.style'
 
-class LoadingView extends Component {
+class LoadingView extends PureComponent {
 
   render() {
     const { loading } = this.props;

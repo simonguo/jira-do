@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { AsyncStorage } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import LoadingView from './LoadingView';
@@ -7,22 +7,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/session';
 
-class Launch extends Component {
+class Launch extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       loading: true
-    }
+    };
   }
   componentWillMount() {
     AsyncStorage.getItem('session').then(data => {
 
       if (data) {
         this.props.onLogin(JSON.parse(data), () => {
-          this.setState({ loading: false })
+          this.setState({ loading: false });
           Actions.home({ type: 'replace' });
         }, (e) => {
-          this.setState({ loading: false })
+          this.setState({ loading: false });
           Actions.login();
         })
         return;

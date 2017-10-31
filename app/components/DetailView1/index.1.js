@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -25,7 +25,7 @@ import Worklog from './Worklog';
 
 
 
-class DetailView extends Component {
+class DetailView extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

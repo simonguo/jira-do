@@ -5,14 +5,22 @@ import {
   StyleSheet
 } from 'react-native';
 
+import styles from './style';
+
 export const FlexView = ({children, style}) => {
-  console.log(style);
   return (
     <View style={[{
       flex: 1
-    }, StyleSheet.flatten(style)]}>
+    }, style]}>
       {children}
     </View>
   );
 };
 
+export const Grid = ({col, children, style}) => {
+  return (
+    <View style={styles['col-' + col]} >
+      {children}
+    </View>
+  );
+};

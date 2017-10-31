@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { AsyncStorage } from 'react-native';
 import {Scene, Router} from 'react-native-router-flux';
 import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
@@ -13,25 +15,63 @@ import DetailView from './components/DetailView';
 import WorklogForm from './components/WorklogForm';
 import Worklog from './components/Worklog';
 //locale
-import {IntlProvider} from 'react-intl';
+import { addLocaleData, IntlProvider } from 'react-intl';
+import zh from 'react-intl/locale-data/zh';
+import en from 'react-intl/locale-data/en';
 import locales from './locales';
+
+addLocaleData([...zh, ...en]);
 
 const RouterWithRedux = connect()(Router);
 const store = compose(
   applyMiddleware(thunk)
 )(createStore)(reducers);
 
+const intlConfig = {
+  en: 'en-US',
+  zh: 'zh-CN'
+};
 
-class AppView extends Component {
+
+class AppView extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      intl: 'en'
+    };
+  }
+  componentWillMount () {
+    this.setIntl();
+  }
+  setIntl = (isEnglish) => {
+    if (isEnglish === undefined) {
+      AsyncStorage.getItem('isEnglish', (err, bool) => {
+        this.setState({
+          intl: bool === 'true' ? 'en' : 'zh'
+        });
+      });
+    } else {
+      this.setState({
+        intl: isEnglish ? 'en' : 'zh'
+      });
+    }
+
+  }
+  getChildContext() {
+    const { intl } = this.state;
+    return {
+      isEnglish: intl === 'en',
+      setIntl: this.setIntl
+    };
   }
   render() {
+    const { intl } = this.state;
+    // console.log(intl)
     return (
       <Provider store={store}>
         <IntlProvider
-          locale={'en'}
-          messages={locales['en-US']}
+          locale={intl}
+          messages={locales[intlConfig[intl]]}
         >
           <RouterWithRedux>
             <Scene key="root">
@@ -49,6 +89,11 @@ class AppView extends Component {
       </Provider>
     )
   }
+}
+
+AppView.childContextTypes = {
+  isEnglish: PropTypes.bool,
+  setIntl: PropTypes.func
 }
 
 export default AppView;

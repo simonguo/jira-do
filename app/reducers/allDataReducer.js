@@ -44,7 +44,13 @@ let allDataReducer = (state = initialState, action) => {
     case Types.ADD_WORKLOG:
       return {
         ...state,
-        worklogStatus: action.status
+        assWorklogStatus: action.status
+      };
+    case Types.FETCH_WORKLOG:
+      return {
+        ...state,
+        worklogs: action.worklogs,
+        worklogsStatus: action.status
       };
     default:
       return state;

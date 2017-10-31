@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -54,7 +54,7 @@ const statusTextColors = {
 };
 
 
-class DetailView extends Component {
+class DetailView extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,11 +91,13 @@ class DetailView extends Component {
   render() {
     const { data, status } = this.props;
     const { fields = {} } = data || {};
+
+    const { messages: intlDict } = this.context.intl;
     console.log(data);
     return (
       <FlexView>
         <NavBar
-          title="详情"
+          title={intlDict.detail}
           leftIcon='ios-close-outline'
           onLeftIconPress={() => Actions.pop()}
         />
@@ -104,16 +106,16 @@ class DetailView extends Component {
         >
           <FlexView style={styles.scrollContent}>
             <Header text={`${fields.summary} / ${data.key}`} />
-            <SectionHeader text='详情' />
-            <Row label="类型">
+            <SectionHeader text={intlDict.detail} />
+            <Row label={intlDict.type}>
               { data.fields ?  this.renderIconAndText(fields.issuetype.iconUrl, data.fields.issuetype.name) : null }
             </Row>
             <Line />
-            <Row label="优先级">
+            <Row label={intlDict.priority}>
               { data.fields ?  this.renderIconAndText(fields.priority.iconUrl, data.fields.priority.name) : null }
             </Row>
             <Line />
-            <Row label="状态">
+            <Row label={intlDict.status}>
               {data.fields ? (
                 <View style={[{}, styles.statusLabel, {
                   backgroundColor: statusLabelColors[fields.status.name],
@@ -141,21 +143,21 @@ class DetailView extends Component {
               </Row>
             ]) : null }
 
-            <SectionHeader text='人员' />
-            <Row label='报告人'>
+            <SectionHeader text={intlDict.personnel} />
+            <Row label={intlDict.creator}>
               <Text style={styles.text}>{fields.creator.displayName}</Text>
             </Row>
             <Line />
-            <Row label='经办人'>
+            <Row label={intlDict.assignee}>
               <Text style={styles.text}>{fields.assignee.displayName}</Text>
             </Row>
-            <SectionHeader text='描述' />
+            <SectionHeader text={intlDict.description} />
             <SectionHeader text='活动日志' />
-            <RowWithArrow label='注释' color='#999'>
+            <RowWithArrow label={intlDict.comment}>
               <Text style={styles.text}>{`${fields.comment.total} 条`}</Text>
             </RowWithArrow>
             <Line />
-            <RowWithArrow label='工作日志' color='#999' onPress={this.showWorkLog}>
+            <RowWithArrow label={intlDict.worklog} onPress={this.showWorkLog}>
               <Text style={styles.text}>{`${fields.worklog.total} 条`}</Text>
             </RowWithArrow>
           </FlexView>

@@ -13,11 +13,13 @@ const styles = StyleSheet.create({
     padding: 0,
     paddingLeft: 20,
     width: window.width - 120,
-    lineHeight: 45,
     fontSize: 16,
     ...Platform.select({
+      ios: {
+        lineHeight: 45
+      },
       android: {
-        textAlignVertical: 'top'
+        textAlignVertical: 'center'
       }
     })
   },
@@ -28,9 +30,17 @@ const styles = StyleSheet.create({
     height: window.height - 370,
     backgroundColor: '#fff',
     padding: 15,
-    paddingTop: 30,
+    paddingTop: 20,
     width: window.width,
-    fontSize: 16
+    fontSize: 16,
+    lineHeight: 20,
+    ...Platform.select({
+      ios: {
+      },
+      android: {
+        textAlignVertical: 'top'
+      }
+    })
   },
 });
 

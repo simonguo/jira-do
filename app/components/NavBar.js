@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/NavBar.style';
 
-class NavBar extends Component {
+class NavBar extends PureComponent {
 
   render() {
     const {

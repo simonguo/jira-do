@@ -30,20 +30,83 @@ export const FabAddButton = ({onPress}) => {
   );
 };
 
-export const ButtonPrime = ({onPress, title}) => {
+const underlayColor = {
+  primary: '#0084d2'
+};
+
+export const ButtonBlock = ({onPress, title, type}) => {
   return (
     <FlexView style={styles.buttonWrap}>
+      <View style={styles.paddingHorizontal15} />
       <TouchableHighlight
-        style={styles.button}
+        style={[styles.button, styles[type]]}
         onPress={onPress}
-        underlayColor='#0084d2'
+        underlayColor={underlayColor[type]}
       >
-        <Text style={styles.buttonTitle}>
+        <Text style={[styles.buttonTitle, styles[type + 'Title']]}>
           {title}
         </Text>
       </TouchableHighlight>
+      <View style={styles.paddingHorizontal15} />
     </FlexView>
-
   );
-}
+};
+
+
+export class PopupMenu extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: false,
+      menus: [],
+      x: 0,
+      y: 0
+    };
+  }
+  open({menus, e, id}) {
+    const { locationX: x, locationY: y } = e.nativeEvent;
+    this.setState({
+      menus,
+      e,
+      x,
+      y,
+      id,
+      show: true
+    });
+  }
+  close = () => {
+    this.setState({
+      show: false
+    });
+  }
+  render() {
+    const {menus, show, id} = this.state;
+
+    const children = menus.map(({title, onPress}) => (
+      <TouchableHighlight
+        onPress={() => onPress(id)}
+      >
+        <Text>{title}</Text>
+      </TouchableHighlight>
+    ));
+
+    return (
+      show ? (
+        <Modal
+          transparent={true}
+        >
+          <TouchableNativeFeedback
+            onPress={this.close}
+            style={styles.modal}
+          >
+          </TouchableNativeFeedback>
+          <View style={styles.modalMenu}>
+            {children}
+          </View>
+        </Modal>
+      ) : null
+
+    );
+  }
+} 
 

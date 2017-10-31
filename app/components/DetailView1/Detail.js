@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   View,
@@ -47,7 +47,7 @@ const statusTextColors = {
 };
 
 
-class Detail extends Component {
+class Detail extends PureComponent {
 
   renderLoading() {
     return <LoadingView loading={true} />;

@@ -29,7 +29,7 @@ import styles from '../styles/WorklogForm.style';
 
 import { Row, Header, SectionHeader, Line } from './common/List';
 import { FlexView } from './common/Layout';
-import { ButtonPrime } from './common/Button';
+import { ButtonBlock } from './common/Button';
 
 import { getMatches } from '../utils/commen';
 
@@ -59,11 +59,13 @@ class WorklogForm extends PureComponent {
       started: startTime.format('YYYY-MM-DDTHH:mm:ss.SSSZZ'),
       comment
     };
-    onAddWorklog(issueId, requestBody, ({ errors }) => {
-      if (errors) {
+    onAddWorklog(issueId, requestBody, (res) => {
+      console.log(res);
+      if (res.errors) {
         this.handleAlert('error', '错误', '提交失败');
       } else {
         this.handleAlert('success', '消息', '提交成功');
+        setTimeout(Actions.pop, 1000);
       }
     });
   }
@@ -159,9 +161,10 @@ class WorklogForm extends PureComponent {
           underlineColorAndroid="transparent"
         />
 
-        <ButtonPrime
+        <ButtonBlock
           onPress={this.handelSubmitForm}
           title='提交'
+          type='primary'
         />
 
 
@@ -170,6 +173,7 @@ class WorklogForm extends PureComponent {
           date={startTime}
           onChange={this.handelDateChange}
         />
+        <DropdownAlert ref={(ref) => this.alert = ref} />
       </FlexView>
     );
 

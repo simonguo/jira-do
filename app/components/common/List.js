@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   View,
   Text,
+  TouchableHighlight,
   Platform,
   TextInput
 } from 'react-native';
@@ -29,9 +30,7 @@ export const RowWithArrow = ({label, children, onPress, color}) => {
         {children}
         <Icon
           name="ios-arrow-forward"
-          style={[styles.arrow, {
-            color
-          }]}
+          style={styles.arrow}
           onPress={onPress}
         />
       </View>

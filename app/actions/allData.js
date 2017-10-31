@@ -94,7 +94,7 @@ export function fetchUserConfig(username, successCallback, failCallback) {
 }
 
 // 登记工作日志
-const worklog = (data, status) => {
+const addWorklogAction = (data, status) => {
   return {
     type: Types.ADD_WORKLOG,
     status
@@ -105,12 +105,32 @@ export function addWorklog(issueId, params, successCallback, failCallback) {
   let url = APIs.API_WORKLOG.replace('{issueId}', issueId);
   return createFetchAction({
     url,
-    actionModel: worklog,
+    actionModel: addWorklogAction,
     onSuccess: successCallback,
     onError: failCallback,
     options: {
       method: 'post',
       body: JSON.stringify(params)
     }
+  });
+}
+
+// 登记工作日志
+const worklog = (data, status) => {
+  console.log(data);
+  return {
+    type: Types.ADD_WORKLOG,
+    status,
+    worklogs: data
+  };
+};
+
+export function fetchWorklog(issueId, successCallback, failCallback) {
+  let url = APIs.API_WORKLOG.replace('{issueId}', issueId);
+  return createFetchAction({
+    url,
+    actionModel: worklog,
+    onSuccess: successCallback,
+    onError: failCallback
   });
 }

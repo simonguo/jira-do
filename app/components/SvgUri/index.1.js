@@ -77,7 +77,7 @@ function fixYPosition (y, node) {
   return fixYPosition(y, node.parentNode)
 }
 
-class SvgUri extends Component{
+class SvgUri extends PureComponent{
 
   constructor(props){
     super(props);
@@ -102,7 +102,7 @@ class SvgUri extends Component{
     this.isComponentMounted = true;
   }
 
-  componentWillReceiveProps (nextProps){
+  PureComponentWillReceiveProps (nextProps){
     if (nextProps.source) {
       const source = resolveAssetSource(nextProps.source) || {};
       const oldSource = resolveAssetSource(this.props.source) || {};
@@ -120,7 +120,7 @@ class SvgUri extends Component{
     }
   }
 
-  componentWillUnmount() {
+  PureComponentWillUnmount() {
     this.isComponentMounted = false
   }
 
@@ -141,64 +141,64 @@ class SvgUri extends Component{
   }
 
   createSVGElement(node, childs){
-    let componentAtts = {};
+    let PureComponentAtts = {};
     const i = ind++;
     switch (node.nodeName) {
     case 'svg':
-      componentAtts = this.obtainComponentAtts(node, SVG_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, SVG_ATTS);
       if (this.props.width) {
-        componentAtts.width = this.props.width;
+        PureComponentAtts.width = this.props.width;
       }
       if (this.props.height) {
-        componentAtts.height = this.props.height;
+        PureComponentAtts.height = this.props.height;
       }
 
       return <Svg key={i} {...componentAtts}>{childs}</Svg>;
     case 'g':
-      componentAtts = this.obtainComponentAtts(node, G_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, G_ATTS);
       return <G key={i} {...componentAtts}>{childs}</G>;
     case 'path':
-      componentAtts = this.obtainComponentAtts(node, PATH_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, PATH_ATTS);
       return <Path key={i} {...componentAtts}>{childs}</Path>;
     case 'circle':
-      componentAtts = this.obtainComponentAtts(node, CIRCLE_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, CIRCLE_ATTS);
       return <Circle key={i} {...componentAtts}>{childs}</Circle>;
     case 'rect':
-      componentAtts = this.obtainComponentAtts(node, RECT_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, RECT_ATTS);
       return <Rect key={i} {...componentAtts}>{childs}</Rect>;
     case 'line':
-      componentAtts = this.obtainComponentAtts(node, LINE_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, LINE_ATTS);
       return <Line key={i} {...componentAtts}>{childs}</Line>;
     case 'defs':
       return <Defs key={i}>{childs}</Defs>;
     case 'linearGradient':
-      componentAtts = this.obtainComponentAtts(node, LINEARG_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, LINEARG_ATTS);
       return <LinearGradient key={i} {...componentAtts}>{childs}</LinearGradient>;
     case 'radialGradient':
-      componentAtts = this.obtainComponentAtts(node, RADIALG_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, RADIALG_ATTS);
       return <RadialGradient key={i} {...componentAtts}>{childs}</RadialGradient>;
     case 'stop':
-      componentAtts = this.obtainComponentAtts(node, STOP_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, STOP_ATTS);
       return <Stop key={i} {...componentAtts}>{childs}</Stop>;
     case 'ellipse':
-      componentAtts = this.obtainComponentAtts(node, ELLIPSE_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, ELLIPSE_ATTS);
       return <Ellipse key={i} {...componentAtts}>{childs}</Ellipse>;
     case 'polygon':
-      componentAtts = this.obtainComponentAtts(node, POLYGON_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, POLYGON_ATTS);
       return <Polygon key={i} {...componentAtts}>{childs}</Polygon>;
     case 'polyline':
-      componentAtts = this.obtainComponentAtts(node, POLYLINE_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, POLYLINE_ATTS);
       return <Polyline key={i} {...componentAtts}>{childs}</Polyline>;
     case 'text':
-      componentAtts = this.obtainComponentAtts(node, TEXT_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, TEXT_ATTS);
       if (componentAtts.y) {
-        componentAtts.y = fixYPosition(componentAtts.y, node)
+        PureComponentAtts.y = fixYPosition(componentAtts.y, node)
       }
       return <Text key={i} {...componentAtts}>{childs}</Text>;
     case 'tspan':
-      componentAtts = this.obtainComponentAtts(node, TEXT_ATTS);
+      PureComponentAtts = this.obtainComponentAtts(node, TEXT_ATTS);
       if (componentAtts.y) {
-        componentAtts.y = fixYPosition(componentAtts.y, node)
+        PureComponentAtts.y = fixYPosition(componentAtts.y, node)
       }
       return <TSpan key={i} {...componentAtts}>{childs}</TSpan>;
     default:
@@ -216,7 +216,7 @@ class SvgUri extends Component{
       }));
     });
 
-     const componentAtts =  Array.from(attributes)
+     const PureComponentAtts =  Array.from(attributes)
       .map(utils.camelCaseNodeName)
       .map(utils.removePixelsFromNodeValue)
       .filter(utils.getEnabledAttributes(enabledAttributes.concat(COMMON_ATTS)))
@@ -226,7 +226,7 @@ class SvgUri extends Component{
       }, {});
     Object.assign(componentAtts, styleAtts);
 
-    return componentAtts;
+    return PureComponentAtts;
   }
 
   inspectNode(node){

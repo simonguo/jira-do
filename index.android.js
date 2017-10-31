@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   AppRegistry,
 } from 'react-native';
 import Index from './app/setup';
 
 if (!__DEV__) {
+
   global.console = {
     info: () => {},
     log: () => {},
@@ -12,6 +13,11 @@ if (!__DEV__) {
     debug: () => {},
     error: () => {},
   };
+}
+
+if (__DEV__) {
+  console.disableYellowBox = true;
+  console.warn('YellowBox is disabled.');
 }
 
 
@@ -37,7 +43,7 @@ if (global.Intl) {
 }
 
 
-class JiraAgileApp extends Component {
+class JiraAgileApp extends PureComponent {
   render() {
     return (
       <Index />

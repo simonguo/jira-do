@@ -12,40 +12,69 @@ import {
 import _ from 'lodash';
 import moment from 'moment';
 import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import WorklogItem from './WorklogItem';
 
 import Avatar from './Avatar';
 import NavBar from './NavBar';
 import { FlexView } from './common/Layout';
+import { Header } from './common/List';
+// import { PopupMenu } from './common/Button';
+
+import * as allDataActionCreators from '../actions/allData';
 
 import styles from '../styles/Worklog.style';
 
-function formatSecond(time) {
-  if (time % 3600 === 0) {
-    return time / 3600 + ' 小时';
-  } else {
-    return (time / 3600).toFixed(1) + ' 小时';
-  }
-}
+
 
 class Worklog extends PureComponent {
+  constructor(props) {
+    super(props);
+    const { data, onFetchWorklog } = props;
+    const worklog = _.get(data, ['fields', 'worklog']);
+    this.state = {
+      worklogs: worklog.worklogs
+    };
+    if (worklog.total > worklog.maxResults) {
+      props.onFetchWorklog(data.id, (res) => {
+        this.setState({
+          worklogs: res.worklogs
+        });
+      });
+    }
+    // console.log(data);
+  }
 
-  _renderItem = ({item, index}) => {
-    console.log(item);
+  handelEdit = (id) => {
+    console.log('Edit ' + id);
+  }
+
+  handelDelete = (id) => {
+    console.log('Delete ' + id);
+  }
+
+  // handelLongPress = (e, id) => {
+  //   this.popupMenu.open({
+  //     menus: [
+  //       {
+  //         title: '编辑',
+  //         onPress: handelEdit
+  //       }, {
+  //         title: '删除',
+  //         onPress: handelDelete
+  //       }
+  //     ],
+  //     e
+  //   });
+  // }
+  _renderItem = (props) => {
     return (
-      <TouchableHighlight style={styles.card}>
-        <View >
-          <View style={styles.info}>
-            <Avatar uri={item.author.avatarUrls['24x24']} width={24} height={24} style={styles.avatar} />
-            <Text style={styles.authorName}>{item.author.displayName}</Text>
-            <Text style={styles.time}>{moment(item.started).format('YYYY-MM-DD HH:mm')}</Text>
-            <Text style={styles.timeSpend}>{formatSecond(item.timeSpentSeconds)}</Text>
-          </View>
-          {item.comment ? <Text style={styles.comment}>
-            {item.comment}
-          </Text> : null}
-          
-        </View>
-      </TouchableHighlight>
+      <WorklogItem
+        {...props}
+        /* onLongPress={this.handelLongPress} */
+      />
     );
   }
 
@@ -54,29 +83,43 @@ class Worklog extends PureComponent {
   _getItemSeparatorComponent = () => (<View style={{ height: 5 }} ></View>)
 
   render() {
+    const { messages: intlDict } = this.context.intl;
     const { data } = this.props;
-    const worklog = _.get(data, ['fields', 'worklog', 'worklogs']);
-    console.log(worklog);
+    const { worklogs } = this.state;;
     return (
       <FlexView>
         <NavBar
-          title="详情"
+          title={intlDict.worklog}
           leftIcon='ios-close-outline'
           onLeftIconPress={() => Actions.pop()}
         />
+        <Header text={`${data.fields.summary} / ${data.key}`} />
         <FlatList
           style={{flex: 1, width: '100%'}}
-          data={worklog}
+          data={worklogs}
           renderItem={this._renderItem}
           keyExtractor={this._keyExtractor}
           ItemSeparatorComponent={this._getItemSeparatorComponent}
         />
+        <PopupMenu ref={ref => this.popupMenu = ref} />
       </FlexView>
 
     );
   }
 }
 
+Worklog.contextTypes = {
+  intl: PropTypes.object.isRequired
+};
 
+function mapDispatch2Props(dispatch) {
+  const actions = bindActionCreators({
+    ...allDataActionCreators
+  }, dispatch);
 
-export default Worklog;
+  return {
+    onFetchWorklog: actions.fetchWorklog,
+  };
+}
+
+export default connect(null, mapDispatch2Props)(Worklog);

@@ -50,7 +50,9 @@ class DatePicker extends PureComponent {
         });
       } else if (type === 'time') {
         TimePickerAndroid.open({
-          date: new Date(date.get('unix'))
+          hour: date.hour(),
+          minute: date.minute(),
+          is24Hour: true
         }).then(({action, hour, minute}) => {
           if (action !== DatePickerAndroid.dismissedAction) {
             onChange(date.clone().set({
@@ -63,7 +65,7 @@ class DatePicker extends PureComponent {
         let newDate = date.clone();
         // 日期选择器
         DatePickerAndroid.open({
-          date: new Date(date.get('unix'))
+          date: new Date(newDate.get('unix'))
         }).then(({action, year, month, day}) => {
           if (action !== DatePickerAndroid.dismissedAction) {
             newDate.set({
@@ -73,7 +75,9 @@ class DatePicker extends PureComponent {
             });
             // 时间选择器
             TimePickerAndroid.open({
-              date: new Date(date.get('unix'))
+              hour: date.hour(),
+              minute: date.minute(),
+              is24Hour: true
             }).then(({action, hour, minute}) => {
               if (action !== DatePickerAndroid.dismissedAction) {
                 onChange(newDate.set({

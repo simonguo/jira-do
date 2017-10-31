@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
   row: {
@@ -43,7 +43,15 @@ export default StyleSheet.create({
     width: 45,
     height: 45,
     fontSize: 25,
-    paddingTop: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#999',
+    ...Platform.select({
+      ios: {
+        lineHeight: 45
+      },
+      android: {
+        textAlignVertical: 'center'
+      }
+    })
   }
 });

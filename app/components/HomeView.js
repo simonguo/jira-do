@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   Text,
   View,
@@ -29,7 +29,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import NavBar from './NavBar';
 import styles from '../styles/App.style';
 
-class HomeView extends Component {
+class HomeView extends PureComponent {
   constructor(props) {
     super(props);
     // console.log(props.session)
@@ -66,6 +66,11 @@ class HomeView extends Component {
   handleAlert(type, title, message) {
     this.alert.alertWithType(type, title, message);
   }
+  handelExpandMenu = () => {
+    this.setState({
+      menuExpand: true
+    });
+  }
   handleMenuItemSelected(item) {
     console.log(item);
     this.setState({
@@ -74,6 +79,14 @@ class HomeView extends Component {
     });
 
     AsyncStorage.setItem('selectedItem', JSON.stringify(item));
+  }
+
+  handelGoSetting = () => {
+    const { userConfig } = this.state;
+    Actions.setting({
+      onLogoutSubmit: this.handleLogout,
+      userConfig
+    });
   }
 
   handleLogout() {
@@ -162,33 +175,29 @@ class HomeView extends Component {
   }
   renderBoardView() {
 
-    const { allData, rapidViews, onFetchDetail, onFetchIssueList } = this.props;
-    const { selectedItem, statusConfig, userConfig } = this.state;
-    const tilte = _.get(selectedItem, ['name']) || 'JIRA';
+    const { rapidViews, onFetchDetail, onFetchIssueList } = this.props;
+    const { selectedItem, statusConfig, userConfig, projectList } = this.state;
+    // const tilte = _.get(selectedItem, ['name']) || 'JIRA';
+
+    const project = selectedItem || projectList[0] || {
+      name: 'JIRA',
+      key: ''
+    };
 
     return (
 
       <View
         style={styles.boardView}>
         <NavBar
-          title={tilte}
+          title={project.name}
           leftIcon='ios-menu-outline'
-          onLeftIconPress={() => {
-            this.setState({
-              menuExpand: true
-            });
-          }}
+          onLeftIconPress={this.handelExpandMenu}
           rightIcon='ios-cog'
-          onRightIconPress={() => {
-            Actions.setting({
-              onLogoutSubmit: this.handleLogout,
-              userConfig
-            });
-          }}
+          onRightIconPress={this.handelGoSetting}
         />
         <BoardView
           onItemSelect={this.handleItemSelect}
-          project={selectedItem ? selectedItem.key : ''}
+          project={project.key}
           statusConfig={statusConfig}
           onFetchIssueList={onFetchIssueList}
         />
@@ -226,12 +235,12 @@ class HomeView extends Component {
 
 
 function mapState2Props(state) {
-  const { session, routes, rapidViews, allData, } = state;
+  const { session, routes, rapidViews } = state;
   return {
     routes,
     session,
     rapidViews,
-    allData
+    // allData
   };
 }
 

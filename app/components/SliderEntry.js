@@ -53,7 +53,7 @@ export default class SliderEntry extends PureComponent {
   }
 
   componentWillMount() {
-    // this.handleReload();
+    this.handleReload();
   }
 
   handleReload = () => {
@@ -61,7 +61,10 @@ export default class SliderEntry extends PureComponent {
   }
 
   handleFetchNextPage = () => {
-    this.handleFetch(this.state.nextAt);
+    const { total, list, request } = this.state;
+    if (total > list.length) {
+      this.handleFetch(this.state.nextAt);
+    }
   }
 
   handleFetch(startAt, projectKey) {
@@ -137,6 +140,11 @@ export default class SliderEntry extends PureComponent {
     </View>
   )
 
+  _getListHeaderComponent = () => (
+    <View style={{ height: 10 }} >
+    </View>
+  )
+
   _getListEmptyComponent = () => (
     <View >
       <Text style={styles.nullData}>No data found</Text>
@@ -163,6 +171,7 @@ export default class SliderEntry extends PureComponent {
           onEndReached={this.handleFetchNextPage}
           ItemSeparatorComponent={this._getItemSeparatorComponent}
           ListFooterComponent={this._getListFooterComponent}
+          ListHeaderComponent={this._getListHeaderComponent}
           ListEmptyComponent={this._getListEmptyComponent}
           onEndReachedThreshold={0.1}
         /> : null }
