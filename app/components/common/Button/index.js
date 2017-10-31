@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { FlexView } from './Layout';
+import { FlexView } from '../Layout';
 
-import styles from '../../styles/Button.style';
+import styles from './style';
 
 export const FabAddButton = ({onPress}) => {
   return (
@@ -31,7 +31,8 @@ export const FabAddButton = ({onPress}) => {
 };
 
 const underlayColor = {
-  primary: '#0084d2'
+  primary: '#0084d2',
+  default: '#ccc'
 };
 
 export const ButtonBlock = ({onPress, title, type}) => {

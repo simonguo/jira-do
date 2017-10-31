@@ -41,7 +41,7 @@ class SettingView extends PureComponent {
   }
 
   render() {
-    const { userConfig = {} } = this.props;
+    const { userConfig = {}, onLogoutSubmit } = this.props;
     let { displayName, avatarUrls, name } = userConfig || {};
     const { messages: intlDict } = this.context.intl;
     
@@ -79,8 +79,8 @@ class SettingView extends PureComponent {
           />
         </Row>
         <ButtonBlock
-          onPress={this.handelSubmitForm}
-          title='提交'
+          onPress={onLogoutSubmit}
+          title='登出'
           type='default'
         />
 

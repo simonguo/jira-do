@@ -101,7 +101,7 @@ class Worklog extends PureComponent {
           keyExtractor={this._keyExtractor}
           ItemSeparatorComponent={this._getItemSeparatorComponent}
         />
-        <PopupMenu ref={ref => this.popupMenu = ref} />
+        {/* <PopupMenu ref={ref => this.popupMenu = ref} /> */}
       </FlexView>
 
     );
