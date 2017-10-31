@@ -108,11 +108,11 @@ class DetailView extends PureComponent {
             <Header text={`${fields.summary} / ${data.key}`} />
             <SectionHeader text={intlDict.detail} />
             <Row label={intlDict.type}>
-              { data.fields ?  this.renderIconAndText(fields.issuetype.iconUrl, data.fields.issuetype.name) : null }
+              {data.fields ? this.renderIconAndText(fields.issuetype.iconUrl, data.fields.issuetype.name) : null}
             </Row>
             <Line />
             <Row label={intlDict.priority}>
-              { data.fields ?  this.renderIconAndText(fields.priority.iconUrl, data.fields.priority.name) : null }
+              {data.fields ? this.renderIconAndText(fields.priority.iconUrl, data.fields.priority.name) : null}
             </Row>
             <Line />
             <Row label={intlDict.status}>
@@ -127,21 +127,21 @@ class DetailView extends PureComponent {
                     {data.fields ? fields.status.name : ''}
                   </Text>
                 </View>
-              ) : null }
+              ) : null}
             </Row>
-            { fields.versions && fields.versions[0] ? ([
-              <Line />,
-              <Row label="影响版本">
+            {fields.versions && fields.versions[0] ? ([
+              <Line key="line-1" />,
+              <Row key="row-1" label="影响版本">
                 <Text style={styles.text}>{data.fields ? fields.versions[0].name : ''}</Text>
               </Row>
-            ]) : null }
+            ]) : null}
 
-            { fields.fixVersions && fields.fixVersions[0] ? ([
-              <Line />,
-              <Row label="修复的版本">
+            {fields.fixVersions && fields.fixVersions[0] ? ([
+              <Line key="line-2" />,
+              <Row key="row-2" label="修复的版本">
                 <Text style={styles.text}>{data.fields ? fields.fixVersions[0].name : ''}</Text>
               </Row>
-            ]) : null }
+            ]) : null}
 
             <SectionHeader text={intlDict.personnel} />
             <Row label={intlDict.creator}>

@@ -19,20 +19,27 @@ class Launch extends PureComponent {
 
       if (data) {
         this.props.onLogin(JSON.parse(data), () => {
-          this.setState({ loading: false });
+          this.view && this.setState({ loading: false });
           Actions.home({ type: 'replace' });
         }, (e) => {
-          this.setState({ loading: false });
+          this.view && this.setState({ loading: false });
           Actions.login();
-        })
+        });
         return;
       }
-      this.setState({ loading: false })
+      this.setState({ loading: false });
       Actions.login();
     });
   }
   render() {
-    return <LoadingView loading={this.state.loading} />;
+    return (
+      <LoadingView
+        ref={(ref) => {
+          this.view = ref;
+        }}
+        loading={this.state.loading}
+      />
+    );
   }
 }
 
