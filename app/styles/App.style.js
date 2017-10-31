@@ -17,7 +17,7 @@ export default StyleSheet.create({
   },
   titleBar: {
     paddingTop: 30,
-    backgroundColor: '#205081',
+    backgroundColor: '#0054C9',
     alignItems: 'center',
     height: 60
   },

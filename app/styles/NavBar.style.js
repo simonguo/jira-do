@@ -4,7 +4,7 @@ import { StyleSheet, Platform } from 'react-native';
 export default StyleSheet.create({
   titleBar: {
     paddingTop: 20,
-    backgroundColor: '#205081',
+    backgroundColor: '#0054C9',
     alignItems: 'center',
     height: 60,
     flexDirection: 'row',
