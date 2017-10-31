@@ -91,7 +91,6 @@ class LoginView extends PureComponent {
     const { server, username, password } = this.state.data;
     return (
       <View style={styles.container}>
-        <Text style={styles.logoText} >JIRA</Text>
         <Image source={require('../resources/logo.png')} style={styles.logo} />
         <TextInput
           style={styles.input}

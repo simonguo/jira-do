@@ -6,14 +6,13 @@ export default StyleSheet.create({
     width: '100%',
     height: window.height,
     padding: 0,
-    position: 'relative',
-    // zIndex: 300,
+    position: 'relative'
   },
   avatarContainer: {
     paddingTop: 40,
     paddingLeft: 20,
     height: 110,
-    backgroundColor: '#0054C9'
+    backgroundColor: '#004ab0'
   },
   avatar: {
     width: 48,
@@ -41,7 +40,7 @@ export default StyleSheet.create({
   },
   item: {
     padding: 5,
-    marginRight: 20,
+    marginRight: 0,
     fontSize: 14,
     marginVertical: 5,
     color: '#3b73af'
