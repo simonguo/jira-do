@@ -93,7 +93,6 @@ class DetailView extends PureComponent {
     const { fields = {} } = data || {};
 
     const { messages: intlDict } = this.context.intl;
-    console.log(data);
     return (
       <FlexView>
         <NavBar

@@ -44,36 +44,17 @@ class Worklog extends PureComponent {
         });
       });
     }
-    // console.log(data);
   }
 
   handelEdit = (id) => {
-    console.log('Edit ' + id);
   }
 
   handelDelete = (id) => {
-    console.log('Delete ' + id);
   }
-
-  // handelLongPress = (e, id) => {
-  //   this.popupMenu.open({
-  //     menus: [
-  //       {
-  //         title: '编辑',
-  //         onPress: handelEdit
-  //       }, {
-  //         title: '删除',
-  //         onPress: handelDelete
-  //       }
-  //     ],
-  //     e
-  //   });
-  // }
   _renderItem = (props) => {
     return (
       <WorklogItem
         {...props}
-        /* onLongPress={this.handelLongPress} */
       />
     );
   }

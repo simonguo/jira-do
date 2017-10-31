@@ -13,8 +13,6 @@ export default class SliderEntry extends PureComponent {
     let avatar = null;
     const { uri, width, height, style } = this.props;
     if (uri) {
-      // let url = uri.indexOf('xsmall') > 0 ? uri.replace('xsmall', 'xlarge') : uri;
-      // console.log(url);
       if (uri.indexOf('ownerId') >= 0 ) {
         avatar = <Image
           style={[style, {

@@ -21,10 +21,8 @@ const CacheSvgComponent = (() => {
           style,
           svg
         };
-        cache[uri] = obj; 
-        // console.log(svg);
+        cache[uri] = obj;
       }
-      // console.log(svg);
       return obj.svg;
     }
     return null;
