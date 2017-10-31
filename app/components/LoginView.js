@@ -68,7 +68,7 @@ class LoginView extends PureComponent {
       }
       AsyncStorage.setItem('session', JSON.stringify(data));
       AsyncStorage.setItem('username', username);
-      Actions.home();
+      Actions.replace('home');
     }, (e) => {
       this.handleAlert('error', error, e.toString());
     });
@@ -135,7 +135,7 @@ class LoginView extends PureComponent {
             if (session.status === 'REQUEST') {
               return;
             }
-            this.handleLoginCheck()
+            this.handleLoginCheck();
           }}
         >
           <View
@@ -150,7 +150,7 @@ class LoginView extends PureComponent {
         </TouchableWithoutFeedback>
         <DropdownAlert ref={(ref) => this.alert = ref} />
       </View>
-    )
+    );
   }
   renderLoading() {
     return <LoadingView loading={true} />;
@@ -167,18 +167,18 @@ class LoginView extends PureComponent {
 LoginView.propTypes = {
   session: PropTypes.object,
   onLogin: PropTypes.func
-}
+};
 
 LoginView.contextTypes = {
   intl: PropTypes.object.isRequired
-}
+};
 
 function mapState2Props(state) {
   const { session, routes } = state;
   return {
     session,
     routes
-  }
+  };
 }
 
 function mapDispatch2Props(dispatch) {

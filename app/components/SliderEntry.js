@@ -83,7 +83,7 @@ export default class SliderEntry extends PureComponent {
         request: false
       });
     });
-    
+
   }
 
   static propTypes = {
@@ -107,7 +107,7 @@ export default class SliderEntry extends PureComponent {
         <View
           style={[styles.item, styles[priorityStyle[field.priority.name]]]}
         >
-          <View style={{flex: 1, flexDirection: 'row',alignItems: 'flex-start',}}>
+          <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-start',}}>
             <SvgUri
               style={styles.itemTypeIcon}
               source={{ uri: field.issuetype.iconUrl }}
@@ -154,7 +154,7 @@ export default class SliderEntry extends PureComponent {
   render() {
     const { status, onSelect, onFetchIssueList, project } = this.props;
     let { total, list, request } = this.state;
-    
+
     return (
       <View style={styles.slideInnerContainer} >
         <Text style={styles.title} numberOfLines={1}>
@@ -175,7 +175,7 @@ export default class SliderEntry extends PureComponent {
           ListEmptyComponent={this._getListEmptyComponent}
           onEndReachedThreshold={0.1}
         /> : null }
-        
+
       </View>
     );
   }
