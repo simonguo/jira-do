@@ -17,7 +17,7 @@ class Menu extends PureComponent {
     super(props);
   }
 
-  _renderItem = ({item, index}) => {
+  renderItem = ({item, index}) => {
     const { onItemSelected, activeItem } = this.props;
     return (
       <View>
@@ -50,7 +50,7 @@ class Menu extends PureComponent {
         </View>
         <FlatList
           style={styles.scrollView}
-          renderItem={this._renderItem}
+          renderItem={this.renderItem}
           data={projectList}
           extraData={activeItem}
           onRefresh={this.props.onFetchProject}
