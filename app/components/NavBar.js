@@ -35,7 +35,7 @@ class NavBar extends PureComponent {
             style={[styles.icon]}
             onPress={onRightIconPress}
           />
-        ) : <View style={[styles.icon]}></View>}
+        ) : <View style={[styles.iconEmpty]}></View>}
       </View>
     );
   }

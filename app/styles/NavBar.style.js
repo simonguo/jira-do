@@ -27,5 +27,9 @@ export default StyleSheet.create({
     textAlign: 'center',
     paddingTop: 8
   },
+  iconEmpty: {
+    width: 44,
+    height: 40
+  },
 
 });

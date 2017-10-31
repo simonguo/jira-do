@@ -10,3 +10,5 @@ export const API_STATUS = '/rest/api/2/status';
 export const API_SEARCH = '/rest/api/2/search';
 export const API_USER = '/rest/api/2/user';
 export const API_WORKLOG = '/rest/api/2/issue/{issueId}/worklog';
+export const API_FILTER = '/rest/api/2/filter/favourite';
+export const API_CREATE_FILTER = '/rest/api/2/filter/';
