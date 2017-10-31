@@ -1,6 +1,9 @@
 import { StyleSheet, Platform } from 'react-native';
 
 export default StyleSheet.create({
+  wrap: {
+    height: 45,
+  },
   row: {
     height: 45,
     backgroundColor: '#fff',
@@ -19,7 +22,15 @@ export default StyleSheet.create({
   },
   label: {
     fontSize: 18,
-    color: '#000'
+    color: '#000',
+    ...Platform.select({
+      ios: {
+        lineHeight: 45
+      },
+      android: {
+        textAlignVertical: 'center'
+      }
+    })
   },
   header: {
     fontSize: 16,

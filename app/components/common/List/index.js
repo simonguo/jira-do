@@ -4,10 +4,13 @@ import {
   View,
   Text,
   TouchableHighlight,
+  TouchableWithoutFeedback,
   Platform,
   TextInput
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import { FlexView } from '../Layout';
 
 import styles from './style';
 
@@ -24,17 +27,22 @@ export const Row = ({label, children, style}) => {
 
 export const RowWithArrow = ({label, children, onPress, color}) => {
   return (
-    <View style={styles.row}>
-      <Text style={styles.label}>{label}</Text>
-      <View style={styles.rowRight}>
-        {children}
-        <Icon
-          name="ios-arrow-forward"
-          style={styles.arrow}
-          onPress={onPress}
-        />
+    <TouchableHighlight
+      onPress={onPress}
+      style={styles.wrap}
+      underlayColor='#eee'
+    >
+      <View style={styles.row}>
+        <Text style={styles.label}>{label}</Text>
+        <View style={styles.rowRight}>
+          {children}
+          <Icon
+            name="ios-arrow-forward"
+            style={styles.arrow}
+          />
+        </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 };
 
