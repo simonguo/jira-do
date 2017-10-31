@@ -153,9 +153,9 @@ class DetailView extends PureComponent {
             </Row>
             <SectionHeader text={intlDict.description} />
             <SectionHeader text='活动日志' />
-            <RowWithArrow label={intlDict.comment}>
+            <Row label={intlDict.comment}>
               <Text style={styles.text}>{`${fields.comment.total} 条`}</Text>
-            </RowWithArrow>
+            </Row>
             <Line />
             <RowWithArrow label={intlDict.worklog} onPress={this.showWorkLog}>
               <Text style={styles.text}>{`${fields.worklog.total} 条`}</Text>
