@@ -25,7 +25,16 @@ class BoardView extends PureComponent {
   }
 
   handelCarouselDidMount = (c) => {
+    this.c = c;
     c && setTimeout(() => c.snapToItem(1), 100);
+  }
+
+  handelScroll = (e) => {
+    // console.log(e.timeStamp);
+    //console.log(e);
+    // console.log(e.nativeEvent.velocity);
+    // console.log(this.c.currentIndex);
+    // console.log(this.c.currentScrollPosition);
   }
 
   _renderSlide = ({item, index}) => {
@@ -53,6 +62,14 @@ class BoardView extends PureComponent {
             firstItem={1}
             ref={(c) => this.handelCarouselDidMount(c)}
             extraData={project}
+            //enableSnap={false}
+            //activeSlideOffset={20}
+            //swipeThreshold={20}
+            //lockScrollWhileSnapping={true}
+            //loopClonesPerSide={1}
+            //apparitionDelay={50}
+            //enableMomentum={false}
+            //onScroll={this.handelScroll}
           />
           : null 
         }

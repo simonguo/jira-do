@@ -287,7 +287,7 @@ class SvgUri extends PureComponent {
         </View>
       );
     } catch (e) {
-      console.error('ERROR SVG', e);
+      // console.error('ERROR SVG', e);
       return null;
     }
   }

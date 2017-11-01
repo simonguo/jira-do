@@ -12,6 +12,7 @@ import {
 import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as allDataActionCreators from '../actions/allData';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles/DetailView.style';
 import { Actions } from 'react-native-router-flux';
@@ -61,6 +62,14 @@ class DetailView extends PureComponent {
       tab: 'detail'
     };
   }
+  componentWillMount() {
+    const { item, onFetchDetail } = this.props;
+    onFetchDetail(item.key, (resp)=>{
+      this.setState({
+        data: resp
+      });
+    });
+  }
 
   showWorkLog = () => {
     const { data } = this.props;
@@ -89,8 +98,9 @@ class DetailView extends PureComponent {
   }
 
   render() {
-    const { data, status } = this.props;
-    const { fields = {} } = data || {};
+    const { status } = this.props;
+    const { data } = this.state;
+    const fields = _.get(data, 'fields');
 
     const { messages: intlDict } = this.context.intl;
     return (
@@ -104,18 +114,18 @@ class DetailView extends PureComponent {
           style={styles.scrollView}
         >
           <FlexView style={styles.scrollContent}>
-            <Header text={`${fields.summary} / ${data.key}`} />
+            <Header text={`${_.get(fields, 'summary')} / ${_.get(data, 'key')}`} />
             <SectionHeader text={intlDict.detail} />
             <Row label={intlDict.type}>
-              {data.fields ? this.renderIconAndText(_.get(fields, 'issuetype.iconUrl'), _.get(data, 'fields.issuetype.name')) : null}
+              {fields ? this.renderIconAndText(_.get(fields, 'issuetype.iconUrl'), _.get(data, 'fields.issuetype.name')) : null}
             </Row>
             <Line />
             <Row label={intlDict.priority}>
-              {data.fields ? this.renderIconAndText(_.get(fields, 'priority.iconUrl'), _.get(data, 'fields.priority.name')) : null}
+              {fields ? this.renderIconAndText(_.get(fields, 'priority.iconUrl'), _.get(data, 'fields.priority.name')) : null}
             </Row>
             <Line />
             <Row label={intlDict.status}>
-              {data.fields ? (
+              {fields ? (
                 <View style={[{}, styles.statusLabel, {
                   backgroundColor: statusLabelColors[_.get(fields, 'status.name')],
                   borderColor: statusLabelColors[_.get(fields, 'status.name')],
@@ -180,5 +190,15 @@ DetailView.contextTypes = {
   intl: PropTypes.object.isRequired
 };
 
+function mapDispatch2Props(dispatch) {
+  const actions = bindActionCreators({
+    ...allDataActionCreators
+  }, dispatch);
 
-export default DetailView;
+  return {
+    onFetchDetail: actions.fetchDetail,
+  };
+}
+
+
+export default connect(null, mapDispatch2Props)(DetailView);

@@ -48,8 +48,11 @@ export default class SliderEntry extends PureComponent {
   }
 
   handleSelectItem(item) {
-    const { onSelect } = this.props;
-    onSelect(item);
+    // const { onSelect } = this.props;
+    // onSelect(item);
+    Actions.detail({
+      item
+    });
   }
 
   componentWillMount() {
@@ -96,12 +99,6 @@ export default class SliderEntry extends PureComponent {
       <TouchableWithoutFeedback
         onPress={() => {
           this.handleSelectItem(item);
-        }}
-        style={{
-          // flex: 1,
-          // flexDirection: 'row',
-          // justifyContent: 'center',
-          // width: '100%'
         }}
       >
         <View
