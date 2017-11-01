@@ -67,7 +67,7 @@ class SettingView extends PureComponent {
         </View>
         <Row label={intlDict.version}>
           <Text style={styles.text}>
-            V 1.3
+            V 2.0.1
           </Text>
         </Row>
         <Row label={intlDict.intl}>

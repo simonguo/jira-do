@@ -1,3 +1,10 @@
+# 2.0
+- 支持 JIRA 7.0.0 +
+- JIRA Agile 更名为 JIRA Do (Atlassian 要求我们改的)
+- 全新的 Logo 设计， （感谢JP 叔叔）
+- 让每一个任务显示的信息更详细，同时还支持登记工作日志 （感谢建博同学）
+
+
 # 1.3
 - 支持显示 Todo List 的 Key
 - 支持显示任务类型的 Icon
