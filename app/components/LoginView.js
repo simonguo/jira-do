@@ -68,7 +68,7 @@ class LoginView extends PureComponent {
       }
       AsyncStorage.setItem('session', JSON.stringify(data));
       AsyncStorage.setItem('username', username);
-      Actions.replace('home');
+      Actions.reset('home');
     }, (e) => {
       this.handleAlert('error', error, e.toString());
     });
@@ -91,6 +91,9 @@ class LoginView extends PureComponent {
     const { server, username, password } = this.state.data;
     return (
       <View style={styles.container}>
+        <StatusBar
+          barStyle="light-content"
+        />
         <Image source={require('../resources/logo.png')} style={styles.logo} />
         <TextInput
           style={styles.input}

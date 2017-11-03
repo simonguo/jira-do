@@ -24,11 +24,10 @@ function formatSecond(time) {
 
 class WorklogItem extends PureComponent {
   render() {
-    const { item, index, onLongPress } = this.props;
+    const { item, index } = this.props;
     return (
       <TouchableHighlight
         style={styles.card}
-        /* onLongPress={(e) => onLongPress(e, item.id)} */
       >
         <View >
           <View style={styles.info}>

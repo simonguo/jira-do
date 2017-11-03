@@ -9,6 +9,7 @@ const CacheSvgComponent = (() => {
       const { uri } = source;
       let obj = cache[uri];
       if (!obj || (obj && (obj.width !== width || obj.height !== height || obj.style !== style))) {
+        // console.time(uri);
         let svg = <SvgUri
           height={height}
           source={source}

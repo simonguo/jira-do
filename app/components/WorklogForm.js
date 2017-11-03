@@ -78,19 +78,27 @@ class WorklogForm extends PureComponent {
     }
     let matches = getMatches(/[0-9.]+[wdhm]/g, text);
     let spentSeconds = 0;
-    matches.forEach(time => {
-      let second = parseFloat(time);
-      if (/w/.test(time)) {
-        second *= 5 * 8 * 3600;
-      } else if (/d/.test(time)) {
-        second *= 8 * 3600;
-      } else if (/h/.test(time)) {
-        second *= 3600;
-      } else if (/m/.test(time)) {
-        second *= 60;
+    if (matches.length > 0) {
+      matches.forEach(time => {
+        let second = parseFloat(time);
+        if (/w/.test(time)) {
+          second *= 5 * 8 * 3600;
+        } else if (/d/.test(time)) {
+          second *= 8 * 3600;
+        } else if (/h/.test(time)) {
+          second *= 3600;
+        } else if (/m/.test(time)) {
+          second *= 60;
+        }
+        spentSeconds += second;
+      });
+    } else {
+      let t = parseFloat(text);
+      if (t) {
+        spentSeconds = t * 3600;
       }
-      spentSeconds += second;
-    });
+    }
+
 
     this.setState({
       timeSpend: text,
@@ -104,6 +112,7 @@ class WorklogForm extends PureComponent {
       comment: text
     });
   }
+  // handelCommentInputEnter = (text)
   handelDateChange = (date) => {
     this.setState({
       startTime: moment(date)
@@ -112,9 +121,6 @@ class WorklogForm extends PureComponent {
   handelEditDate = () => {
     this._datePicker && this._datePicker.open();
   }
-  // handelEditTime = () => {
-  //   this._datePicker && this._datePicker.open('time');
-  // }
   handleAlert(type, title, message) {
     this.alert.alertWithType(type, title, message);
   }
@@ -126,7 +132,7 @@ class WorklogForm extends PureComponent {
       <FlexView>
         <NavBar
           title="登记工作日志"
-          leftIcon='ios-close-outline'
+          leftIcon='ios-arrow-back'
           onLeftIconPress={() => Actions.pop()}
         />
 
@@ -141,6 +147,7 @@ class WorklogForm extends PureComponent {
               autoCorrect={false}
               style={styles.input}
               underlineColorAndroid="transparent"
+              placeholder='如 3w 4d 12h，默认单位 h'
             />
           </Row>
           <Line />
@@ -157,6 +164,7 @@ class WorklogForm extends PureComponent {
             style={[styles.input, styles.textArea]}
             multiline={true}
             onChangeText={this.handelCommentChange}
+            blurOnSubmit={false}
             autoCapitalize="none"
             autoCorrect={false}
             underlineColorAndroid="transparent"

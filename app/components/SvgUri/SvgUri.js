@@ -124,7 +124,7 @@ class SvgUri extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.isComponentMounted = false
+    this.isComponentMounted = false;
   }
 
   async fetchSVGData(uri) {
@@ -133,7 +133,7 @@ class SvgUri extends PureComponent {
       const response = await fetch(uri);
       responseXML = await response.text();
     } catch (e) {
-      console.error('ERROR SVG', e);
+      // console.error('ERROR SVG', e);
     } finally {
       if (this.isComponentMounted) {
         this.setState({ svgXmlData: responseXML });

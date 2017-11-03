@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   ScrollView,
+  RefreshControl,
   Button,
   Platform
 } from 'react-native';
@@ -59,10 +60,15 @@ class DetailView extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      tab: 'detail'
+      tab: 'detail',
+      data: {}
     };
   }
   componentWillMount() {
+    this.handelFetch();
+  }
+
+  handelFetch = () => {
     const { item, onFetchDetail } = this.props;
     onFetchDetail(item.key, (resp)=>{
       this.setState({
@@ -72,14 +78,14 @@ class DetailView extends PureComponent {
   }
 
   showWorkLog = () => {
-    const { data } = this.props;
+    const { data } = this.state;
     Actions.worklog({
       data
     });
   }
 
   showWorkLogForm = () => {
-    const { data } = this.props;
+    const { data } = this.state;
     Actions.worklogForm({
       title: `${data.fields.summary} / ${data.key}`,
       issueId: data.id
@@ -107,14 +113,20 @@ class DetailView extends PureComponent {
       <FlexView>
         <NavBar
           title={intlDict.detail}
-          leftIcon='ios-close-outline'
+          leftIcon='ios-arrow-back'
           onLeftIconPress={() => Actions.pop()}
         />
+        <Header text={`${_.get(fields, 'summary') || ''} / ${_.get(data, 'key') || ''}`} />
         <ScrollView
           style={styles.scrollView}
+          refreshControl={
+            <RefreshControl
+              onRefresh={this.handelFetch}
+              refreshing={!fields}
+            />
+          }
         >
           <FlexView style={styles.scrollContent}>
-            <Header text={`${_.get(fields, 'summary')} / ${_.get(data, 'key')}`} />
             <SectionHeader text={intlDict.detail} />
             <Row label={intlDict.type}>
               {fields ? this.renderIconAndText(_.get(fields, 'issuetype.iconUrl'), _.get(data, 'fields.issuetype.name')) : null}

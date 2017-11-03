@@ -14,6 +14,9 @@ import SettingView from './components/SettingView';
 import DetailView from './components/DetailView';
 import WorklogForm from './components/WorklogForm';
 import Worklog from './components/Worklog';
+import MoreView from './components/MoreView';
+import FilterResult from './components/FilterResult';
+
 //locale
 import { addLocaleData, IntlProvider } from 'react-intl';
 import zh from 'react-intl/locale-data/zh';
@@ -81,6 +84,8 @@ class AppView extends PureComponent {
               <Scene key="detail" component={DetailView} hideNavBar direction="vertical"/>
               <Scene key="worklogForm" component={WorklogForm} hideNavBar direction="vertical"/>
               <Scene key="worklog" component={Worklog} hideNavBar direction="vertical"/>
+              <Scene key="more" component={MoreView} hideNavBar direction="vertical"/>
+              <Scene key="filterResult" component={FilterResult} hideNavBar direction="vertical"/>
             </Scene>
           </RouterWithRedux>
         </IntlProvider>

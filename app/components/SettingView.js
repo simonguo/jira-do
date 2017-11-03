@@ -14,8 +14,11 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import Icon from 'react-native-vector-icons/Ionicons';
-import styles from '../styles/SettingView.style';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import * as sessionActionCreators from '../actions/session';
+import styles from '../styles/SettingView.style';
 import NavBar from './NavBar';
 import Avatar from './Avatar';
 import { Line, Row } from './common/List';
@@ -39,8 +42,14 @@ class SettingView extends PureComponent {
     });
   }
 
+  handleLogout = () => {
+    AsyncStorage.removeItem('session');
+    this.props.onLogout();
+    Actions.reset('login');
+  }
+
   render() {
-    const { userConfig = {}, onLogoutSubmit } = this.props;
+    const { userConfig = {} } = this.props;
     let { displayName, avatarUrls, name } = userConfig || {};
     const { messages: intlDict } = this.context.intl;
 
@@ -50,7 +59,7 @@ class SettingView extends PureComponent {
       <FlexView>
         <NavBar
           title={intlDict.settings}
-          leftIcon='ios-close-outline'
+          leftIcon='ios-arrow-back'
           onLeftIconPress={() => Actions.pop()}
         />
         <View style={styles.user}>
@@ -77,7 +86,7 @@ class SettingView extends PureComponent {
           />
         </Row>
         <ButtonBlock
-          onPress={onLogoutSubmit}
+          onPress={this.handleLogout}
           title='登出'
           type='default'
         />
@@ -98,4 +107,14 @@ SettingView.contextTypes = {
   setIntl: PropTypes.func
 };
 
-export default SettingView;
+function mapDispatch2Props(dispatch) {
+  const actions = bindActionCreators({
+    ...sessionActionCreators
+  }, dispatch);
+
+  return {
+    onLogout: actions.logout
+  };
+}
+
+export default connect(null, mapDispatch2Props)(SettingView);

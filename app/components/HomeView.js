@@ -79,12 +79,9 @@ class HomeView extends PureComponent {
     AsyncStorage.setItem('selectedItem', JSON.stringify(item));
   }
 
-  handelGoSetting = () => {
+  handelGoMoreView = () => {
     const { userConfig } = this.state;
-    Actions.setting({
-      onLogoutSubmit: this.handleLogout,
-      userConfig
-    });
+    Actions.more();
   }
 
   handleLogout() {
@@ -176,7 +173,7 @@ class HomeView extends PureComponent {
     const { selectedItem, statusConfig, userConfig, projectList } = this.state;
     // const tilte = _.get(selectedItem, ['name']) || 'JIRA';
 
-    const project = selectedItem || projectList[0] || {
+    const project = projectList.find(item => item.key === selectedItem.key) || projectList[0] || {
       name: 'JIRA',
       key: ''
     };
@@ -189,8 +186,8 @@ class HomeView extends PureComponent {
           title={project.name}
           leftIcon='ios-menu-outline'
           onLeftIconPress={this.handelExpandMenu}
-          rightIcon='ios-cog'
-          onRightIconPress={this.handelGoSetting}
+          rightIcon='ios-more'
+          onRightIconPress={this.handelGoMoreView}
         />
         <BoardView
           onItemSelect={this.handleItemSelect}

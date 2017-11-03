@@ -24,7 +24,15 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     marginTop: 10,
     height: 35,
-    padding: 10,
+    // padding: 10,
+    ...Platform.select({
+      ios: {
+        lineHeight: 35
+      },
+      android: {
+        textAlignVertical: 'center'
+      }
+    }),
     borderRadius: 4,
     width: '100%'
   },

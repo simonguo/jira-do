@@ -66,9 +66,10 @@ const issueList = (data, status) => {
   };
 };
 
-export function fetchIssueList({ project, status, startAt, maxResults }, successCallback, failCallback) {
+export function fetchIssueList({ jql, project, status, startAt, maxResults }, successCallback, failCallback) {
+  const jqlStr = jql || `project = '${project}' and status in (${status.join(',')})`;
   return createFetchAction({
-    url: `${APIs.API_SEARCH}?jql=project = '${project}' and status in (${status.join(',')})&startAt=${startAt}&maxResults=${maxResults}`,
+    url: `${APIs.API_SEARCH}?jql=${jqlStr}&startAt=${startAt}&maxResults=${maxResults}`,
     actionModel: issueList,
     onSuccess: successCallback,
     onError: failCallback
@@ -129,6 +130,24 @@ export function fetchWorklog(issueId, successCallback, failCallback) {
   return createFetchAction({
     url,
     actionModel: worklog,
+    onSuccess: successCallback,
+    onError: failCallback
+  });
+}
+
+// 获取过滤器列表
+const filterList = (data, status) => {
+  return {
+    type: Types.FETCH_FILTER_LIST,
+    status,
+    filters: data
+  };
+};
+
+export function fetchFilterList(successCallback, failCallback) {
+  return createFetchAction({
+    url: APIs.API_FILTER,
+    actionModel: filterList,
     onSuccess: successCallback,
     onError: failCallback
   });

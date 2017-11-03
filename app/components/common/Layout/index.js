@@ -24,3 +24,20 @@ export const Grid = ({col, children, style}) => {
     </View>
   );
 };
+
+export const PaddingHorizontal = ({paddingHorizontal, children, backgroundColor}) => {
+  const style = styles['paddingHorizontal' + paddingHorizontal] || {
+    width: paddingHorizontal
+  };
+  return (
+    <View style={styles.row}>
+      <View style={[style, {
+        backgroundColor
+      }]}></View>
+      { children }
+      <View style={[style, {
+        backgroundColor
+      }]}></View>
+    </View>
+  );
+}

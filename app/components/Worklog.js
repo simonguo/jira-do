@@ -71,7 +71,7 @@ class Worklog extends PureComponent {
       <FlexView>
         <NavBar
           title={intlDict.worklog}
-          leftIcon='ios-close-outline'
+          leftIcon='ios-arrow-back'
           onLeftIconPress={() => Actions.pop()}
         />
         <Header text={`${data.fields.summary} / ${data.key}`} />

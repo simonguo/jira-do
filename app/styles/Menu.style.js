@@ -1,7 +1,12 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 
 const window = Dimensions.get('window');
 export default StyleSheet.create({
+  flexRow: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   menu: {
     width: '100%',
     height: window.height,
@@ -35,6 +40,9 @@ export default StyleSheet.create({
     padding: 10,
     backgroundColor: '#e9e9e9'
   },
+  footer: {
+    height: 70
+  },
   itemView: {
     position: 'relative',
   },
@@ -57,5 +65,33 @@ export default StyleSheet.create({
   },
   nullData: {
     marginTop: 10
+  },
+  bottomMenu: {
+    position: 'absolute',
+    bottom: 20,
+    height: 44,
+    width: '100%',
+    backgroundColor: '#e9e9e9'
+  },
+  menuItem: {
+    height: 44,
+  },
+  icon: {
+    width: 44,
+    height: 44,
+    fontSize: 24,
+    color: '#3b73af',
+    textAlign: 'center',
+    ...Platform.select({
+      ios: {
+        lineHeight: 44
+      },
+      android: {
+        textAlignVertical: 'center'
+      }
+    })
+  },
+  menuText: {
+    color: '#3b73af'
   }
 });

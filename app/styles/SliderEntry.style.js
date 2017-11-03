@@ -42,28 +42,13 @@ export default StyleSheet.create({
     padding: 10
   },
   itemsView: {
-    // paddingHorizontal: 10,
-    ...Platform.select({
-      android: {
-        paddingRight: 10
-      },
-      ios: {
-        padding: 10
-      }
-    }),
     position: 'relative',
     backgroundColor: '#fff'
   },
   item: {
     position: 'relative',
     backgroundColor: '#f5f5f5',
-    // marginTop: 10,
     padding: 10,
-    ...Platform.select({
-      android: {
-        left: 10
-      }
-    }),
     height: 60,
     shadowColor: 'black',
     borderLeftColor: '#e9eef2',
@@ -131,5 +116,15 @@ export default StyleSheet.create({
   nullData: {
     textAlign: 'center',
     marginTop: 100
+  },
+  footer: {
+    height: 50,
+    paddingTop: 15
+  },
+  separator: {
+    height: 10
+  },
+  header: {
+    height: 10
   }
 });

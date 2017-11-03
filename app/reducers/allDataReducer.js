@@ -52,6 +52,12 @@ let allDataReducer = (state = initialState, action) => {
         worklogs: action.worklogs,
         worklogsStatus: action.status
       };
+    case Types.FETCH_FILTER_LIST:
+      return {
+        ...state,
+        filters: action.filters,
+        filtersStatus: action.status
+      };
     default:
       return state;
   }

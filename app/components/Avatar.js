@@ -8,7 +8,7 @@ import {
 
 import SvgUri from './SvgUri';
 
-export default class SliderEntry extends PureComponent {
+export default class Avatar extends PureComponent {
   render() {
     let avatar = null;
     const { uri, width, height, style } = this.props;
