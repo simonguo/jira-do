@@ -34,7 +34,7 @@ class LoginView extends PureComponent {
         username: null,
         password: null
       }
-    }
+    };
   }
   handleLoginCheck() {
     const { data } = this.state;

@@ -68,7 +68,14 @@ export default StyleSheet.create({
   },
   bottomMenu: {
     position: 'absolute',
-    bottom: 20,
+    ...Platform.select({
+      ios: {
+        bottom: 0,
+      },
+      android: {
+        bottom: 20,
+      }
+    }),
     height: 44,
     width: '100%',
     backgroundColor: '#e9e9e9'

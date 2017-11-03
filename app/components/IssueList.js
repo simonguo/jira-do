@@ -17,7 +17,7 @@ import SvgUri from './SvgUri';
 import IssueItem from './IssueItem';
 import { PaddingHorizontal } from './common/Layout';
 
-const ITEM_HEIGHT = 60 + 10;
+const ITEM_HEIGHT = 68 + 10;
 
 export default class IssueList extends PureComponent {
 

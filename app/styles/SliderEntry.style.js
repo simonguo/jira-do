@@ -49,7 +49,7 @@ export default StyleSheet.create({
     position: 'relative',
     backgroundColor: '#f5f5f5',
     padding: 10,
-    height: 60,
+    height: 68,
     shadowColor: 'black',
     borderLeftColor: '#e9eef2',
     borderLeftWidth: 5

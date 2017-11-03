@@ -22,10 +22,10 @@ export default StyleSheet.create({
   },
   label: {
     fontSize: 18,
-    color: '#000',
+    // color: '#000',
     ...Platform.select({
       ios: {
-        lineHeight: 45
+        lineHeight: 43
       },
       android: {
         textAlignVertical: 'center'
