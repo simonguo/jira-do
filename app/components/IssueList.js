@@ -44,10 +44,10 @@ export default class IssueList extends PureComponent {
   _getItemSeparatorComponent = () => (<View style={styles.separator} ></View>)
 
   _getListFooterComponent = () => {
-    const { total, list } = this.props;
+    const { isEnd } = this.props;
     return (
       <View style={styles.footer} >
-        { list.length >= total ? <Text style={{textAlign: 'center'}} >没有更多数据</Text> : null }
+        { isEnd ? <Text style={{textAlign: 'center'}} >没有更多数据</Text> : null }
       </View>
     );
   }
