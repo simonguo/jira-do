@@ -11,10 +11,11 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import moment from 'moment';
+import styles from '../styles/Worklog.style';
 
 import Avatar from './Avatar';
 
-function formatSecond(time) {
+export function formatSecond(time) {
   if (time % 3600 === 0) {
     return time / 3600 + ' 小时';
   } else {

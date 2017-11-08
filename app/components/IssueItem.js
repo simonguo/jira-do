@@ -28,7 +28,10 @@ export default class IssueItem extends PureComponent {
 
   render() {
     const {item, index, onSelect} = this.props;
-    let field = item.fields;
+    const field = _.get(item, 'fields');
+    if (!field) {
+      return null;
+    }
     // console.time(field.issuetype.iconUrl);
     return (
       <TouchableWithoutFeedback
@@ -60,3 +63,9 @@ export default class IssueItem extends PureComponent {
     );
   }
 }
+
+IssueItem.propTypes = {
+  item: PropTypes.object,
+  index: PropTypes.number,
+  onSelect: PropTypes.func
+};

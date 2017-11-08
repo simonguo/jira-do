@@ -17,7 +17,7 @@ if (!__DEV__) {
 
 if (__DEV__) {
   console.disableYellowBox = true;
-  console.warn('YellowBox is disabled.');
+  // console.warn('YellowBox is disabled.');
 }
 
 
@@ -43,7 +43,7 @@ if (global.Intl) {
 }
 
 
-class JiraAgileApp extends PureComponent {
+export default class JiraAgileApp extends PureComponent {
   render() {
     return (
       <Index />

@@ -22,7 +22,6 @@ class Menu extends PureComponent {
   handelGoSetting = () => {
     const { userConfig } = this.props;
     Actions.setting({
-      onLogoutSubmit: this.handleLogout,
       userConfig
     });
   }
@@ -76,12 +75,14 @@ class Menu extends PureComponent {
           ListFooterComponent={this.renderListFooter}
         />
         <View style={styles.bottomMenu}>
-          <TouchableWithoutFeedback style={styles.menuItem}>
+          <TouchableWithoutFeedback
+            style={styles.menuItem}
+            onPress={this.handelGoSetting}
+          >
             <View style={styles.flexRow}>
               <Icon
                 name='ios-cog'
                 style={[styles.icon]}
-                onPress={this.handelGoSetting}
               />
               <Text style={styles.menuText}>设置</Text>
             </View>

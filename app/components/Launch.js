@@ -15,21 +15,44 @@ class Launch extends PureComponent {
     };
   }
   componentWillMount() {
+    this._isMounted = true;
     AsyncStorage.getItem('session').then(data => {
-
       if (data) {
-        this.props.onLogin(JSON.parse(data), () => {
-          this.view && this.setState({ loading: false });
-          Actions.home({ type: 'replace' });
+        this.props.onLogin(JSON.parse(data), res => {
+          if (res.errors) {
+            this._isMounted && Actions.replace('login');
+          } else {
+            this._isMounted && Actions.replace('home');
+          }          
         }, (e) => {
-          this.view && this.setState({ loading: false });
-          Actions.login();
+          this._isMounted && Actions.replace('login');
         });
-        return;
+      } else {
+        this._isMounted && Actions.replace('login');
       }
-      this.setState({ loading: false });
-      Actions.login();
+    }).catch(e => {
+      this._isMounted && Actions.replace('login');
     });
+    // AsyncStorage.getItem('session').then(data => {
+
+    //   if (data) {
+    //     this.props.onLogin(JSON.parse(data), () => {
+    //       // this.view && this.setState({ loading: false });
+    //       this._isMounted && Actions.replace('home');
+    //     }, (e) => {
+    //       // this.view && this.setState({ loading: false });
+    //       this._isMounted && Actions.replace('login');
+    //     });
+    //     // return;
+    //   } else {
+    //     // this.setState({ loading: false });
+    //     this._isMounted && Actions.replace('login');
+    //   }
+    // });
+    // this._isMounted && Actions.replace('login');
+  }
+  componentWillUnmount() {
+    this._isMounted = false;
   }
   render() {
     return (

@@ -173,7 +173,7 @@ class HomeView extends PureComponent {
     const { selectedItem, statusConfig, userConfig, projectList } = this.state;
     // const tilte = _.get(selectedItem, ['name']) || 'JIRA';
 
-    const project = projectList.find(item => item.key === selectedItem.key) || projectList[0] || {
+    const project = projectList.find(item => selectedItem && item.key === selectedItem.key) || projectList[0] || {
       name: 'JIRA',
       key: ''
     };
