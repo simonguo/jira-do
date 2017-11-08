@@ -98,7 +98,7 @@ class SettingView extends PureComponent {
 
 SettingView.propTypes = {
   userConfig: PropTypes.object,
-  onLogoutSubmit: PropTypes.func
+  onLogout: PropTypes.func
 };
 
 SettingView.contextTypes = {

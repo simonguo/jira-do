@@ -27,7 +27,7 @@ class LoginView extends PureComponent {
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleAlert = this.handleAlert.bind(this);
-
+    console.log('login')
     this.state = {
       data: {
         server: null,
@@ -61,9 +61,10 @@ class LoginView extends PureComponent {
     const { message, error, loginCheckID } = this.context.intl.messages;
     let { username } = this.state.data;
     this.props.onLogin(data, (resp) => {
+      // console.log(resp)
       const auth = _.get(resp, ['session', 'value']);
       if (!auth) {
-        this.handleAlert('warn', message, loginCheckID);
+        this.handleAlert('warn', message,  _.get(resp, ['errorMessages', '0']));
         return;
       }
       AsyncStorage.setItem('session', JSON.stringify(data));
@@ -168,7 +169,7 @@ class LoginView extends PureComponent {
 };
 
 LoginView.propTypes = {
-  session: PropTypes.object,
+  session: PropTypes.any,
   onLogin: PropTypes.func
 };
 

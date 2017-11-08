@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IssueItem fidles is {} 1`] = `null`;
+
+exports[`IssueItem normal 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hitSlop={undefined}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#f5f5f5",
+        "borderLeftColor": "#e9eef2",
+        "borderLeftWidth": 5,
+        "height": 68,
+        "padding": 10,
+        "position": "relative",
+        "shadowColor": "black",
+      },
+      Object {
+        "borderLeftColor": "#ce0000",
+      },
+    ]
+  }
+  testID={undefined}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "flex": 1,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#3b73af",
+          "fontSize": 12,
+          "height": 22,
+          "left": 17,
+          "position": "absolute",
+          "width": "80%",
+        }
+      }
+    />
+  </View>
+  <Image
+    source={
+      Object {
+        "uri": "https://jira.hypers.com/secure/useravatar?size=small&ownerId=junwei.xu&avatarId=11713",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "borderRadius": 11,
+          "height": 22,
+          "position": "absolute",
+          "right": 10,
+          "top": 6,
+          "width": 22,
+        },
+        Object {
+          "height": 22,
+          "width": 22,
+        },
+      ]
+    }
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    numberOfLines={2}
+    style={
+      Object {
+        "left": 10,
+        "marginRight": 30,
+        "position": "absolute",
+        "top": 25,
+      }
+    }
+  >
+    【IDMapping--双向映射导出】触发双向映射导出后，计算端返回"down file is error"
+  </Text>
+</View>
+`;

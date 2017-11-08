@@ -62,14 +62,6 @@ class BoardView extends PureComponent {
             firstItem={1}
             ref={(c) => this.handelCarouselDidMount(c)}
             extraData={project}
-            //enableSnap={false}
-            //activeSlideOffset={20}
-            //swipeThreshold={20}
-            //lockScrollWhileSnapping={true}
-            //loopClonesPerSide={1}
-            //apparitionDelay={50}
-            //enableMomentum={false}
-            //onScroll={this.handelScroll}
           />
           : null 
         }

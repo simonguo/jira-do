@@ -281,6 +281,9 @@ class SvgUri extends PureComponent {
       const doc = new xmldom.DOMParser().parseFromString(inputSVG);
       const rootSVG = doc ? this.inspectNode(doc.childNodes[0]) : null;
 
+      const { onLoad } = this.props;
+      onLoad && onLoad();
+
       return (
         <View style={this.props.style}>
           {rootSVG}

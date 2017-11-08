@@ -8,7 +8,8 @@ export default StyleSheet.create({
     flex: 1
   },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flex: 1
   },
   paddingHorizontal10: {
     width: 10

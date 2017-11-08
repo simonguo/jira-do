@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import {
   AppRegistry,
+  AsyncStorage
 } from 'react-native';
 import Index from './app/setup';
 import _ from 'lodash';
 
-import { shallowEqual } from './app/utils/commen';
+// import { shallowEqual } from './app/utils/commen';
 
 if (!__DEV__) {
   global.console = {
@@ -18,8 +19,10 @@ if (!__DEV__) {
 }
 
 if (__DEV__) {
-  console.disableYellowBox = true;
-  console.warn('YellowBox is disabled.');
+  // AsyncStorage.clear();
+  // AsyncStorage.setItem('session', JSON.stringify({"server":"https://jira.hypers.com","username":"jianbo.yu","password":"HAWK755"}));
+  // console.disableYellowBox = true;
+  // console.warn('YellowBox is disabled.');
   // PureComponent.prototype.componentWillUpdate = function(nextProps, nextState) {
     // console.log(this);
     // if (this.__renderCount__ === undefined) {
@@ -33,7 +36,7 @@ if (__DEV__) {
   // };
 }
 
-class JiraAgileApp extends PureComponent {
+export default class JiraAgileApp extends PureComponent {
   render() {
     return (
       <Index />
