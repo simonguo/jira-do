@@ -20,6 +20,10 @@ class BoardView extends PureComponent {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  componentWillUpdate(nextProps) {
+    console.log('BoardView');
+  }
+
   handleSelect(item) {
     this.props.onItemSelect(item);
   }

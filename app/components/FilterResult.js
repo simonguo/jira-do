@@ -65,7 +65,8 @@ function mapDispatch2Props(dispatch) {
   };
 }
 
-
-export default connect(null, mapDispatch2Props)(withFetchList(FilterResult, {
+const fetchParams = {
   listKey: ['issues']
-}));
+};
+
+export default connect(null, mapDispatch2Props)(withFetchList(FilterResult, fetchParams));

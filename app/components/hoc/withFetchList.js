@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
@@ -16,25 +16,11 @@ export default function addFetchList (WrappedComponent, { maxResults, fetchFunc,
       };
     }
 
-    componentWillUpdate(nextProps) {
-      const r = _.random(100000000, 9999999999);
-      console.group(r);
-      console.log('prevProps', this.props);
-      console.log('nextProps', nextProps);
-      console.groupEnd(r);
-    }
-
     componentWillMount() {
-      this.setState({
-        isFirst: true
-      });
       this.handleReload(0);
     }
   
     handleReload = () => {
-      this.setState({
-        isFirst: true
-      });
       this.handleFetch(0);
     }
   
@@ -45,11 +31,11 @@ export default function addFetchList (WrappedComponent, { maxResults, fetchFunc,
       }
     }
 
-    handleFetch(startAt, projectKey) {
+    handleFetch(startAt) {
       let { _maxResults } = this.state;
 
       const params = WrappedComponent.getParams(this.props);  // isRequire
-      console.log(startAt);
+      // console.log(startAt);
 
       const fun = fetchFunc || this.props.fetchFunc;
 

@@ -28,7 +28,7 @@ class SliderEntry extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { project, handleReload } = this.props;
-    if (nextProps.project !== this.project) {
+    if (nextProps.project !== this.props.project) {
       handleReload();
     }
   }
@@ -74,7 +74,8 @@ function mapDispatch2Props(dispatch) {
   };
 }
 
-
-export default connect(null, mapDispatch2Props)(withFetchList(SliderEntry, {
+const fetchParams = {
   listKey
-}));
+};
+
+export default connect(null, mapDispatch2Props)(withFetchList(SliderEntry, fetchParams));

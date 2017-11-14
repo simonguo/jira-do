@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for JiraAgileApp/app/components/DetailView.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">JiraAgileApp/app/components</a> DetailView.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">17.39% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>4/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">17.39% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/23</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import {
+  View,
+  Image,
+  Text,
+  ScrollView,
+  RefreshControl,
+  Button,
+  Platform
+} from 'react-native';
+import _ from 'lodash';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as allDataActionCreators from '../actions/allData';
+import Icon from 'react-native-vector-icons/Ionicons';
+import styles from '../styles/DetailView.style';
+import { Actions } from 'react-native-router-flux';
+import NavBar from './NavBar';
+import LoadingView from './LoadingView';
+import Spinner from 'react-native-loading-spinner-overlay';
+import SvgUri from './SvgUri';
+&nbsp;
+// import Detail from './Detail';
+import Worklog from './Worklog';
+&nbsp;
+import { Row, RowWithArrow, Header, SectionHeader, Line } from './common/List';
+import { FabAddButton } from './common/Button';
+import { FlexView } from './common/Layout';
+&nbsp;
+const statusLabelColors = {
+  '处理中': '#FFD065',
+  '已解决': '#FFD065',
+  'SELECTED FOR DEVELOPMENT': '#FFD065',
+  'IN REVIEW': '#FFD065',
+  '完成': '#008A39',
+  '已关闭': '#008A39',
+  '待办': '#476983',
+  '开放': '#476983',
+  '重新打开': '#476983',
+  'BACKLOG': '#476983',
+};
+&nbsp;
+const statusTextColors = {
+  '处理中': '#000000',
+  '已解决': '#000000',
+  'SELECTED FOR DEVELOPMENT': '#000000',
+  'IN REVIEW': '#000000',
+  '完成': '#ffffff',
+  '已关闭': '#ffffff',
+  '待办': '#ffffff',
+  '开放': '#ffffff',
+  '重新打开': '#ffffff',
+  'BACKLOG': '#ffffff',
+};
+&nbsp;
+&nbsp;
+class DetailView extends PureComponent {
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
+<span class="cstat-no" title="statement not covered" >    super(props);</span>
+<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+      tab: 'detail',
+      data: {}
+    };
+  }
+<span class="fstat-no" title="function not covered" >  co</span>mponentWillMount() {
+<span class="cstat-no" title="statement not covered" >    this.handelFetch();</span>
+  }
+&nbsp;
+  handelFetch = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+    const { item, onFetchDetail } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+<span class="cstat-no" title="statement not covered" >    onFetchDetail(item.key, <span class="fstat-no" title="function not covered" >(r</span>esp)=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >      this.setState({</span>
+        data: resp
+      });
+    });
+  }
+&nbsp;
+  showWorkLog = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+    const { data } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    Actions.worklog({</span>
+      data
+    });
+  }
+&nbsp;
+  showWorkLogForm = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+    const { data } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    Actions.worklogForm({</span>
+      title: `${data.fields.summary} / ${data.key}`,
+      issueId: data.id
+    });
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  re</span>nderIconAndText(uri, text) {
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;View style={styles.row}&gt;
+        &lt;SvgUri source={{ uri }} style={styles.fieldIcon} width={12} height={12} /&gt;
+        &lt;Text style={styles.text}&gt;
+          {text}
+        &lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
+    const { status } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    const { data } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+    const fields = <span class="cstat-no" title="statement not covered" >_.get(data, 'fields');</span>
+&nbsp;
+    const { messages: intlDict } = <span class="cstat-no" title="statement not covered" >this.context.intl;</span>
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;FlexView&gt;
+        &lt;NavBar
+          title={intlDict.detail}
+          leftIcon='ios-arrow-back'
+          onLeftIconPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >Actions.pop()}</span>
+        /&gt;
+        &lt;Header text={`${_.get(fields, 'summary') || ''} / ${_.get(data, 'key') || ''}`} /&gt;
+        &lt;ScrollView
+          style={styles.scrollView}
+          refreshControl={
+            &lt;RefreshControl
+              onRefresh={this.handelFetch}
+              refreshing={!fields}
+            /&gt;
+          }
+        &gt;
+          &lt;FlexView style={styles.scrollContent}&gt;
+            &lt;SectionHeader text={intlDict.detail} /&gt;
+            &lt;Row label={intlDict.type}&gt;
+              {fields ? this.renderIconAndText(_.get(fields, 'issuetype.iconUrl'), _.get(data, 'fields.issuetype.name')) : null}
+            &lt;/Row&gt;
+            &lt;Line /&gt;
+            &lt;Row label={intlDict.priority}&gt;
+              {fields ? this.renderIconAndText(_.get(fields, 'priority.iconUrl'), _.get(data, 'fields.priority.name')) : null}
+            &lt;/Row&gt;
+            &lt;Line /&gt;
+            &lt;Row label={intlDict.status}&gt;
+              {fields ? (
+                &lt;View style={[{}, styles.statusLabel, {
+                  backgroundColor: statusLabelColors[_.get(fields, 'status.name')],
+                  borderColor: statusLabelColors[_.get(fields, 'status.name')],
+                }]}&gt;
+                  &lt;Text style={[styles.statusText, {
+                    color: statusTextColors[_.get(fields, 'status.name')]
+                  }]}&gt;
+                    {_.get(fields, 'status.name')}
+                  &lt;/Text&gt;
+                &lt;/View&gt;
+              ) : null}
+            &lt;/Row&gt;
+            {_.get(fields, 'versions.0') ? ([
+              &lt;Line key="line-1" /&gt;,
+              &lt;Row key="row-1" label="影响版本"&gt;
+                &lt;Text style={styles.text}&gt;
+                  {_.get(fields, 'versions.0.name')}
+                &lt;/Text&gt;
+              &lt;/Row&gt;
+            ]) : null}
+&nbsp;
+            {_.get(fields, 'fixVersions.0') ? ([
+              &lt;Line key="line-2" /&gt;,
+              &lt;Row key="row-2" label="修复的版本"&gt;
+                &lt;Text style={styles.text}&gt;
+                  {_.get(fields, 'fixVersions.0.name')}
+                &lt;/Text&gt;
+              &lt;/Row&gt;
+            ]) : null}
+&nbsp;
+            &lt;SectionHeader text={intlDict.personnel} /&gt;
+            &lt;Row label={intlDict.creator}&gt;
+              &lt;Text style={styles.text}&gt;{_.get(fields, 'creator.displayName')}&lt;/Text&gt;
+            &lt;/Row&gt;
+            &lt;Line /&gt;
+            &lt;Row label={intlDict.assignee}&gt;
+              &lt;Text style={styles.text}&gt;{_.get(fields, 'assignee.displayName')}&lt;/Text&gt;
+            &lt;/Row&gt;
+            &lt;SectionHeader text={intlDict.description} /&gt;
+            &lt;SectionHeader text='活动日志' /&gt;
+            &lt;Row label={intlDict.comment}&gt;
+              &lt;Text style={styles.text}&gt;{`${_.get(fields, 'comment.total')} 条`}&lt;/Text&gt;
+            &lt;/Row&gt;
+            &lt;Line /&gt;
+            &lt;RowWithArrow label={intlDict.worklog} onPress={this.showWorkLog}&gt;
+              &lt;Text style={styles.text}&gt;{`${_.get(fields, 'worklog.total')} 条`}&lt;/Text&gt;
+&nbsp;
+            &lt;/RowWithArrow&gt;
+          &lt;/FlexView&gt;
+        &lt;/ScrollView&gt;
+        &lt;FabAddButton onPress={this.showWorkLogForm} /&gt;
+      &lt;/FlexView&gt;
+    );
+  }
+};
+&nbsp;
+DetailView.propTypes = {
+  data: PropTypes.object
+};
+&nbsp;
+DetailView.contextTypes = {
+  intl: PropTypes.object.isRequired
+};
+&nbsp;
+function <span class="fstat-no" title="function not covered" >mapDispatch2Props(</span>dispatch) {
+  const actions = <span class="cstat-no" title="statement not covered" >bindActionCreators({</span>
+    ...allDataActionCreators
+  }, dispatch);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    onFetchDetail: actions.fetchDetail,
+  };
+}
+&nbsp;
+&nbsp;
+export default connect(null, mapDispatch2Props)(DetailView);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 10 2017 13:49:46 GMT+0800 (CST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
