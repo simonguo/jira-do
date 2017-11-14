@@ -14,14 +14,17 @@ import { FlexView } from '../Layout';
 
 import styles from './style';
 
-export const Row = ({label, children, style}) => {
+export const Row = ({label, children, style, onPress}) => {
   return (
-    <View style={[styles.row, style]}>
-      <Text style={styles.label}>{label}</Text>
-      <View>
-        {children}
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={[styles.row, style]}>
+        <Text style={styles.label}>{label}</Text>
+        <View>
+          {children}
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
+
   );
 };
 
@@ -68,4 +71,26 @@ export const SectionHeader = ({text, children}) => {
   );
 };
 
+export const ButtonRow = ({children}) => {
+  return (
+    <View style={styles.swiperButtonRow}>
+      {children}
+    </View>
+  );
+};
 
+export const EditButton = ({onPress}) => {
+  return (
+    <TouchableHighlight
+      onPress={onPress}
+      style={[styles.swiperButton, {backgroundColor: '#358DF7'}]}
+      underlayColor='#0084d2'
+    >
+      <Icon
+        name='ios-create-outline'
+        style={styles.swiperButtonIcon}
+      />
+    </TouchableHighlight>
+
+  );
+};

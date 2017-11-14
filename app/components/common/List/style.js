@@ -64,5 +64,29 @@ export default StyleSheet.create({
         textAlignVertical: 'center'
       }
     })
+  },
+  swiperButtonRow: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
+  },
+  swiperButton: {
+    width: 75,
+    height: 45
+  },
+  swiperButtonIcon: {
+    color: '#ffffff',
+    fontSize: 30,
+    height: 45,
+    width: 75,
+    textAlign: 'center',
+    ...Platform.select({
+      ios: {
+        lineHeight: 43
+      },
+      android: {
+        textAlignVertical: 'center'
+      }
+    })
   }
 });

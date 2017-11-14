@@ -1,5 +1,10 @@
-import 'react-native';
+// import 'react-native';
 import React from 'react';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
+import { TouchableWithoutFeedback } from 'react-native-mock';
 
 import IssueItem from '../app/components/IssueItem';
 
@@ -9,6 +14,7 @@ import renderer from 'react-test-renderer';
 beforeAll(() => {
   require('isomorphic-fetch');
   global.jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  require('react-native-mock/mock');
 });
 
 const itemData = {
@@ -181,13 +187,26 @@ const itemData = {
 describe('IssueItem', () => {
 
   test('normal', () => {
-    const tree = renderer.create(
+    const tree = Enzyme.shallow(
       <IssueItem
         item={itemData}
       />
     );
     expect(tree).toMatchSnapshot();
   });
+
+//   test('onPress should return item', done => {
+    //   const component = Enzyme.shallow(
+    //     <IssueItem
+    //         item={itemData}
+    //         onPress={data => {
+    //             console.log('ddddddddddd')
+    //             expect(data).toEqual(itemData);
+    //         }}
+    //     />
+    //   );
+    //   component.find(TouchableWithoutFeedback).simulate('press');
+//   })
 
   test('fidles is undefined', () => {
     const tree = renderer.create(

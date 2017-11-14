@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Worklog WorklogItem 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hasTVPreferredFocus={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+      },
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 1,
+        "paddingHorizontal": 15,
+        "paddingVertical": 10,
+        "width": "100%",
+      },
+    ]
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "https://jira.hypers.com/secure/useravatar?size=small&ownerId=jianbo.yu&avatarId=11718",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "borderRadius": 12,
+              "height": 24,
+              "marginTop": -2,
+              "width": 24,
+            },
+            Object {
+              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#555",
+            "marginLeft": 15,
+          }
+        }
+      >
+        喻建博
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#555",
+            "marginLeft": 10,
+          }
+        }
+      >
+        2017-10-24 18:49
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#555",
+            "position": "absolute",
+            "right": 0,
+          }
+        }
+      >
+        4 小时
+      </Text>
+    </View>
+  </View>
+</View>
+`;

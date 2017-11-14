@@ -50,5 +50,5 @@ export function login(data, successCallback, failCallback) {
 export function logout() {
   return dispatch => {
     dispatch(logoutAction());
-  }
+  };
 }

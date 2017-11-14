@@ -17,40 +17,50 @@ let allDataReducer = (state = initialState, action) => {
         detailStatus: action.status,
         detail: action.detail
       };
+    case Types.EDIT_ISSUE_DETAILS:
+      return {
+        ...state,
+        editDetailStatus: action.status
+      };
     case Types.FETCH_PROJECT_LIST:
       return {
         ...state,
-        dataStatus: action.status,
-        list: action.list
+        projectListStatus: action.status,
+        projectList: action.list
       };
     case Types.FETCH_STATUS_CONFIG:
       return {
         ...state,
-        dataStatus: action.status,
-        config: action.config
+        statusConfigStatus: action.status,
+        statusConfig: action.config
       };
     case Types.FETCH_ISSUE_LIST:
       return {
         ...state,
-        dataStatus: action.status,
-        list: action.list
+        issueListStatus: action.status,
+        issueList: action.list
       };
     case Types.FETCH_USER_CONFIG:
       return {
         ...state,
-        dataStatus: action.status,
+        userConfigStatus: action.status,
         userConfig: action.userConfig
       };
     case Types.ADD_WORKLOG:
       return {
         ...state,
-        assWorklogStatus: action.status
+        addWorklogStatus: action.status
       };
     case Types.FETCH_WORKLOG:
       return {
         ...state,
         worklogs: action.worklogs,
         worklogsStatus: action.status
+      };
+    case Types.FETCH_TRANSITIONS:
+      return {
+        ...state,
+        transtionsStatus: action.status
       };
     case Types.FETCH_FILTER_LIST:
       return {

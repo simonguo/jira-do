@@ -169,7 +169,7 @@ class HomeView extends PureComponent {
   }
   renderBoardView() {
 
-    const { rapidViews, onFetchDetail, onFetchIssueList } = this.props;
+    const { onFetchDetail, onFetchIssueList } = this.props;
     const { selectedItem, statusConfig, userConfig, projectList } = this.state;
     // const tilte = _.get(selectedItem, ['name']) || 'JIRA';
 
@@ -229,11 +229,11 @@ class HomeView extends PureComponent {
 
 
 function mapState2Props(state) {
-  const { session, routes, rapidViews } = state;
+  const { session, routes } = state;
   return {
     routes,
     session,
-    rapidViews,
+    // rapidViews,
     // allData
   };
 }

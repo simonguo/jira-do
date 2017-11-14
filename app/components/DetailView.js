@@ -8,6 +8,8 @@ import {
   ScrollView,
   RefreshControl,
   Button,
+  Picker,
+  ActionSheetIOS,
   Platform
 } from 'react-native';
 import _ from 'lodash';
@@ -21,38 +23,38 @@ import NavBar from './NavBar';
 import LoadingView from './LoadingView';
 import Spinner from 'react-native-loading-spinner-overlay';
 import SvgUri from './SvgUri';
+import { SwipeRow } from 'react-native-swipe-list-view';
 
 // import Detail from './Detail';
 import Worklog from './Worklog';
 
-import { Row, RowWithArrow, Header, SectionHeader, Line } from './common/List';
+import { Row, RowWithArrow, Header, SectionHeader, Line, EditButton, ButtonRow } from './common/List';
 import { FabAddButton } from './common/Button';
 import { FlexView } from './common/Layout';
 
 const statusLabelColors = {
-  '处理中': '#FFD065',
-  '已解决': '#FFD065',
-  'SELECTED FOR DEVELOPMENT': '#FFD065',
-  'IN REVIEW': '#FFD065',
-  '完成': '#008A39',
-  '已关闭': '#008A39',
-  '待办': '#476983',
-  '开放': '#476983',
-  '重新打开': '#476983',
-  'BACKLOG': '#476983',
+  '3': '#FFD065',
+  '5': '#FFD065',
+  '10001': '#FFD065',
+  '10002': '#008A39',
+  '6': '#008A39',
+  '2': '#476983',
+  '1': '#476983',
+  '4': '#476983',
+  '10000': '#476983',
+  '10100': '#476983',
 };
 
 const statusTextColors = {
-  '处理中': '#000000',
-  '已解决': '#000000',
-  'SELECTED FOR DEVELOPMENT': '#000000',
-  'IN REVIEW': '#000000',
-  '完成': '#ffffff',
-  '已关闭': '#ffffff',
-  '待办': '#ffffff',
-  '开放': '#ffffff',
-  '重新打开': '#ffffff',
-  'BACKLOG': '#ffffff',
+  '3': '#000000',
+  '5': '#000000',
+  '10001': '#000000',
+  '10002': '#ffffff',
+  '6': '#ffffff',
+  '10100': '#ffffff',
+  '1': '#ffffff',
+  '4': '#ffffff',
+  '10000': '#ffffff',
 };
 
 
@@ -61,11 +63,23 @@ class DetailView extends PureComponent {
     super(props);
     this.state = {
       tab: 'detail',
-      data: {}
+      data: {},
+      editItem: '',
+      transitions: []
     };
   }
   componentWillMount() {
     this.handelFetch();
+    this.fetchTransitions();
+  }
+
+  fetchTransitions() {
+    const { onFetchTransitions, item } = this.props;
+    onFetchTransitions(item.key, (res) => {
+      this.setState({
+        transitions: res.transitions
+      });
+    });
   }
 
   handelFetch = () => {
@@ -92,6 +106,17 @@ class DetailView extends PureComponent {
     });
   }
 
+  // handelEditStatus = () => {
+  //   this.setState({
+  //     editItem: 'status'
+  //   });
+  // }
+
+  getStatusColor(statusId) {
+    const { statusConfig } = this.props;
+    return statusConfig.find(item => item.id === statusId).statusCategory.colorName;
+  }
+
   renderIconAndText(uri, text) {
     return (
       <View style={styles.row}>
@@ -103,8 +128,33 @@ class DetailView extends PureComponent {
     );
   }
 
+  handelEditStatus = () => {
+    const { transitions } = this.state;
+    if (Platform.OS === 'ios') {
+      let buttons = transitions.map((item) => item.name);
+      buttons.push('取消');
+      ActionSheetIOS.showActionSheetWithOptions({
+        options: buttons,
+        cancelButtonIndex: transitions.length
+      }, index => {
+        index < transitions.length && this.handelUpdateStatus(transitions[index].id);
+      });
+    }
+  }
+
+  handelUpdateStatus(statusId) {
+    const { onEditIssue } = this.props;
+    const { data } = this.state;
+    console.log(statusId);
+    onEditIssue(data.id, {
+      transition: {
+        id: statusId
+      }
+    }, this.handelFetch, this.handelFetch);
+  }
+
   render() {
-    const { status } = this.props;
+    const { status, statusConfig } = this.props;
     const { data } = this.state;
     const fields = _.get(data, 'fields');
 
@@ -128,28 +178,43 @@ class DetailView extends PureComponent {
         >
           <FlexView style={styles.scrollContent}>
             <SectionHeader text={intlDict.detail} />
+
             <Row label={intlDict.type}>
               {fields ? this.renderIconAndText(_.get(fields, 'issuetype.iconUrl'), _.get(data, 'fields.issuetype.name')) : null}
             </Row>
+
             <Line />
+
             <Row label={intlDict.priority}>
               {fields ? this.renderIconAndText(_.get(fields, 'priority.iconUrl'), _.get(data, 'fields.priority.name')) : null}
             </Row>
+
             <Line />
-            <Row label={intlDict.status}>
+
+            {/* <SwipeRow
+              disableRightSwipe={true}
+              rightOpenValue={-75}
+              stopRightSwipe={-75}
+            >
+              <ButtonRow>
+                <EditButton onPress={this.handelEditStatus} />
+              </ButtonRow> */}
+            <Row label={intlDict.status} onPress={this.handelEditStatus}>
               {fields ? (
                 <View style={[{}, styles.statusLabel, {
-                  backgroundColor: statusLabelColors[_.get(fields, 'status.name')],
-                  borderColor: statusLabelColors[_.get(fields, 'status.name')],
+                  backgroundColor: statusLabelColors[_.get(fields, 'status.id')],
+                  borderColor: statusLabelColors[_.get(fields, 'status.id')],
                 }]}>
                   <Text style={[styles.statusText, {
-                    color: statusTextColors[_.get(fields, 'status.name')]
+                    color: statusTextColors[_.get(fields, 'status.id')]
                   }]}>
                     {_.get(fields, 'status.name')}
                   </Text>
                 </View>
               ) : null}
             </Row>
+            {/* </SwipeRow> */}
+
             {_.get(fields, 'versions.0') ? ([
               <Line key="line-1" />,
               <Row key="row-1" label="影响版本">
@@ -189,6 +254,7 @@ class DetailView extends PureComponent {
           </FlexView>
         </ScrollView>
         <FabAddButton onPress={this.showWorkLogForm} />
+
       </FlexView>
     );
   }
@@ -202,6 +268,13 @@ DetailView.contextTypes = {
   intl: PropTypes.object.isRequired
 };
 
+function mapState2Props(state) {
+  const { allData } = state;
+  return {
+    statusConfig: allData.statusConfig
+  };
+}
+
 function mapDispatch2Props(dispatch) {
   const actions = bindActionCreators({
     ...allDataActionCreators
@@ -209,8 +282,10 @@ function mapDispatch2Props(dispatch) {
 
   return {
     onFetchDetail: actions.fetchDetail,
+    onFetchTransitions: actions.fetchTranstions,
+    onEditIssue: actions.editIssue
   };
 }
 
 
-export default connect(null, mapDispatch2Props)(DetailView);
+export default connect(mapState2Props, mapDispatch2Props)(DetailView);

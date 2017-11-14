@@ -40,4 +40,6 @@ export const PaddingHorizontal = ({paddingHorizontal, children, backgroundColor}
       }]}></View>
     </View>
   );
-}
+};
+
+

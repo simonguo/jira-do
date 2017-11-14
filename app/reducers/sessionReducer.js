@@ -1,6 +1,6 @@
 import * as Types from '../constants/ActionTypes';
 
-const initialState = {
+export const initialState = {
   server: '',
   data: {},
   status: null
@@ -13,7 +13,7 @@ let sessionReducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.data,
-        username: action.username,
+        // username: action.username,
         status: action.status
       };
     case Types.LOGOUT:

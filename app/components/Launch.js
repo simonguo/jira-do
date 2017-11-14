@@ -33,23 +33,6 @@ class Launch extends PureComponent {
     }).catch(e => {
       this._isMounted && Actions.replace('login');
     });
-    // AsyncStorage.getItem('session').then(data => {
-
-    //   if (data) {
-    //     this.props.onLogin(JSON.parse(data), () => {
-    //       // this.view && this.setState({ loading: false });
-    //       this._isMounted && Actions.replace('home');
-    //     }, (e) => {
-    //       // this.view && this.setState({ loading: false });
-    //       this._isMounted && Actions.replace('login');
-    //     });
-    //     // return;
-    //   } else {
-    //     // this.setState({ loading: false });
-    //     this._isMounted && Actions.replace('login');
-    //   }
-    // });
-    // this._isMounted && Actions.replace('login');
   }
   componentWillUnmount() {
     this._isMounted = false;

@@ -9,7 +9,7 @@ import IssueItem from '../app/components/IssueItem';
 import renderer from 'react-test-renderer';
 
 beforeAll(() => {
-  require('isomorphic-fetch');
+  // require('isomorphic-fetch');
   global.jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 });
 

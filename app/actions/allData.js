@@ -116,10 +116,10 @@ export function addWorklog(issueId, params, successCallback, failCallback) {
   });
 }
 
-// 登记工作日志
+// 获取工作日志
 const worklog = (data, status) => {
   return {
-    type: Types.ADD_WORKLOG,
+    type: Types.FETCH_WORKLOG,
     status,
     worklogs: data
   };
@@ -148,6 +148,50 @@ export function fetchFilterList(successCallback, failCallback) {
   return createFetchAction({
     url: APIs.API_FILTER,
     actionModel: filterList,
+    onSuccess: successCallback,
+    onError: failCallback
+  });
+}
+
+// 执行转化
+const editIssueAction = (data, status) => {
+  return {
+    type: Types.EDIT_ISSUE_DETAILS,
+    status
+  };
+};
+
+export function editIssue(issueId, params, successCallback, failCallback) {
+  let url = APIs.API_FETCH_TRANSITIONS.replace('{issueId}', issueId);
+  console.group();
+  console.log(`issue Id: ${issueId}`);
+  console.log(params);
+  console.groupEnd();
+  return createFetchAction({
+    url,
+    actionModel: editIssueAction,
+    onSuccess: successCallback,
+    onError: failCallback,
+    options: {
+      method: 'post',
+      body: JSON.stringify(params)
+    }
+  });
+}
+
+// 获取转化方式列表
+const transitions = (data, status) => {
+  return {
+    type: Types.FETCH_TRANSITIONS,
+    status
+  };
+};
+
+export function fetchTranstions(issueId, successCallback, failCallback) {
+  let url = APIs.API_FETCH_TRANSITIONS.replace('{issueId}', issueId);
+  return createFetchAction({
+    url,
+    actionModel: transitions,
     onSuccess: successCallback,
     onError: failCallback
   });

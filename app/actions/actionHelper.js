@@ -10,7 +10,7 @@ export function getServer(callback) {
     }
     const server = JSON.parse(data).server;
     callback(server);
-  })
+  });
 }
 
 
@@ -25,7 +25,6 @@ export function createFetchAction(action) {
     options,
     server
   } = action;
-
   const dispatcher = (apiURL, dispatch) => {
     fetchData(apiURL, Object.assign({ method: 'get' }, options), (response) => {
       dispatch(actionModel(response, 'SUCCESS'));
