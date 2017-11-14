@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for JiraAgileApp/app/components/SvgUri/utils.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">All files</a> / <a href="index.html">JiraAgileApp/app/components/SvgUri</a> utils.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">27.78% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>5/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">41.67% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>5/12</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const camelCase = <span class="fstat-no" title="function not covered" >va</span>lue =&gt; <span class="cstat-no" title="statement not covered" >value.replace(/-([a-z])/g, <span class="fstat-no" title="function not covered" >g </span>=&gt; <span class="cstat-no" title="statement not covered" >g[1].toUpperCase())</span>;</span>
+&nbsp;
+export const camelCaseNodeName = <span class="fstat-no" title="function not covered" >({</span>nodeName, nodeValue}) =&gt; (<span class="cstat-no" title="statement not covered" >{nodeName: camelCase(nodeName), nodeValue})</span>;
+&nbsp;
+export const removePixelsFromNodeValue = <span class="fstat-no" title="function not covered" >({</span>nodeName, nodeValue}) =&gt; (<span class="cstat-no" title="statement not covered" >{nodeName, nodeValue: nodeValue.replace('px', '')})</span>;
+&nbsp;
+export const transformStyle = <span class="fstat-no" title="function not covered" >({</span>nodeName, nodeValue, fillProp}) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (nodeName === 'style') {</span>
+<span class="cstat-no" title="statement not covered" >    return nodeValue.split(';')</span>
+      .reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, attribute) =&gt; {
+        const [property, value] = <span class="cstat-no" title="statement not covered" >attribute.split(':');</span>
+<span class="cstat-no" title="statement not covered" >        if (property == "")</span>
+<span class="cstat-no" title="statement not covered" >            return acc;</span>
+        else
+<span class="cstat-no" title="statement not covered" >            return {...acc, [camelCase(property)]: fillProp &amp;&amp; property === 'fill' ? fillProp : value};</span>
+      }, {});
+  }
+<span class="cstat-no" title="statement not covered" >  return null;</span>
+};
+&nbsp;
+export const getEnabledAttributes = <span class="fstat-no" title="function not covered" >en</span>abledAttributes =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span>nodeName}) =&gt; <span class="cstat-no" title="statement not covered" >enabledAttributes.includes(camelCase(nodeName));</span></span>
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Nov 10 2017 13:49:46 GMT+0800 (CST)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

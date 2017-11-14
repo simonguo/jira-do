@@ -24,7 +24,7 @@ if (__DEV__) {
   // console.disableYellowBox = true;
   // console.warn('YellowBox is disabled.');
   // PureComponent.prototype.componentWillUpdate = function(nextProps, nextState) {
-    // console.log(this);
+  //   console.log(this);
     // if (this.__renderCount__ === undefined) {
     //   this.__renderCount__ = 0;
     // }

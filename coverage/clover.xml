@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1510292986901" clover="3.2.0">
+  <project timestamp="1510292986901" name="All files">
+    <metrics statements="745" coveredstatements="246" conditionals="299" coveredconditionals="53" methods="267" coveredmethods="48" elements="1311" coveredelements="347" complexity="0" loc="745" ncloc="745" packages="16" files="57" classes="57">
+      <package name="JiraAgileApp">
+        <metrics statements="19" coveredstatements="11" conditionals="12" coveredconditionals="6" methods="14" coveredmethods="0"/>
+        <file name="index.android.js" path="/Users/yujianbo/Hypers/JiraAgileApp/index.android.js">
+          <metrics statements="14" coveredstatements="8" conditionals="8" coveredconditionals="4" methods="7" coveredmethods="0"/>
+          <line num="7" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="18" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+        </file>
+        <file name="index.ios.js" path="/Users/yujianbo/Hypers/JiraAgileApp/index.ios.js">
+          <metrics statements="5" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="7" coveredmethods="0"/>
+          <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="48" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app">
+        <metrics statements="16" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <file name="setup.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/setup.js">
+          <metrics statements="16" coveredstatements="5" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
+          <line num="26" count="2" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="29" count="2" type="stmt"/>
+          <line num="33" count="2" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="51" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="98" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.actions">
+        <metrics statements="59" coveredstatements="56" conditionals="17" coveredconditionals="14" methods="31" coveredmethods="30"/>
+        <file name="actionHelper.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/actions/actionHelper.js">
+          <metrics statements="19" coveredstatements="16" conditionals="13" coveredconditionals="10" methods="8" coveredmethods="7"/>
+          <line num="7" count="9" type="stmt"/>
+          <line num="8" count="9" type="cond" truecount="1" falsecount="1"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="11" count="9" type="stmt"/>
+          <line num="12" count="9" type="stmt"/>
+          <line num="27" count="10" type="stmt"/>
+          <line num="28" count="10" type="stmt"/>
+          <line num="29" count="10" type="stmt"/>
+          <line num="30" count="10" type="stmt"/>
+          <line num="31" count="10" type="cond" truecount="2" falsecount="0"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="38" count="10" type="stmt"/>
+          <line num="39" count="10" type="cond" truecount="2" falsecount="0"/>
+          <line num="40" count="10" type="cond" truecount="2" falsecount="0"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="45" count="9" type="stmt"/>
+          <line num="46" count="9" type="cond" truecount="2" falsecount="0"/>
+        </file>
+        <file name="allData.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/actions/allData.js">
+          <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="16" coveredmethods="16"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="25" count="3" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="43" count="3" type="stmt"/>
+          <line num="44" count="2" type="stmt"/>
+          <line num="52" count="1" type="stmt"/>
+          <line num="61" count="3" type="stmt"/>
+          <line num="62" count="4" type="stmt"/>
+          <line num="70" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="71" count="2" type="stmt"/>
+          <line num="80" count="3" type="stmt"/>
+          <line num="81" count="2" type="stmt"/>
+          <line num="89" count="1" type="stmt"/>
+          <line num="98" count="3" type="stmt"/>
+          <line num="99" count="2" type="stmt"/>
+          <line num="106" count="1" type="stmt"/>
+          <line num="107" count="1" type="stmt"/>
+          <line num="120" count="3" type="stmt"/>
+          <line num="121" count="2" type="stmt"/>
+          <line num="129" count="1" type="stmt"/>
+          <line num="130" count="1" type="stmt"/>
+          <line num="139" count="3" type="stmt"/>
+          <line num="140" count="2" type="stmt"/>
+          <line num="148" count="1" type="stmt"/>
+        </file>
+        <file name="session.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/actions/session.js">
+          <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+          <line num="5" count="3" type="stmt"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="13" count="3" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="19" count="3" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="45" count="1" type="cond" truecount="2" falsecount="0"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="52" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.components">
+        <metrics statements="355" coveredstatements="32" conditionals="128" coveredconditionals="7" methods="159" coveredmethods="4"/>
+        <file name="Avatar.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/Avatar.js">
+          <metrics statements="9" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="11" count="5" type="stmt"/>
+          <line num="31" count="2" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="33" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="34" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="35" count="2" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="60" count="2" type="stmt"/>
+        </file>
+        <file name="BoardView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/BoardView.js">
+          <metrics statements="10" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="0"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="76" count="2" type="stmt"/>
+        </file>
+        <file name="DetailView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/DetailView.js">
+          <metrics statements="23" coveredstatements="4" conditionals="14" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="45" count="2" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="73" count="0" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="81" count="0" type="stmt"/>
+          <line num="82" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="107" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="109" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="117" count="0" type="stmt"/>
+          <line num="197" count="2" type="stmt"/>
+          <line num="201" count="2" type="stmt"/>
+          <line num="206" count="0" type="stmt"/>
+          <line num="210" count="0" type="stmt"/>
+        </file>
+        <file name="FilterResult.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/FilterResult.js">
+          <metrics statements="17" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+        </file>
+        <file name="HomeView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/HomeView.js">
+          <metrics statements="62" coveredstatements="0" conditionals="11" coveredconditionals="0" methods="30" coveredmethods="0"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="84" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="95" count="0" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="109" count="0" type="stmt"/>
+          <line num="110" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="113" count="0" type="stmt"/>
+          <line num="114" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="115" count="0" type="stmt"/>
+          <line num="120" count="0" type="stmt"/>
+          <line num="122" count="0" type="stmt"/>
+          <line num="124" count="0" type="stmt"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="132" count="0" type="stmt"/>
+          <line num="133" count="0" type="stmt"/>
+          <line num="140" count="0" type="stmt"/>
+          <line num="141" count="0" type="stmt"/>
+          <line num="142" count="0" type="stmt"/>
+          <line num="149" count="0" type="stmt"/>
+          <line num="150" count="0" type="stmt"/>
+          <line num="159" count="0" type="stmt"/>
+          <line num="160" count="0" type="stmt"/>
+          <line num="172" count="0" type="stmt"/>
+          <line num="173" count="0" type="stmt"/>
+          <line num="176" count="0" type="cond" truecount="0" falsecount="5"/>
+          <line num="181" count="0" type="stmt"/>
+          <line num="203" count="0" type="stmt"/>
+          <line num="204" count="0" type="stmt"/>
+          <line num="205" count="0" type="stmt"/>
+          <line num="218" count="0" type="stmt"/>
+          <line num="224" count="0" type="stmt"/>
+          <line num="232" count="0" type="stmt"/>
+          <line num="233" count="0" type="stmt"/>
+          <line num="242" count="0" type="stmt"/>
+          <line num="247" count="0" type="stmt"/>
+        </file>
+        <file name="IssueItem.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/IssueItem.js">
+          <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
+          <line num="18" count="3" type="stmt"/>
+          <line num="30" count="3" type="stmt"/>
+          <line num="31" count="3" type="stmt"/>
+          <line num="32" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="33" count="2" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="67" count="3" type="stmt"/>
+        </file>
+        <file name="IssueList.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/IssueList.js">
+          <metrics statements="12" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
+          <line num="20" count="2" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+        </file>
+        <file name="Launch.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/Launch.js">
+          <metrics statements="17" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="73" count="0" type="stmt"/>
+        </file>
+        <file name="LoadingView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/LoadingView.js">
+          <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+        </file>
+        <file name="LoginView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/LoginView.js">
+          <metrics statements="56" coveredstatements="2" conditionals="16" coveredconditionals="0" methods="18" coveredmethods="0"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="46" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="91" count="0" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="93" count="0" type="stmt"/>
+          <line num="105" count="0" type="stmt"/>
+          <line num="118" count="0" type="stmt"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="139" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="140" count="0" type="stmt"/>
+          <line num="142" count="0" type="stmt"/>
+          <line num="150" count="0" type="stmt"/>
+          <line num="155" count="0" type="stmt"/>
+          <line num="160" count="0" type="stmt"/>
+          <line num="163" count="0" type="stmt"/>
+          <line num="164" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="165" count="0" type="stmt"/>
+          <line num="167" count="0" type="stmt"/>
+          <line num="171" count="2" type="stmt"/>
+          <line num="176" count="2" type="stmt"/>
+          <line num="181" count="0" type="stmt"/>
+          <line num="182" count="0" type="stmt"/>
+          <line num="189" count="0" type="stmt"/>
+          <line num="190" count="0" type="stmt"/>
+        </file>
+        <file name="Menu.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/Menu.js">
+          <metrics statements="11" coveredstatements="1" conditionals="8" coveredconditionals="0" methods="6" coveredmethods="0"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="96" count="2" type="stmt"/>
+        </file>
+        <file name="MoreView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/MoreView.js">
+          <metrics statements="18" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="90" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+        </file>
+        <file name="NavBar.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/NavBar.js">
+          <metrics statements="2" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+        </file>
+        <file name="SettingView.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/SettingView.js">
+          <metrics statements="18" coveredstatements="2" conditionals="7" coveredconditionals="0" methods="7" coveredmethods="0"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="52" count="0" type="cond" truecount="0" falsecount="1"/>
+          <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="99" count="2" type="stmt"/>
+          <line num="104" count="2" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="115" count="0" type="stmt"/>
+        </file>
+        <file name="SliderEntry.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/SliderEntry.js">
+          <metrics statements="17" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="8" coveredmethods="0"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="80" count="0" type="stmt"/>
+          <line num="82" count="0" type="stmt"/>
+        </file>
+        <file name="Worklog.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/Worklog.js">
+          <metrics statements="18" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="10" coveredmethods="0"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="75" count="0" type="stmt"/>
+          <line num="92" count="2" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="101" count="0" type="stmt"/>
+        </file>
+        <file name="WorklogForm.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/WorklogForm.js">
+          <metrics statements="50" coveredstatements="1" conditionals="22" coveredconditionals="0" methods="15" coveredmethods="0"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="52" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="75" count="0" type="stmt"/>
+          <line num="76" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="80" count="0" type="stmt"/>
+          <line num="81" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="82" count="0" type="stmt"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="84" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="88" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="91" count="0" type="stmt"/>
+          <line num="93" count="0" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="97" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="98" count="0" type="stmt"/>
+          <line num="103" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="117" count="0" type="stmt"/>
+          <line num="122" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="125" count="0" type="stmt"/>
+          <line num="128" count="0" type="stmt"/>
+          <line num="129" count="0" type="stmt"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="136" count="0" type="stmt"/>
+          <line num="181" count="0" type="stmt"/>
+          <line num="185" count="0" type="stmt"/>
+          <line num="192" count="2" type="stmt"/>
+          <line num="199" count="0" type="stmt"/>
+          <line num="203" count="0" type="stmt"/>
+        </file>
+        <file name="WorklogItem.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/WorklogItem.js">
+          <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+          <line num="19" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="20" count="2" type="stmt"/>
+          <line num="22" count="2" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.components.SvgUri">
+        <metrics statements="152" coveredstatements="53" conditionals="95" coveredconditionals="9" methods="23" coveredmethods="6"/>
+        <file name="SvgUri.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/SvgUri/SvgUri.js">
+          <metrics statements="127" coveredstatements="36" conditionals="76" coveredconditionals="4" methods="13" coveredmethods="4"/>
+          <line num="26" count="5" type="stmt"/>
+          <line num="45" count="5" type="stmt"/>
+          <line num="46" count="5" type="stmt"/>
+          <line num="48" count="5" type="stmt"/>
+          <line num="49" count="5" type="stmt"/>
+          <line num="50" count="5" type="stmt"/>
+          <line num="51" count="5" type="stmt"/>
+          <line num="52" count="5" type="stmt"/>
+          <line num="53" count="5" type="stmt"/>
+          <line num="54" count="5" type="stmt"/>
+          <line num="55" count="5" type="stmt"/>
+          <line num="57" count="5" type="stmt"/>
+          <line num="59" count="5" type="stmt"/>
+          <line num="60" count="5" type="stmt"/>
+          <line num="62" count="5" type="stmt"/>
+          <line num="66" count="5" type="stmt"/>
+          <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="75" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="84" count="1" type="stmt"/>
+          <line num="86" count="1" type="stmt"/>
+          <line num="88" count="1" type="stmt"/>
+          <line num="89" count="1" type="stmt"/>
+          <line num="90" count="1" type="stmt"/>
+          <line num="91" count="1" type="stmt"/>
+          <line num="93" count="1" type="stmt"/>
+          <line num="96" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="97" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="98" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="99" count="1" type="stmt"/>
+          <line num="105" count="1" type="stmt"/>
+          <line num="109" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="110" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="111" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="112" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="113" count="0" type="stmt"/>
+          <line num="117" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="118" count="0" type="stmt"/>
+          <line num="121" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="122" count="0" type="stmt"/>
+          <line num="127" count="0" type="stmt"/>
+          <line num="131" count="1" type="stmt"/>
+          <line num="132" count="1" type="stmt"/>
+          <line num="133" count="1" type="stmt"/>
+          <line num="134" count="0" type="stmt"/>
+          <line num="138" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="139" count="0" type="stmt"/>
+          <line num="143" count="0" type="stmt"/>
+          <line num="147" count="0" type="stmt"/>
+          <line num="148" count="0" type="stmt"/>
+          <line num="149" count="0" type="cond" truecount="0" falsecount="16"/>
+          <line num="151" count="0" type="stmt"/>
+          <line num="152" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="153" count="0" type="stmt"/>
+          <line num="155" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="156" count="0" type="stmt"/>
+          <line num="159" count="0" type="stmt"/>
+          <line num="161" count="0" type="stmt"/>
+          <line num="162" count="0" type="stmt"/>
+          <line num="164" count="0" type="stmt"/>
+          <line num="165" count="0" type="stmt"/>
+          <line num="167" count="0" type="stmt"/>
+          <line num="168" count="0" type="stmt"/>
+          <line num="170" count="0" type="stmt"/>
+          <line num="171" count="0" type="stmt"/>
+          <line num="173" count="0" type="stmt"/>
+          <line num="174" count="0" type="stmt"/>
+          <line num="176" count="0" type="stmt"/>
+          <line num="178" count="0" type="stmt"/>
+          <line num="179" count="0" type="stmt"/>
+          <line num="181" count="0" type="stmt"/>
+          <line num="182" count="0" type="stmt"/>
+          <line num="184" count="0" type="stmt"/>
+          <line num="185" count="0" type="stmt"/>
+          <line num="187" count="0" type="stmt"/>
+          <line num="188" count="0" type="stmt"/>
+          <line num="190" count="0" type="stmt"/>
+          <line num="191" count="0" type="stmt"/>
+          <line num="193" count="0" type="stmt"/>
+          <line num="194" count="0" type="stmt"/>
+          <line num="196" count="0" type="stmt"/>
+          <line num="197" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="198" count="0" type="stmt"/>
+          <line num="200" count="0" type="stmt"/>
+          <line num="202" count="0" type="stmt"/>
+          <line num="203" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="204" count="0" type="stmt"/>
+          <line num="206" count="0" type="stmt"/>
+          <line num="208" count="0" type="stmt"/>
+          <line num="213" count="0" type="stmt"/>
+          <line num="214" count="0" type="stmt"/>
+          <line num="215" count="0" type="stmt"/>
+          <line num="222" count="0" type="stmt"/>
+          <line num="227" count="0" type="cond" truecount="0" falsecount="5"/>
+          <line num="228" count="0" type="stmt"/>
+          <line num="231" count="0" type="stmt"/>
+          <line num="233" count="0" type="stmt"/>
+          <line num="238" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="239" count="0" type="stmt"/>
+          <line num="243" count="0" type="stmt"/>
+          <line num="247" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="248" count="0" type="stmt"/>
+          <line num="249" count="0" type="stmt"/>
+          <line num="250" count="0" type="cond" truecount="0" falsecount="5"/>
+          <line num="251" count="0" type="stmt"/>
+          <line num="253" count="0" type="stmt"/>
+          <line num="254" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="255" count="0" type="stmt"/>
+          <line num="261" count="0" type="stmt"/>
+          <line num="265" count="1" type="stmt"/>
+          <line num="266" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="267" count="1" type="stmt"/>
+          <line num="271" count="0" type="stmt"/>
+          <line num="276" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="277" count="0" type="stmt"/>
+          <line num="281" count="0" type="stmt"/>
+          <line num="282" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="284" count="0" type="stmt"/>
+          <line num="285" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="287" count="0" type="stmt"/>
+          <line num="294" count="0" type="stmt"/>
+          <line num="299" count="5" type="stmt"/>
+          <line num="308" count="5" type="stmt"/>
+        </file>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/SvgUri/index.js">
+          <metrics statements="13" coveredstatements="12" conditionals="11" coveredconditionals="5" methods="2" coveredmethods="2"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="5" count="3" type="stmt"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="1" type="cond" truecount="2" falsecount="5"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+        </file>
+        <file name="utils.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/SvgUri/utils.js">
+          <metrics statements="12" coveredstatements="5" conditionals="8" coveredconditionals="0" methods="8" coveredmethods="0"/>
+          <line num="1" count="5" type="stmt"/>
+          <line num="3" count="5" type="stmt"/>
+          <line num="5" count="5" type="stmt"/>
+          <line num="7" count="5" type="stmt"/>
+          <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="15" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="21" count="5" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.components.common">
+        <metrics statements="30" coveredstatements="5" conditionals="16" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <file name="DatePicker.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/DatePicker.js">
+          <metrics statements="30" coveredstatements="5" conditionals="16" coveredconditionals="0" methods="8" coveredmethods="0"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="19" count="2" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="70" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="95" count="0" type="stmt"/>
+          <line num="100" count="0" type="stmt"/>
+          <line num="101" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="128" count="0" type="stmt"/>
+          <line num="133" count="2" type="stmt"/>
+          <line num="139" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.components.common.Button">
+        <metrics statements="15" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/Button/index.js">
+          <metrics statements="15" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="33" count="2" type="stmt"/>
+          <line num="38" count="2" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="84" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+        </file>
+        <file name="style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/Button/style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.components.common.Layout">
+        <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/Layout/index.js">
+          <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="20" count="2" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="32" count="0" type="stmt"/>
+        </file>
+        <file name="style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/Layout/style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.components.common.List">
+        <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/List/index.js">
+          <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="49" count="2" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="57" count="2" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="63" count="2" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+        </file>
+        <file name="style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/components/common/List/style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.constants">
+        <metrics statements="25" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="APIs.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/constants/APIs.js">
+          <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="5" count="3" type="stmt"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="8" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="10" count="3" type="stmt"/>
+          <line num="11" count="3" type="stmt"/>
+          <line num="12" count="3" type="stmt"/>
+          <line num="13" count="3" type="stmt"/>
+          <line num="14" count="3" type="stmt"/>
+        </file>
+        <file name="ActionTypes.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/constants/ActionTypes.js">
+          <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="8" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="10" count="3" type="stmt"/>
+          <line num="11" count="3" type="stmt"/>
+          <line num="12" count="3" type="stmt"/>
+        </file>
+        <file name="data.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/constants/data.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.locales">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/locales/index.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.locales.en-US">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/locales/en-US/index.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.locales.zh-CN">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/locales/zh-CN/index.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.reducers">
+        <metrics statements="24" coveredstatements="23" conditionals="19" coveredconditionals="17" methods="3" coveredmethods="3"/>
+        <file name="allDataReducer.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/reducers/allDataReducer.js">
+          <metrics statements="12" coveredstatements="12" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="12" count="3" type="cond" truecount="1" falsecount="0"/>
+          <line num="13" count="31" type="cond" truecount="9" falsecount="0"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+          <line num="33" count="4" type="stmt"/>
+          <line num="39" count="2" type="stmt"/>
+          <line num="45" count="2" type="stmt"/>
+          <line num="50" count="2" type="stmt"/>
+          <line num="56" count="2" type="stmt"/>
+          <line num="62" count="13" type="stmt"/>
+        </file>
+        <file name="index.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/reducers/index.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="6" count="3" type="stmt"/>
+        </file>
+        <file name="routes.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/reducers/routes.js">
+          <metrics statements="4" coveredstatements="3" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="8" count="31" type="cond" truecount="1" falsecount="1"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="15" count="31" type="stmt"/>
+        </file>
+        <file name="sessionReducer.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/reducers/sessionReducer.js">
+          <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="10" count="3" type="cond" truecount="1" falsecount="0"/>
+          <line num="11" count="31" type="cond" truecount="4" falsecount="0"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="29" count="27" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.styles">
+        <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <file name="App.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/App.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="BoardView.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/BoardView.style.js">
+          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="4" type="stmt"/>
+          <line num="5" count="4" type="stmt"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+          <line num="10" count="2" type="stmt"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+        </file>
+        <file name="DetailView.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/DetailView.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="LoadingView.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/LoadingView.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="LoginView.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/LoginView.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="Menu.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/Menu.style.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="2" type="stmt"/>
+        </file>
+        <file name="NavBar.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/NavBar.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="SettingView.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/SettingView.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="SliderEntry.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/SliderEntry.style.js">
+          <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="3" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="12" count="6" type="stmt"/>
+          <line num="13" count="6" type="stmt"/>
+          <line num="16" count="3" type="stmt"/>
+          <line num="17" count="3" type="stmt"/>
+          <line num="18" count="3" type="stmt"/>
+          <line num="20" count="3" type="stmt"/>
+          <line num="21" count="3" type="stmt"/>
+          <line num="23" count="3" type="stmt"/>
+        </file>
+        <file name="Worklog.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/Worklog.style.js">
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        </file>
+        <file name="WorklogForm.style.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/styles/WorklogForm.style.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="JiraAgileApp.app.utils">
+        <metrics statements="12" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="3"/>
+        <file name="commen.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/utils/commen.js">
+          <metrics statements="7" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+        </file>
+        <file name="fetchData.js" path="/Users/yujianbo/Hypers/JiraAgileApp/app/utils/fetchData.js">
+          <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+          <line num="6" count="10" type="stmt"/>
+          <line num="15" count="10" type="stmt"/>
+          <line num="16" count="10" type="stmt"/>
+          <line num="18" count="10" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
