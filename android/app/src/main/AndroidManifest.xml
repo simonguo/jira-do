@@ -3,8 +3,15 @@
     android:versionCode="1"
     android:versionName="1.0">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -16,6 +23,10 @@
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme">
+
+        <meta-data android:name="HMT_APPKEY" android:value="hmt_4PHVYUWB" />
+        <meta-data android:name="HMT_CHANNEL" android:value="hypers" />
+
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
