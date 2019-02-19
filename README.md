@@ -6,7 +6,7 @@ JIRA Do 是 JIRA 的一个客户端，可以登录到 JIRA Cloud 或者公司内
 
 ## Install
 
-[iOS](https://itunes.apple.com/cn/app/jira-agile/id1244515211)
+[iOS](https://itunes.apple.com/cn/app/jira-do/id1453143910?mt=8)
 
 [Android](https://github.com/hypers/JiraAgileApp/raw/master/android/release/jira-do.apk)
 

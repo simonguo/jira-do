@@ -1,6 +1,6 @@
 {
   "name": "jira-do",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "private": true,
   "scripts": {
     "build-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
@@ -27,7 +27,7 @@
     "react-native-svg": "^5.4.2",
     "react-native-svg-uri": "^1.2.1",
     "react-native-swiper": "^1.5.4",
-    "react-native-vector-icons": "^4.1.1",
+    "react-native-vector-icons": "^6.3.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
