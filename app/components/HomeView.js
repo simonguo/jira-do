@@ -184,7 +184,7 @@ class HomeView extends PureComponent {
         style={styles.boardView}>
         <NavBar
           title={project.name}
-          leftIcon='ios-menu-outline'
+          leftIcon='ios-menu'
           onLeftIconPress={this.handelExpandMenu}
           rightIcon='ios-more'
           onRightIconPress={this.handelGoMoreView}
