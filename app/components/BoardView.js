@@ -29,14 +29,6 @@ class BoardView extends PureComponent {
     c && setTimeout(() => c.snapToItem(1), 100);
   }
 
-  handelScroll = (e) => {
-    // console.log(e.timeStamp);
-    //console.log(e);
-    // console.log(e.nativeEvent.velocity);
-    // console.log(this.c.currentIndex);
-    // console.log(this.c.currentScrollPosition);
-  }
-
   _renderSlide = ({item, index}) => {
     return (
       <SliderEntry

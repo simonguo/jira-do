@@ -32,7 +32,12 @@ export default class IssueItem extends PureComponent {
     if (!field) {
       return null;
     }
-    // console.time(field.issuetype.iconUrl);
+    const contentStyle = [styles.item];
+    const pName = _.get(field,'priority.name');
+    if(pName && priorityStyle[pName]){
+      contentStyle.push(styles[priorityStyle[pName]]);
+    }
+
     return (
       <TouchableWithoutFeedback
         onPress={() => {
@@ -40,7 +45,7 @@ export default class IssueItem extends PureComponent {
         }}
       >
         <View
-          style={[styles.item, styles[priorityStyle[field.priority.name]]]}
+          style={contentStyle}
         >
           <View style={{flex: 1, flexDirection: 'row', alignItems: 'flex-start',}}>
             <SvgUri

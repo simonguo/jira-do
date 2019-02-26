@@ -1,12 +1,13 @@
 import { StyleSheet, Platform } from 'react-native';
 
+import isIphoneX from '../utils/isIphoneX';
 
 export default StyleSheet.create({
   titleBar: {
     paddingTop: 20,
     backgroundColor: '#0054C9',
     alignItems: 'center',
-    height: 60,
+    height: isIphoneX() ? 100 : 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     ...Platform.select({
@@ -30,6 +31,5 @@ export default StyleSheet.create({
   iconEmpty: {
     width: 44,
     height: 40
-  },
-
+  }
 });
